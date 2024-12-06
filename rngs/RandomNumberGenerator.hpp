@@ -3,12 +3,14 @@
 
 #include "RNGState.hpp"
 
+#include <stdint.h>
+
 class RNGBase {
     public:
         RNGBase(size_t stateBytes);
         ~RNGBase();
         virtual uint32_t read_random() = 0;
     protected:
-        RNGState& state;
+        RNGState* state;
 };
 #endif // __RANDOM_NUMBER_GENERATOR_BASE__

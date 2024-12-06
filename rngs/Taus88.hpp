@@ -3,6 +3,9 @@
 
 #include "RandomNumberGenerator.hpp"
 
+#include <stdint.h>
+#include <cstddef>
+
 class Taus88: public RNGBase {
     public:
         Taus88();

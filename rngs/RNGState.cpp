@@ -1,7 +1,7 @@
 #include "RNGState.hpp"
 
 RNGState::RNGState(size_t numBytes)
-    : size(numBytes) {
+    : numBytes(numBytes) {
     allState = new uint8_t[numBytes];
 }
 
@@ -10,9 +10,9 @@ uint8_t *RNGState::getState() {
 }
 
 size_t RNGState::size() { 
-    return size; 
+    return numBytes; 
 } 
 
-void RNGState::~RNGState() {
+RNGState::~RNGState() {
     delete[] allState;
 }
