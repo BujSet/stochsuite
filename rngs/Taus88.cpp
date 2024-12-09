@@ -22,6 +22,10 @@ void Taus88::_seed_random(uint32_t new_seed) {
     state->set_state_bytes_from_int(new_seed, 4, 0);
 }
 
+std::string Taus88::name() {
+    return "Taus88";
+}
+
 uint32_t Taus88::_read_random(){
     uint32_t S1 = state->get_state_bytes_as_int(0);
     uint32_t S2 = state->get_state_bytes_as_int(4);

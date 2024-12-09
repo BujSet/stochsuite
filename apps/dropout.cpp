@@ -4,11 +4,12 @@
 #include <cmath>
 #include <cstring>
 #include <iostream>
+#include <limits>
 
 int main(int argc, char *argv[]) {
 
-    size_t niters = 10;
-    uint32_t seed = 1634404289;
+    size_t niters = 1000000000;
+    uint32_t seed = 12312332;
     std::string rngStr = "Taus88";
 
     if (argc > 1) {
@@ -35,6 +36,9 @@ int main(int argc, char *argv[]) {
             }
         }
     }
+    double x, y, z, pi;
+    size_t count = 0;
+
     std::unique_ptr<RNGBase> rng = RNGFactory::createRNG(rngStr);
     if (!rng) {
         std::cout << "Failed to instantiate RNG instance!" << std::endl;
@@ -43,10 +47,18 @@ int main(int argc, char *argv[]) {
     std::cout << "Successfully initialized RNG: " << rng->name() << std::endl;
 
     rng->seed_random(seed);
-    uint32_t rnd;
+    uint32_t rndx, rndy;
     for (size_t i = 0; i < niters; i++) {
-        rnd = rng->read_random();
-        std::cout << "Rand Value = " << rnd << std::endl;
+        rndx = rng->read_random();
+        rndy = rng->read_random();
+        x = ((double)rndx)/UINT32_MAX;
+        y = ((double)rndy)/UINT32_MAX;
+        z = sqrt((x*x) + (y*y));
+        if (z <= 1.0) {
+            count++;
+        }
     }
+    pi = 4.0 * ((double)count) / ((double)niters);
+    std::cout << "pi = " << pi << std::endl;
 	return 0;
 }

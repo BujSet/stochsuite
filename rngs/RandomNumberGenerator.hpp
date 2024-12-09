@@ -4,6 +4,7 @@
 #include "RNGState.hpp"
 
 #include <stdint.h>
+#include <string>
 
 class RNGBase {
     public:
@@ -20,6 +21,8 @@ class RNGBase {
         // Called by parent class to hook into child 
         // class implementations
         virtual void _seed_random(uint32_t new_seed) = 0;
+
+        virtual std::string name() = 0;
     protected:
         RNGState* state;
     private:

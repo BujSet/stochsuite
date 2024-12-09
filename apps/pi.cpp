@@ -1,6 +1,5 @@
 #include "RNGFactory.hpp"
 #include "RandomNumberGenerator.hpp"
-#include "Taus88.hpp"
 #include <cassert>
 #include <cmath>
 #include <cstring>
@@ -9,13 +8,14 @@
 
 int main(int argc, char *argv[]) {
 
-    size_t niters = 1000000000;
+    size_t niters = 100;
     uint32_t seed = 12312332;
+    std::string rngStr = "Taus88";
 
     if (argc > 1) {
-        if (argc > 6) {
+        if (argc > 7) {
             std::cout << "usage: ./" << argv[0] << " -seed <SEED> ";
-            std::cout << " -iters <NUM_ITERS>" << std::endl;
+            std::cout << " -iters <NUM_ITERS> -rng <RNG>" << std::endl;
             return 1;
         }
         for (size_t i = 0; i < (size_t)argc; i++) {
@@ -29,20 +29,27 @@ int main(int argc, char *argv[]) {
                 niters = (size_t) strtol(argv[i+1], NULL, 10);
                 i++;
             }
-
+            if (strcmp("-rng", argv[i]) == 0) {
+                assert(i + 1 < (size_t)argc);
+                rngStr = (std::string) argv[i+1];
+                i++;
+            }
         }
     }
     double x, y, z, pi;
     size_t count = 0;
 
-    std::unique_ptr<RNGBase> rng = std::unique_ptr<RNGBase>(new Taus88());
+    std::unique_ptr<RNGBase> rng = RNGFactory::createRNG(rngStr);
     if (!rng) {
         std::cout << "Failed to instantiate RNG instance!" << std::endl;
         return 1;
     }
+    std::cout << "Successfully initialized RNG: " << rng->name() << std::endl;
 
     rng->seed_random(seed);
     uint32_t rndx, rndy;
+
+    // Begin ROI
     for (size_t i = 0; i < niters; i++) {
         rndx = rng->read_random();
         rndy = rng->read_random();
@@ -54,6 +61,8 @@ int main(int argc, char *argv[]) {
         }
     }
     pi = 4.0 * ((double)count) / ((double)niters);
+    // End ROI
+    
     std::cout << "pi = " << pi << std::endl;
 	return 0;
 }

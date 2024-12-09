@@ -17,4 +17,6 @@ void RNGBase::seed_random(uint32_t new_seed) {
     _seed_random(new_seed);
 }
 
-RNGBase::~RNGBase() {}
+RNGBase::~RNGBase() {
+    delete state;
+}
