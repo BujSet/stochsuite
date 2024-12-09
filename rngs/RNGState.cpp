@@ -21,6 +21,11 @@ void RNGState::set_state_bytes_from_int(uint32_t new_state,
     }
 }
 
+void RNGState::set_state_byte(uint8_t new_state, size_t state_offset) {
+    assert(state_offset < numBytes);
+    allState[state_offset] = new_state;
+}
+
 uint32_t RNGState::get_state_bytes_as_int(size_t state_offset) {
     assert(state_offset < numBytes);
     assert(state_offset + 4 <= numBytes);
@@ -29,6 +34,11 @@ uint32_t RNGState::get_state_bytes_as_int(size_t state_offset) {
         result |= allState[i + state_offset] << (8*i);
     }
     return result;
+}
+
+uint8_t RNGState::get_state_byte(size_t state_offset) {
+    assert(state_offset < numBytes);
+    return allState[state_offset];
 }
 
 size_t RNGState::size() { 
