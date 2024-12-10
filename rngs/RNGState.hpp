@@ -10,9 +10,12 @@ class RNGState {
         ~RNGState();
         void set_state_bytes_from_int(uint32_t new_state, 
             uint32_t valid_bytes, size_t state_offset);
+        void set_state_bytes_from_long(uint64_t new_state, 
+            uint32_t valid_bytes, size_t state_offset);
         void set_state_byte(uint8_t new_state, 
             size_t state_offset);
         uint32_t get_state_bytes_as_int(size_t state_offset);
+        uint64_t get_state_bytes_as_long(size_t state_offset);
         uint8_t get_state_byte(size_t state_offset);
         uint8_t *getState();
         size_t size();

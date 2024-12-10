@@ -23,6 +23,10 @@ class RNGBase {
         virtual void _seed_random(uint32_t new_seed) = 0;
 
         virtual std::string name() = 0;
+
+        virtual uint32_t MAX() = 0;
+        virtual uint32_t MIN() = 0;
+        
     protected:
         RNGState* state;
     private:

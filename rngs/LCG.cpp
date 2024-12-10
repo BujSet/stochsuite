@@ -21,6 +21,14 @@ void LCG::_seed_random(uint32_t new_seed) {
     state->set_state_bytes_from_int(new_seed, 4, 0);
 }
 
+uint32_t LCG::MAX() {
+    return _mod;
+}
+
+uint32_t LCG::MIN() {
+    return 0;
+}
+
 std::string LCG::name() {
     return _name;
 }

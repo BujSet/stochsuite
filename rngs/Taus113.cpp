@@ -32,6 +32,14 @@ std::string Taus113::name() {
     return "Taus113";
 }
 
+uint32_t Taus113::MAX() {
+    return 0xFFFFFFFF;
+}
+
+uint32_t Taus113::MIN() {
+    return 0;
+}
+
 uint32_t Taus113::_read_random(){
     uint32_t S1 = state->get_state_bytes_as_int(0);
     uint32_t S2 = state->get_state_bytes_as_int(4);

@@ -22,6 +22,14 @@ std::string JKISS::name() {
     return "JKISS";
 }
 
+uint32_t JKISS::MAX() {
+    return 0xFFFFFFFF;
+}
+
+uint32_t JKISS::MIN() {
+    return 0;
+}
+
 uint32_t JKISS::_read_random(){
     // Though t is a 64 bit value, it is not considered part 
     // of the internal state, as it's merely an intermediate

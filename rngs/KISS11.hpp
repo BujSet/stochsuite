@@ -1,5 +1,5 @@
-#ifndef __J_KEEP_IT_SIMPLE_STUPID__
-#define __J_KEEP_IT_SIMPLE_STUPID__
+#ifndef __KEEP_IT_SIMPLE_STUPID_11__
+#define __KEEP_IT_SIMPLE_STUPID_11__
 
 #include "RandomNumberGenerator.hpp"
 
@@ -7,17 +7,19 @@
 #include <cstddef>
 
 // Implementation based on 
-// http://www0.cs.ucl.ac.uk/staff/d.jones/GoodPracticeRNG.pdf
+// KISS: A Bit Too Simple
+// https://eprint.iacr.org/2011/007.pdf
 
-class JKISS: public RNGBase {
+class KISS11: public RNGBase {
     public:
-        JKISS();
-        JKISS(uint32_t x, uint32_t y, uint32_t z, uint32_t c);
+        KISS11();
+        KISS11(uint32_t *seeds, size_t numWords);
         uint32_t _read_random() override;
         void _seed_random(uint32_t new_seed) override;
         std::string name() override;
         uint32_t MAX() override;
         uint32_t MIN() override;
+        static const uint32_t N = 4194304; // Num words in anynonymous state vector
 };
 #endif // __J_KEEP_IT_SIMPLE_STUPID__
 

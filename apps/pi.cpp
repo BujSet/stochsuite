@@ -53,8 +53,8 @@ int main(int argc, char *argv[]) {
     for (size_t i = 0; i < niters; i++) {
         rndx = rng->read_random();
         rndy = rng->read_random();
-        x = ((double)rndx)/UINT32_MAX;
-        y = ((double)rndy)/UINT32_MAX;
+        x = ((double)rndx)/(rng->MAX());
+        y = ((double)rndy)/(rng->MAX());
         z = sqrt((x*x) + (y*y));
         if (z <= 1.0) {
             count++;
