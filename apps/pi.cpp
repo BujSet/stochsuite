@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
         for (size_t i = 0; i < (size_t)argc; i++) {
             if (strcmp("-seed", argv[i]) == 0) {
                 assert(i + 1 < (size_t)argc);
-                seed = (size_t) strtol(argv[i+1], NULL, 10);
+                seed = (uint32_t) strtol(argv[i+1], NULL, 10);
                 i++;
             }
             if (strcmp("-iters", argv[i]) == 0) {
