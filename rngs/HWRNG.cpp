@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-#if defined(__x86_64__)
+#if defined(__x86_64__) || defined(__amd64__)
     #include <immintrin.h>
 #endif
 
@@ -14,6 +14,9 @@
 HWRNG::HWRNG() : RNGBase(0) {
 #if defined(__x86_64__)
     _name = "X86_64_RDRAND";
+#elif  defined(__amd64__)
+    _name = "AMD_64_RDRAND"
+
 #elif defined(__aarch64__)
 
 #if __ARM_FEATURE_RNG
@@ -37,7 +40,7 @@ std::string HWRNG::name() {
     return _name;
 }
 
-#if defined(__x86_64__)
+#if defined(__x86_64__) || defined(__amd64__)
 // adapted from https://software.intel.com/en-us/articles/intel-digital-random-number-generator-drng-software-implementation-guide
 uint32_t _x86_64_rdrand_step(uint32_t *rand) {
     unsigned char ok;
@@ -52,7 +55,7 @@ uint32_t _x86_64_rdrand_step(uint32_t *rand) {
 
 uint32_t HWRNG::_read_random() {
     uint32_t rndval = 0;
-#if defined(__x86_64__)
+#if defined(__x86_64__)  || defined(__amd64__)
     while(_x86_64_rdrand_step(&rndval) == 0);
     return rndval;
 #elif defined(__aarch64__)
