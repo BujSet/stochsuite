@@ -1,2 +1,3 @@
 rngs/*.o
 apps/*.o
+apps/*.ppm
