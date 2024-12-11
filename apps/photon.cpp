@@ -101,12 +101,11 @@ int main(int argc, char *argv[]) {
     uint32_t photons = 100000;
 
     if (argc > 1) {
-        if (argc > 14) {
+        if (argc > 12) {
             std::cout << "usage: ./" << argv[0] << " -seed <SEED> ";
             std::cout << " -iters <NUM_REFINEMENT_PASSES>";
             std::cout << " -rng <RNG>";
             std::cout << " -size <IMAGE_SIZE>";
-            std::cout << " -passes <>";
             std::cout << " -photons <NUM_PHOTONS>";
             std::cout << " -save" << std::endl;
             return 1;
