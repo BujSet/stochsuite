@@ -7,6 +7,7 @@ all:
 	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 dropout.cpp -o dropout.o -Wall -O3
 	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 dop.cpp -o dop.o -Wall -O3
 	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 photon.cpp -o photon.o -Wall -O3
+	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 tailwag.cpp -o tailwag.o -Wall -O3
 
 clean:
 	rm -f $(TARGET).o

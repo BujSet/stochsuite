@@ -13,6 +13,32 @@ uint32_t RNGBase::read_random() {
     num_rands_read++;
     return _read_random();
 }
+uint32_t RNGBase::read_random_range(uint32_t low, uint32_t high) {
+    uint32_t elems = high - low;
+    uint32_t bias = MAX() - (MAX() % elems);
+    num_rands_read++;
+    uint32_t rand = _read_random();
+    while (rand > bias) {
+        num_rands_read++;
+        rand = _read_random();
+    }
+    return rand;
+}
+
+uint32_t RNGBase::read_random_range(uint32_t low, uint32_t high, size_t retries) {
+    uint32_t elems = high - low;
+    uint32_t bias = MAX() - (MAX() % elems);
+    num_rands_read++;
+    uint32_t rand = _read_random();
+    for (size_t i = 1; i < retries; i++) {
+        if (rand <= bias) {
+            return rand + low; 
+        }
+        num_rands_read++;
+        rand = _read_random();
+    }
+    return rand;
+}
 
 double RNGBase::read_random_double() {
     uint32_t rand = _read_random();
@@ -21,9 +47,7 @@ double RNGBase::read_random_double() {
 }
 
 // A simple implementation of the Box-Muller algorithm, used to generate
-// gaussian random numbers - necessary for the Monte Carlo method below
-// Note that C++11 actually provides std::normal_distribution<> in 
-// the <random> library, which can be used instead of this function
+// gaussian random numbers
 double RNGBase::gaussian_box_muller() {
     double x = 0.0;
     double y = 0.0;
@@ -39,6 +63,16 @@ double RNGBase::gaussian_box_muller() {
     } while (euclid_sq >= 1.0);
     ret = x*sqrt(-2*log(euclid_sq)/euclid_sq);
     return ret;
+}
+
+double RNGBase::gaussian_box_muller(double mean, double stddev) {
+    double ret = gaussian_box_muller();
+    return (ret * stddev) + mean;
+}
+
+double RNGBase::lognormal_distribution(double mean, double stddev) {
+    double ret = gaussian_box_muller(mean, stddev);
+    return exp(ret);
 }
 
 void RNGBase::seed_random(uint32_t new_seed) {

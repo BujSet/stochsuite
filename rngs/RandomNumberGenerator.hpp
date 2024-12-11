@@ -12,6 +12,8 @@ class RNGBase {
         ~RNGBase();
 
         uint32_t read_random();
+        uint32_t read_random_range(uint32_t low, uint32_t high);
+        uint32_t read_random_range(uint32_t low, uint32_t high, size_t retries);
         virtual uint32_t _read_random() = 0;
 
         // Wrapper for calls to child class to allow for 
@@ -30,6 +32,8 @@ class RNGBase {
         double read_random_double();
 
         double gaussian_box_muller();
+        double gaussian_box_muller(double mean, double stddev);
+        double lognormal_distribution(double mean, double stddev);
         
     protected:
         RNGState* state;
