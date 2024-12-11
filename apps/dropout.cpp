@@ -8,14 +8,17 @@
 
 int main(int argc, char *argv[]) {
 
-    size_t niters = 1000000000;
+    size_t niters = 10000;
     uint32_t seed = 12312332;
     std::string rngStr = "Taus88";
+    size_t inputs = 1000;
+    double dropProb = 0.5;
 
     if (argc > 1) {
-        if (argc > 7) {
+        if (argc > 11) {
             std::cout << "usage: ./" << argv[0] << " -seed <SEED> ";
-            std::cout << " -iters <NUM_ITERS> -rng <RNG>" << std::endl;
+            std::cout << " -iters <NUM_ITERS> -rng <RNG> -inputs <NUM_INPUTS>";
+            std::cout << " -prob <DROPOUT_PROBABILITY>" << std::endl;
             return 1;
         }
         for (size_t i = 0; i < (size_t)argc; i++) {
@@ -34,10 +37,19 @@ int main(int argc, char *argv[]) {
                 rngStr = (std::string) argv[i+1];
                 i++;
             }
+            if (strcmp("-inputs", argv[i]) == 0) {
+                assert(i + 1 < (size_t)argc);
+                inputs = (size_t) strtol(argv[i+1], NULL, 10);
+                i++;
+            }
+            if (strcmp("-prob", argv[i]) == 0) {
+                assert(i + 1 < (size_t)argc);
+                dropProb = (double) strtod(argv[i+1], NULL);
+                i++;
+            }
         }
     }
-    double x, y, z, pi;
-    size_t count = 0;
+    assert(0.0 <= dropProb && dropProb <= 1.0);
 
     std::unique_ptr<RNGBase> rng = RNGFactory::createRNG(rngStr);
     if (!rng) {
@@ -47,18 +59,34 @@ int main(int argc, char *argv[]) {
     std::cout << "Successfully initialized RNG: " << rng->name() << std::endl;
 
     rng->seed_random(seed);
-    uint32_t rndx, rndy;
+
+    float *layer = new float[inputs];
+    for (size_t i = 0; i < inputs; i++) {
+        layer[i] = 3.14;
+    }
+
+    double rnd, frac, resultantProb;
+    size_t count = 0;
     for (size_t i = 0; i < niters; i++) {
-        rndx = rng->read_random();
-        rndy = rng->read_random();
-        x = ((double)rndx)/UINT32_MAX;
-        y = ((double)rndy)/UINT32_MAX;
-        z = sqrt((x*x) + (y*y));
-        if (z <= 1.0) {
-            count++;
+        // Begin ROI
+        for (size_t j = 0; j < inputs; j++) {
+            rnd = (double)rng->read_random();
+            frac = rnd / ((double)rng->MAX());
+            if (frac < dropProb) {
+                layer[j] = 0.0;
+                count++;
+            } else {
+                // scaled by 1/(1-p) to maintain the expected value
+                layer[j] /= (1.0 - dropProb);
+            }
+        }
+        // End ROI, reset
+        for (size_t j = 0; j < inputs; j++) {
+            layer[j] = 3.14;
         }
     }
-    pi = 4.0 * ((double)count) / ((double)niters);
-    std::cout << "pi = " << pi << std::endl;
+    resultantProb = ((double)count) / ((double)niters*inputs);
+    std::cout << "Dropped Outputs = " << resultantProb << std::endl;
+    delete[] layer;
 	return 0;
 }
