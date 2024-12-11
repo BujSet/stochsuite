@@ -28,6 +28,8 @@ class RNGBase {
         virtual uint32_t MIN() = 0;
 
         double read_random_double();
+
+        double gaussian_box_muller();
         
     protected:
         RNGState* state;
