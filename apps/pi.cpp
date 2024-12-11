@@ -47,14 +47,11 @@ int main(int argc, char *argv[]) {
     std::cout << "Successfully initialized RNG: " << rng->name() << std::endl;
 
     rng->seed_random(seed);
-    uint32_t rndx, rndy;
 
     // Begin ROI
     for (size_t i = 0; i < niters; i++) {
-        rndx = rng->read_random();
-        rndy = rng->read_random();
-        x = ((double)rndx)/(rng->MAX());
-        y = ((double)rndy)/(rng->MAX());
+        x = rng->read_random_double();
+        y = rng->read_random_double();
         z = sqrt((x*x) + (y*y));
         if (z <= 1.0) {
             count++;

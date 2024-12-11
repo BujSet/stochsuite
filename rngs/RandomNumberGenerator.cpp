@@ -12,6 +12,12 @@ uint32_t RNGBase::read_random() {
     return _read_random();
 }
 
+double RNGBase::read_random_double() {
+    uint32_t rand = _read_random();
+    double frac = ((double) rand) / ((double) MAX());
+    return frac;
+}
+
 void RNGBase::seed_random(uint32_t new_seed) {
     num_reseeds++;
     _seed_random(new_seed);

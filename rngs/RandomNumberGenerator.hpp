@@ -26,6 +26,8 @@ class RNGBase {
 
         virtual uint32_t MAX() = 0;
         virtual uint32_t MIN() = 0;
+
+        double read_random_double();
         
     protected:
         RNGState* state;

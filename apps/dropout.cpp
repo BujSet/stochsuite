@@ -65,14 +65,13 @@ int main(int argc, char *argv[]) {
         layer[i] = 3.14;
     }
 
-    double rnd, frac, resultantProb;
+    double rnd, resultantProb;
     size_t count = 0;
     for (size_t i = 0; i < niters; i++) {
         // Begin ROI
         for (size_t j = 0; j < inputs; j++) {
-            rnd = (double)rng->read_random();
-            frac = rnd / ((double)rng->MAX());
-            if (frac < dropProb) {
+            rnd = rng->read_random_double();
+            if (rnd < dropProb) {
                 layer[j] = 0.0;
                 count++;
             } else {
