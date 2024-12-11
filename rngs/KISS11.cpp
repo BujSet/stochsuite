@@ -43,14 +43,6 @@ std::string KISS11::name() {
     return "KISS11";
 }
 
-uint32_t KISS11::MAX() {
-    return 0xFFFFFFFF;
-}
-
-uint32_t KISS11::MIN() {
-    return 0;
-}
-
 uint32_t KISS11::_read_random(){
     uint32_t cng   = state->get_state_bytes_as_int(4*KISS11::N);
     uint32_t xs    = state->get_state_bytes_as_int(4*KISS11::N + 4);

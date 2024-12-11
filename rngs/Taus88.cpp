@@ -26,14 +26,6 @@ std::string Taus88::name() {
     return "Taus88";
 }
 
-uint32_t Taus88::MAX() {
-    return 0xFFFFFFFF;
-}
-
-uint32_t Taus88::MIN() {
-    return 0;
-}
-
 uint32_t Taus88::_read_random(){
     uint32_t S1 = state->get_state_bytes_as_int(0);
     uint32_t S2 = state->get_state_bytes_as_int(4);

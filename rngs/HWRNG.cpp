@@ -33,14 +33,6 @@ void HWRNG::_seed_random(uint32_t new_seed) {
     return;
 }
 
-uint32_t HWRNG::MAX() {
-    return 0xFFFFFFFF;
-}
-
-uint32_t HWRNG::MIN() {
-    return 0;
-}
-
 std::string HWRNG::name() {
     return _name;
 }

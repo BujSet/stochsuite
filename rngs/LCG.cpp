@@ -25,10 +25,6 @@ uint32_t LCG::MAX() {
     return _mod;
 }
 
-uint32_t LCG::MIN() {
-    return 0;
-}
-
 std::string LCG::name() {
     return _name;
 }

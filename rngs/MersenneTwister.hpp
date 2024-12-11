@@ -13,8 +13,6 @@ class MersenneTwister: public RNGBase {
         uint32_t _read_random() override;
         void _seed_random(uint32_t new_seed) override;
         std::string name() override;
-        uint32_t MAX() override;
-        uint32_t MIN() override;
         void reload();
         uint32_t hiBit(uint32_t u ) const { return u & 0x80000000UL; }
         uint32_t loBit(uint32_t u ) const { return u & 0x00000001UL; }

@@ -24,14 +24,6 @@ std::string JKISS32::name() {
     return "JKISS32";
 }
 
-uint32_t JKISS32::MAX() {
-    return 0xFFFFFFFF;
-}
-
-uint32_t JKISS32::MIN() {
-    return 0;
-}
-
 uint32_t JKISS32::_read_random(){
     uint32_t t;
     uint32_t x = state->get_state_bytes_as_int(0);

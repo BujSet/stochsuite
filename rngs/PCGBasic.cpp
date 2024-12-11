@@ -18,14 +18,6 @@ void PCGBasic::_seed_random(uint32_t new_seed) {
     state->set_state_bytes_from_int(new_seed, 4, 0);
 }
 
-uint32_t PCGBasic::MAX() {
-    return 0xFFFFFFFF;
-}
-
-uint32_t PCGBasic::MIN() {
-    return 0;
-}
-
 std::string PCGBasic::name() {
     return "PCG_Basic";
 }

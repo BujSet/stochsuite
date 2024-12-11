@@ -46,14 +46,6 @@ std::string MersenneTwister::name() {
     return "mt19937";
 }
 
-uint32_t MersenneTwister::MAX() {
-    return 0xFFFFFFFF;
-}
-
-uint32_t MersenneTwister::MIN() {
-    return 0;
-}
-
 void MersenneTwister::reload() {
     // Generate N new values in state
     // Made clearer and faster by Matthew Bellew (matthew.bellew@home.com)

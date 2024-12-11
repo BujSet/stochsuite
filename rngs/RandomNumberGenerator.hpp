@@ -24,8 +24,8 @@ class RNGBase {
 
         virtual std::string name() = 0;
 
-        virtual uint32_t MAX() = 0;
-        virtual uint32_t MIN() = 0;
+        virtual uint32_t MAX() { return 0xFFFFFFFF; };
+        virtual uint32_t MIN() { return 0xFFFFFFFF; };
 
         double read_random_double();
 

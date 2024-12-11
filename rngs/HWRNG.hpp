@@ -12,8 +12,6 @@ class HWRNG: public RNGBase {
         uint32_t _read_random() override;
         void _seed_random(uint32_t new_seed) override;
         std::string name() override;
-        uint32_t MAX() override;
-        uint32_t MIN() override;
     private:
         std::string _name;
 };
