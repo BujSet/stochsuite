@@ -15,10 +15,11 @@ class Taus113: public RNGBase {
         std::string name() override;
 
     private:
-        uint32_t C1;
-        uint32_t C2;
-        uint32_t C3;
-        uint32_t C4;
+        // Constants
+        static const uint32_t C1 = 4294967294U;
+        static const uint32_t C2 = 4294967288U;
+        static const uint32_t C3 = 4294967280U;
+        static const uint32_t C4 = 4294967168U;
 };
 #endif // __TAUSWORTHE_113__
 
