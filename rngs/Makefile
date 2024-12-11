@@ -13,6 +13,9 @@ all:
 	$(CC) -I$(RNG_LIB) -c -std=c++11 KISS11.cpp -lm -o KISS11.o -Wall -O3
 	$(CC) -I$(RNG_LIB) -c -std=c++11 PCGBasic.cpp -lm -o PCGBasic.o -Wall -O3
 	$(CC) -I$(RNG_LIB) -c -std=c++11 HWRNG.cpp -lm -o HWRNG.o -Wall -O3
+	$(CC) -I$(RNG_LIB) -c -std=c++11 XorShift32.cpp -lm -o XorShift32.o -Wall -O3
+	$(CC) -I$(RNG_LIB) -c -std=c++11 XorShift128.cpp -lm -o XorShift128.o -Wall -O3
+	$(CC) -I$(RNG_LIB) -c -std=c++11 XorWow.cpp -lm -o XorWow.o -Wall -O3
 
 clean:
 	rm -f $(TARGET).o

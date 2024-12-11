@@ -9,6 +9,9 @@
 #include "PCGBasic.hpp"
 #include "Taus88.hpp"
 #include "Taus113.hpp"
+#include "XorShift128.hpp"
+#include "XorShift32.hpp"
+#include "XorWow.hpp"
 
 #include <string>
 #include <memory>
@@ -56,6 +59,19 @@ std::unique_ptr<RNGBase> RNGFactory::createRNG(const std::string type) {
         return std::unique_ptr<RNGBase>(new PCGBasic());
     } else if (type == "HWRNG") {
         return std::unique_ptr<RNGBase>(new HWRNG());
+    } else if (type == "XorShift32") {
+        // Implemented from pg4 of Marsaglia, "Xorshift RNGs"
+        // https://www.jstatsoft.org/article/view/v008i14
+        return std::unique_ptr<RNGBase>(new XorShift32());
+    } else if (type == "XorShift128") {
+        // Implemented from pg5 of Marsaglia, "Xorshift RNGs"
+        // https://www.jstatsoft.org/article/view/v008i14
+        return std::unique_ptr<RNGBase>(new XorShift128());
+    } else if (type == "XorWow") {
+        // Implemented from pg5 of Marsaglia, "Xorshift RNGs"
+        // https://www.jstatsoft.org/article/view/v008i14
+        // Default generator for NVIDIA CUDA toolkit: https://docs.nvidia.com/cuda/curand/testing.html
+        return std::unique_ptr<RNGBase>(new XorWow());
     } else {
         return nullptr;
     }
