@@ -1,4 +1,4 @@
-RNG_LIB := /stochsuite/rngs
+RNG_LIB := $(HOME)stochsuite/rngs
 
 all:
 	$(CC) -I$(RNG_LIB) -c -std=c++11 RNGState.cpp -lm -o RNGState.o -Wall -O3
