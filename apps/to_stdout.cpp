@@ -1,7 +1,6 @@
 #include "RNGFactory.hpp"
 #include "RandomNumberGenerator.hpp"
 #include <cassert>
-// #include <cmath>
 #include <cstring>
 #include <iostream>
 
