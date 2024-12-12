@@ -47,6 +47,7 @@ int main(int argc, char *argv[]) {
         rnd = rng->read_random();
         fwrite(&rnd, sizeof(rnd), 1, bstdout);
     }
-    freopen(NULL, "wb", stdout);
+    // Can ignore the output here
+    std::ignore = freopen(NULL, "wb", stdout);
 	return 0;
 }

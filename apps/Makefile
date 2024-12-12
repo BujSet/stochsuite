@@ -1,14 +1,15 @@
-RNG_LIB := $(STOCHSUITE_HOME)/rngs
+include $(STOCHSUITE_HOME)/stochsuite.mk
 RNG_OBJS := $(wildcard $(RNG_LIB)/*.o) 
 
 all:
-	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 pi.cpp -o pi.o -Wall -O3
-	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 correctness.cpp -o correctness.o -Wall -O3
-	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 dropout.cpp -o dropout.o -Wall -O3
-	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 dop.cpp -o dop.o -Wall -O3
-	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 photon.cpp -o photon.o -Wall -O3
-	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 tailwag.cpp -o tailwag.o -Wall -O3
-	g++ -I$(RNG_LIB) $(RNG_OBJS) -std=c++11 to_stdout.cpp -o to_stdout.o -Wall -O3
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) pi.cpp -o pi.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) correctness.cpp -o correctness.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) dropout.cpp -o dropout.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) dop.cpp -o dop.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) photon.cpp -o photon.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) tailwag.cpp -o tailwag.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) to_stdout.cpp -o to_stdout.o
 
 clean:
-	rm -f $(TARGET).o
+	@rm -f *.o
+	@rm -f *.ppm

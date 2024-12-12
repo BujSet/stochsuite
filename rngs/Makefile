@@ -1,21 +1,21 @@
-RNG_LIB := $(STOCHSUITE_HOME)/rngs
+include $(STOCHSUITE_HOME)/stochsuite.mk
 
 all:
-	$(CC) -I$(RNG_LIB) -c -std=c++11 RNGState.cpp -lm -o RNGState.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 RandomNumberGenerator.cpp -lm -o RandomNumberGenerator.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 RNGFactory.cpp -lm -o RNGFactory.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 Taus88.cpp -lm -o Taus88.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 Taus113.cpp -lm -o Taus113.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 JKISS.cpp -lm -o JKISS.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 JKISS32.cpp -lm -o JKISS32.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 LCG.cpp -lm -o LCG.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 MersenneTwister.cpp -lm -o MersenneTwister.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 KISS11.cpp -lm -o KISS11.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 PCGBasic.cpp -lm -o PCGBasic.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 HWRNG.cpp -lm -o HWRNG.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 XorShift32.cpp -lm -o XorShift32.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 XorShift128.cpp -lm -o XorShift128.o -Wall -O3
-	$(CC) -I$(RNG_LIB) -c -std=c++11 XorWow.cpp -lm -o XorWow.o -Wall -O3
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) RNGState.cpp -o RNGState.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) RandomNumberGenerator.cpp -o RandomNumberGenerator.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) RNGFactory.cpp -o RNGFactory.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) Taus88.cpp -o Taus88.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) Taus113.cpp -o Taus113.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) JKISS.cpp -o JKISS.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) JKISS32.cpp -o JKISS32.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) LCG.cpp -o LCG.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) MersenneTwister.cpp -o MersenneTwister.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) KISS11.cpp -o KISS11.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) PCGBasic.cpp -o PCGBasic.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) HWRNG.cpp -o HWRNG.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift32.cpp -o XorShift32.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift128.cpp -o XorShift128.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorWow.cpp -o XorWow.o
 
 clean:
-	rm -f $(TARGET).o
+	@rm -f *.o
