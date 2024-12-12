@@ -9,6 +9,7 @@ all:
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) photon.cpp -o photon.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) tailwag.cpp -o tailwag.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) to_stdout.cpp -o to_stdout.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) -msse2 latency.cpp -o latency.o
 
 clean:
 	@rm -f *.o
