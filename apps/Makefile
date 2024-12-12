@@ -1,4 +1,4 @@
-RNG_LIB := $(HOME)stochsuite/rngs
+RNG_LIB := $(STOCHSUITE_HOME)/rngs
 RNG_OBJS := $(wildcard $(RNG_LIB)/*.o) 
 
 all:
