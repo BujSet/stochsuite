@@ -8,4 +8,5 @@ RUN apt-get update
 # Install dieharder
 RUN apt-get install -y dieharder 
 RUN apt-get update
-
+# Install iverilog
+RUN apt install iverilog
