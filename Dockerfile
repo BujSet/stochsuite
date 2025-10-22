@@ -1,4 +1,5 @@
 FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install --reinstall make
 RUN apt-get update
@@ -9,4 +10,4 @@ RUN apt-get update
 RUN apt-get install -y dieharder 
 RUN apt-get update
 # Install iverilog
-RUN apt install iverilog
+RUN apt install -y iverilog yosys gtkwave
