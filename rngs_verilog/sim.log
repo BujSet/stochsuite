@@ -1,0 +1,11 @@
+int @4 = 0x00345678
+byte @0 = 0xaa
+size = 32
+** VVP Stop(0) **
+** Flushing output streams.
+** Current simulation time is 10 ticks.
+[?2004h> exit
+[?2004lUnknown command: exit
+Try the help command to get a summary
+of available commands.
+[?2004h> 
