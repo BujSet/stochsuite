@@ -2,7 +2,16 @@
 
 ## Requirements
 
-TODO: Docker
+Docker is a platform that uses operating-system-level virtualization to 
+deliver software in packages called containers. This generators and 
+applications in this suite have been functionally verified on the 
+following versions:
+
+| Application | Version | Notes |
+|---|---|---|
+| Docker Engine| 27.3.1 | build ce12230 |
+| Docker Desktop | 4.35.0 | (172550) |
+| Docker Compose | v2.29.7-desktop.1 | |
 
 ## Building Docker Image Locally
 
