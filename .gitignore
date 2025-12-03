@@ -5,3 +5,6 @@ apps/*_results.txt
 apps/*_results.csv
 .vscode/
 .DS_Store
+rngs/hardware/*.vcd
+rngs/hardware/sim.log
+rngs/hardware/TB-sim

@@ -8,7 +8,7 @@ module taus88_core (
     input wire        rst_n,       // active-low synchronous reset
 
     input wire [31:0] seed,        // seed to reset state register S1
-    input wire        re_seed;     // active high to reset S1 with seed (S2 & S3 unchanged)
+    input wire        re_seed,     // active high to reset S1 with seed (S2 & S3 unchanged)
 
     output reg [31:0] rnd,         // random number output
     output reg        rnd_valid    // output valid flag

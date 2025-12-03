@@ -24,24 +24,39 @@ module RNGState #(
     // one FF per byte (yeah real flip-flops, not RAM)
     reg [7:0] byte_ff [0:NUM_BYTES-1];
 
-    integer k;
+    genvar k;
 
-    // when rst_n=0 clear all bytes, otherwise masked write to reg
-    always @(posedge clk) begin
-        if (!rst_n) begin
-            for (k = 0; k < NUM_BYTES; k = k + 1)
-                byte_ff[k] <= 8'h00;  // zero on reset (no initial)
-        end 
-        else begin
-            for (k = 0; k < NUM_BYTES; k = k + 1) begin
-                if (w_en_bytes[k]) begin
-                    // pick the 8-bit slice for this byte
-                    byte_ff[k] <= w_data_bytes[(8*k)+7 : (8*k)];
+    generate
+        for (k = 0; k < NUM_BYTES; k = k + 1) begin : gen_ffs
+            always @(posedge clk) begin
+                if (!rst_n) begin
+                    byte_ff[k] <= 8'h00;  // zero on reset (no initial)
+                end 
+                else begin
+                    if (w_en_bytes[k]) begin
+                        // pick the 8-bit slice for this byte
+                        byte_ff[k] <= w_data_bytes[(8*k)+7 : (8*k)];
+                    end
                 end
-                // else hold its old value
             end
         end
-    end
+    endgenerate
+    // when rst_n=0 clear all bytes, otherwise masked write to reg
+    // always @(posedge clk) begin
+    //     if (!rst_n) begin
+    //         for (k = 0; k < NUM_BYTES; k = k + 1)
+    //             byte_ff[k] <= 8'h00;  // zero on reset (no initial)
+    //     end 
+    //     else begin
+    //         for (k = 0; k < NUM_BYTES; k = k + 1) begin
+    //             if (w_en_bytes[k]) begin
+    //                 // pick the 8-bit slice for this byte
+    //                 byte_ff[k] <= w_data_bytes[(8*k)+7 : (8*k)];
+    //             end
+    //             // else hold its old value
+    //         end
+    //     end
+    // end
 
     // pack out: output q_bytes as all the bytes concatenated
     // q_bytes[8*i +: 8] == byte i
