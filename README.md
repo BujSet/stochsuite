@@ -13,7 +13,7 @@ add any additional packages you may need.
 To build an image, rung the following in the same directory as the:
 
 ```
-docker build -t stochsuite:v4_ubuntu_22.04 .
+docker build -t stochsuite:v5_ubuntu_22.04 .
 ```
 
 ## Pulling Exisitng Image from DockerHub
@@ -31,7 +31,7 @@ Once the image is either built of pulled down to your local machine, it is
 ready to be used for running a container. E.g. you can do this via:
 
 ```
-docker run -it --rm -w /root -e "STOCHSUITE_HOME=/root/stochsuite/"  rselagam/stochsuite:v4_ubuntu_22.04 /bin/bash -c "git clone https://github.com/BujSet/stochsuite.git && cd stochsuite/ && /bin/bash"
+docker run -it --rm -w /root -e "STOCHSUITE_HOME=/root/stochsuite/"  rselagam/stochsuite:v5_ubuntu_22.04 /bin/bash -c "git clone https://github.com/BujSet/stochsuite.git && cd stochsuite/ && /bin/bash"
 ```
 
 The command above creates a docker container with the necessary environment 
