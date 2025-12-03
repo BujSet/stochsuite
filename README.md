@@ -81,7 +81,7 @@ The command below will run the correctness application for the JKISS generator.
 See the RNGFactory.cpp file for a list of generator options.
 
 ```
-./correctness.o -iters 5 -seed 0xdeadbeef -rng JKISS
+./util/correctness.o -iters 5 -seed 0xdeadbeef -rng JKISS
 ```
 
 You should see the following output:
