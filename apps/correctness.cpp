@@ -1,6 +1,8 @@
 #include "RNGFactory.hpp"
 #include "RandomNumberGenerator.hpp"
 #include <cassert>
+#include <cerrno>
+#include <climits>
 #include <cmath>
 #include <cstring>
 #include <iostream>
@@ -10,6 +12,8 @@ int main(int argc, char *argv[]) {
     size_t niters = 10;
     uint32_t seed = 1634404289;
     std::string rngStr = "Taus88";
+    int saved_errno;
+    char* endptr;
 
     if (argc > 1) {
         if (argc > 7) {
@@ -20,7 +24,14 @@ int main(int argc, char *argv[]) {
         for (size_t i = 0; i < (size_t)argc; i++) {
             if (strcmp("-seed", argv[i]) == 0) {
                 assert(i + 1 < (size_t)argc);
-                seed = (size_t) strtol(argv[i+1], NULL, 10);
+                saved_errno = errno;
+                errno = 0;
+                seed = (uint32_t) strtol(argv[i+1], &endptr, 0);
+                if (errno == ERANGE || errno == EINVAL || endptr == argv[i+1]) {
+                    std::cout << "Error, unable to parse " << argv[i+1] << " as new seed" << std::endl;
+                    errno = saved_errno;
+                    return 1;   
+                }
                 i++;
             }
             if (strcmp("-iters", argv[i]) == 0) {
