@@ -3,3 +3,4 @@ apps/*.o
 apps/*.ppm
 apps/*_results.txt
 apps/*_results.csv
+.vscode/
