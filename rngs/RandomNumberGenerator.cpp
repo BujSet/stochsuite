@@ -57,8 +57,8 @@ double RNGBase::gaussian_box_muller() {
     // until the square of their "euclidean distance" 
     // is less than unity
     do {
-        x = 2.0 * read_random_double() -1;
-        y = 2.0 * read_random_double()-1;
+        x = 2.0 * read_random_double() - 1;
+        y = 2.0 * read_random_double() - 1;
         euclid_sq = x*x + y*y;
     } while (euclid_sq >= 1.0);
     ret = x*sqrt(-2*log(euclid_sq)/euclid_sq);
