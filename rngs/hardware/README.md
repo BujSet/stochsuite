@@ -63,3 +63,10 @@ TODO seems like this implementation is broken
 iverilog taus88_opt.v taus88_opt_tb.v -s Taus88_Optimized_TB -y XilinxUnisimLibrary/verilog/src -o TB-sim && ./TB-sim +VCDFILE=sim.vcd +VCDLEVEL=0 | tee sim.log
 yosys -p 'synth_xilinx -top taus88_opt' -p stat taus88_opt.v -o taus88_opt.netlist.v | tee  synth.log
 ```
+
+## Testing JKISS
+
+```
+./util/correctness.o -iters 10 -seed 0xdeadbeef -rng JKISS
+iverilog jkiss.v jkiss_tb.v -s JKISS_TB -y XilinxUnisimLibrary/verilog/src -o JKISS-sim && ./JKISS-sim +VCDFILE=sim.vcd +VCDLEVEL=0 | tee sim.log
+```
