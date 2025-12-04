@@ -1,9 +1,9 @@
-`ifndef __TAUSWORTHE_88_TESTBENCH_V__
-`define __TAUSWORTHE_88_TESTBENCH_V__
+`ifndef __TAUSWORTHE_OPTIMIZED_88_TESTBENCH_V__
+`define __TAUSWORTHE_OPTIMIZED_88_TESTBENCH_V__
 
 `timescale 1ns/1ps
 
-module Taus88_TB;
+module Taus88_Optimized_TB;
 
     // only for gatesim
     glbl glbl ();
@@ -15,7 +15,7 @@ module Taus88_TB;
     wire [31:0] rnd;
 
     // dut
-    taus88 dut (
+    taus88_opt dut (
         .clk      (clk),
         .rst_n    (rst_n),
         .seed     (seed),
@@ -102,4 +102,4 @@ module Taus88_TB;
     end
 
 endmodule
-`endif // __TAUSWORTHE_88_TESTBENCH_V__
+`endif // __TAUSWORTHE_OPTIMIZED_88_TESTBENCH_V__

@@ -1,9 +1,9 @@
-`ifndef __TAUSWORTHE_88_V__
-`define __TAUSWORTHE_88_V__
+`ifndef __TAUSWORTHE_OPTIMIZED_88_V__
+`define __TAUSWORTHE_OPTIMIZED_88_V__
 
 `include "common/register.v"
 
-module taus88 (
+module taus88_opt (
     input wire        clk,         // clock
     input wire        rst_n,       // active-low synchronous reset
 
@@ -36,9 +36,10 @@ module taus88 (
     // ---------------------------------------------------
 
     // Taus88 next random number algorithm
-    wire [31:0] S1_next = ((S1_cur & C1) << 12) ^ (((S1_cur << 13) ^ S1_cur) >> 19);
-    wire [31:0] S2_next = ((S2_cur & C2) <<  4) ^ (((S2_cur <<  2) ^ S2_cur) >> 25);
-    wire [31:0] S3_next = ((S3_cur & C3) << 17) ^ (((S3_cur <<  3) ^ S3_cur) >> 11);
+    wire [31:0] S1_next, S2_next, S3_next;
+    assign S1_next = {S1_cur[19:1],  S1_cur[18:6] ^ S1_cur[31:19]};
+    assign S2_next = {S2_cur[27:3],  S2_cur[29:23] ^ S2_cur[31:25]};
+    assign S3_next = {S3_cur[31:21], S3_cur[28:8] ^  S3_cur[31:1]};
 
     // Write data mux
     assign S1_wd = re_seed ? seed : S1_next;
@@ -50,4 +51,4 @@ module taus88 (
 
 endmodule
 
-`endif // __TAUSWORTHE_88_V__
+`endif // __TAUSWORTHE_OPTIMIZED_88_V__
