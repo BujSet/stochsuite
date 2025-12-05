@@ -1,0 +1,19 @@
+# read design
+read -sv Taus88.v
+hierarchy -top taus88
+
+# the high-level stuff
+proc; fsm; opt; memory; opt
+
+# mapping to internal cell library
+techmap; opt
+
+# mapping flip-flops to mycells.lib
+dfflibmap -liberty vsclib013.lib
+
+# mapping logic to mycells.lib
+abc -liberty vsclib013.lib
+stat -liberty vsclib013.lib
+
+# cleanup
+clean
