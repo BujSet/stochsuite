@@ -36,7 +36,14 @@ int main(int argc, char *argv[]) {
             }
             if (strcmp("-iters", argv[i]) == 0) {
                 assert(i + 1 < (size_t)argc);
-                niters = (size_t) strtol(argv[i+1], NULL, 10);
+                saved_errno = errno;
+                errno = 0;
+                niters = (size_t) strtol(argv[i+1], &endptr, 0);
+                if (errno == ERANGE || errno == EINVAL || endptr == argv[i+1]) {
+                    std::cout << "Error, unable to parse " << argv[i+1] << " as number of iterations" << std::endl;
+                    errno = saved_errno;
+                    return 1;
+                }
                 i++;
             }
             if (strcmp("-rng", argv[i]) == 0) {
