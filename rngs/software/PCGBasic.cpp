@@ -25,7 +25,7 @@ std::string PCGBasic::name() {
 uint32_t PCGBasic::_read_random(){
     uint64_t oldstate = state->get_state_bytes_as_long(0);
     uint64_t oldinc   = state->get_state_bytes_as_long(8);
-    uint64_t newstate = oldstate * 6364136223846793005ULL + oldinc;
+    uint64_t newstate = oldstate * 6364136223846793005ULL + (oldinc|1)
     uint32_t xorshifted = ((oldstate >> 18u) ^ oldstate) >> 27u;
     uint32_t rot = oldstate >> 59u;
 
