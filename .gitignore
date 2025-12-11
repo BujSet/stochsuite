@@ -1,6 +1,7 @@
 rngs/software/*.o
 apps/*.o
-apps/util/*.o
+apps/**/*.o
+apps/swaptions/swaptions
 apps/*.ppm
 apps/*_results.txt
 apps/*_results.csv
