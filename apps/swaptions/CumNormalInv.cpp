@@ -44,52 +44,25 @@ FTYPE CumNormalInv( FTYPE u ) {
   FTYPE x, r;
   
   x = u - 0.5;
-#ifdef SNIPER_HOOKS
-  SimNamedMarker(4, "PBS_CONTEXT_BEGIN"); 
-#endif  
   if( fabs (x) < 0.42 ) { 
-#ifdef SNIPER_HOOKS
-    SimNamedMarker(5, "PBS_CONTEXT_END");
-#endif  
     r = x * x;
     r = x * ((( a[3]*r + a[2]) * r + a[1]) * r + a[0])/
           ((((b[3] * r+ b[2]) * r + b[1]) * r + b[0]) * r + 1.0);
     return (r);
   }
-#ifdef SNIPER_HOOKS
-  SimNamedMarker(5, "PBS_CONTEXT_END");
-#endif  
   
   r = u;
-#ifdef SNIPER_HOOKS
-  SimNamedMarker(4, "PBS_CONTEXT_BEGIN"); 
-#endif  
   if( x > 0.0 ) {
-#ifdef SNIPER_HOOKS
-    SimNamedMarker(5, "PBS_CONTEXT_END");
-#endif  
     r = 1.0 - u;
   }
-#ifdef SNIPER_HOOKS
-  SimNamedMarker(5, "PBS_CONTEXT_END");
-#endif  
   r = log(-log(r));
   r = c[0] + r * (c[1] + r * 
        (c[2] + r * (c[3] + r * 
        (c[4] + r * (c[5] + r * (c[6] + r * (c[7] + r*c[8])))))));
 
-#ifdef SNIPER_HOOKS
-  SimNamedMarker(4, "PBS_CONTEXT_BEGIN"); 
-#endif  
   if( x < 0.0 ) {
-#ifdef SNIPER_HOOKS
-    SimNamedMarker(5, "PBS_CONTEXT_END");
-#endif  
     r = -r;
   }
-#ifdef SNIPER_HOOKS
-  SimNamedMarker(5, "PBS_CONTEXT_END");
-#endif  
   return (r);
   
 } // end of CumNormalInv

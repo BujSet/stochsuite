@@ -222,21 +222,9 @@ int HJM_SimPath_Forward(FTYPE **ppdHJMPath,	//Matrix that stores generated HJM p
 	{
 
 	  for (l=0;l<=iFactors-1;++l)
-#ifdef SNIPER_HOOKS
-	SimNamedMarker(8, "RAND_FUNC_CALL_BEGIN");
-#endif
         rndnum = RanUnif(lRndSeed);
-#ifdef SNIPER_HOOKS
-	SimNamedMarker(9, "RAND_FUNC_CALL_END");
-#endif
        //shocks to hit various factors for forward curve at t
-#ifdef SNIPER_HOOKS
-	    SimNamedMarker(10, "POST_RAND_FUNC_CALL_BEGIN");
-#endif
 	    pdZ[l]= CumNormalInv(rndnum);
-#ifdef SNIPER_HOOKS
-	    SimNamedMarker(11, "POST_RAND_FUNC_CALL_END");
-#endif
 
 		for (l=0;l<=iN-(j+1);++l)
 		{

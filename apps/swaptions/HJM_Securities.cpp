@@ -14,12 +14,6 @@
 #include "HJM_Securities.h"
 #include "HJM_type.h"
 
-#ifdef PBS_HOOKS
-#define PBS_WARMUP 2
-#include <queue>
-std::queue<FTYPE> rns;
-#endif
-
 #ifdef ENABLE_THREADS
 #include <pthread.h>
 #define MAX_THREAD 1024
@@ -35,10 +29,6 @@ tbb::cache_aligned_allocator<parm> memory_parm;
 #endif // TBB_VERSION
 #endif //ENABLE_THREADS
 
-
-#ifdef ENABLE_PARSEC_HOOKS
-#include <hooks.h>
-#endif
 
 int NUM_TRIALS = DEFAULT_NUM_TRIALS;
 int nThreads = 1;
@@ -141,19 +131,6 @@ int main(int argc, char *argv[]) {
 	int i,j;
 	
 	FTYPE **factors=NULL;
-
-#ifdef PARSEC_VERSION
-#define __PARSEC_STRING(x) #x
-#define __PARSEC_XSTRING(x) __PARSEC_STRING(x)
-        printf("PARSEC Benchmark Suite Version "__PARSEC_XSTRING(PARSEC_VERSION)"\n"); 
-	fflush(NULL);
-#else
-        printf("PARSEC Benchmark Suite\n");
-	fflush(NULL);
-#endif //PARSEC_VERSION
-#ifdef ENABLE_PARSEC_HOOKS
-	__parsec_bench_begin(__parsec_swaptions);
-#endif
 	
         if(argc == 1)
         {
@@ -282,24 +259,9 @@ int main(int argc, char *argv[]) {
                         swaptions[i].ppdFactors[k][j] = factors[k][j];
         }
 
-#ifdef PBS_HOOKS
-    long int tmp[PBS_WARMUP];
-    for (size_t i = 0; i < PBS_WARMUP; i++) tmp[i] = rand();
-    for (size_t i = 0; i < 2; i++) {
-        for (size_t j = 0; j< PBS_WARMUP; j++) {
-            rns.push(tmp[j]);
-        }
-    }
-#endif
 
 	// **********Calling the Swaption Pricing Routine*****************
-#ifdef SNIPER_HOOKS
-  	SimRoiStart();
-#endif
-#ifdef ENABLE_PARSEC_HOOKS
-	__parsec_roi_begin();
-#endif
-
+    // ROI begin
 #ifdef ENABLE_THREADS
 
 #ifdef TBB_VERSION
@@ -325,9 +287,6 @@ int main(int argc, char *argv[]) {
 	worker(&threadID);
 #endif //ENABLE_THREADS
 
-#ifdef ENABLE_PARSEC_HOOKS
-	__parsec_roi_end();
-#endif
         /*
         for (i = 0; i < nSwaptions; i++) {
           fprintf(stderr,"Swaption %d: [SwaptionPrice: %.10lf StdError: %.10lf] \n", 
@@ -349,10 +308,5 @@ int main(int argc, char *argv[]) {
 #endif // TBB_VERSION
 
 	//***********************************************************
-
-#ifdef ENABLE_PARSEC_HOOKS
-	__parsec_bench_end();
-#endif
-
 	return iSuccess;
 }

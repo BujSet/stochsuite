@@ -28,16 +28,3 @@ FTYPE RanUnif( long *s ) {
   return (dRes);
   
 } // end of RanUnif
-
-
-#ifdef PBS_HOOKS
-#include <queue>
-extern std::queue<FTYPE> rns;
-
-FTYPE PBS_Random(long *s) {
-    rns.push(RanUnif(s));
-    FTYPE ret = rns.front();
-    rns.pop();
-    return ret;
-}
-#endif
