@@ -13,6 +13,36 @@ The hardware testbench checks against values produced from the software implemen
 ./util/correctness.o -iters 10 -seed 0xCAFEBABE -rng Taus88
 ```
 
+### Troubleshooting
+
+If you get an error like:
+
+```
+taus88.netlist.v:1731: error: Unknown module type: FDRE
+taus88.netlist.v:1742: error: Unknown module type: FDRE
+389 error(s) during elaboration.
+*** These modules were missing:
+        BUFG referenced 1 times.
+        FDRE referenced 96 times.
+        IBUF referenced 35 times.
+        INV referenced 96 times.
+        LUT2 referenced 36 times.
+        LUT3 referenced 79 times.
+        LUT4 referenced 13 times.
+        OBUF referenced 32 times.
+***
+```
+
+It's likely that the `XilinxUnisimLibrary` was not pulled. Run the following and then retry
+the command:
+
+```
+cd $STOCHSUITE_HOME
+git submodule update --init --recursive
+cd $STOCHSUITE_HOME/rngs/hardware/
+```
+
+
 ## Synthesizing Taus88 to Netlist
 
 The following command will attempt to use Xilinx primitives to create a netlist to implement design
@@ -27,20 +57,24 @@ You should see output like:
 === design hierarchy ===
 
    taus88                            1
-     $paramod$9306eb01cdb2b5a1b484cfd27f23be9be0d237b3\Register      1
+     $paramod$e07d4e29b3300cbec84577cedf54b2f8181665cb\Register      1
 
-   Number of wires:                115
-   Number of wire bits:            741
+   Number of wires:                183
+   Number of wire bits:            887
    Number of public wires:          19
    Number of public wire bits:     645
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                320
+   Number of cells:                388
+     BUFG                            1
      FDRE                           96
-     LUT2                          132
+     IBUF                           35
+     INV                            96
+     LUT2                           36
      LUT3                           79
      LUT4                           13
+     OBUF                           32
 ```
 
 ## Functionality of Synthesizable Desgin

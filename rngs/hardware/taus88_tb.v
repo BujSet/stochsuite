@@ -5,7 +5,6 @@
 
 module Taus88_TB;
 
-    // only for gatesim
     glbl glbl ();
     reg         clk;
     reg         rst_n;

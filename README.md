@@ -46,7 +46,14 @@ docker run -it --rm -w /root -e "STOCHSUITE_HOME=/root/stochsuite/"  rselagam/st
 The command above creates a docker container with the necessary environment 
 vairables to use the Makefiles in the repo. It also clones the repo to the 
 correct path location to match the environment variable before yielding control 
-back to the user.
+back to the user. After entering the project directory, run:
+
+```
+git submodule update --init --recursive
+```
+
+To ensure that all submodules (e.g., gem5, Xilinx lib, etc.) are pulled and available
+to use.
 
 # Building and Running RNG Applications
 
