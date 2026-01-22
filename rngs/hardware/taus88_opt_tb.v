@@ -3,10 +3,11 @@
 
 `timescale 1ns/1ps
 
-module Taus88_Optimized_TB;
+module taus88_opt_tb;
 
-    // only for gatesim
+`ifdef GATESIM
     glbl glbl ();
+`endif
     reg         clk;
     reg         rst_n;
     reg  [31:0] seed;

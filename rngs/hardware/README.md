@@ -4,8 +4,12 @@
 
 The testbench can be compiled and run with the following command
 ```
-iverilog taus88.v taus88_tb.v -s Taus88_TB -y XilinxUnisimLibrary/verilog/src -o TB-sim && ./TB-sim +VCDFILE=sim.vcd +VCDLEVEL=0 | tee sim.log
+make sim DUT=taus88 
 ```
+
+Note, the argument to the `DUT` parameter must match the name of the
+source verilog file, the prefix of the testbench file name, as well 
+as the prefix for the testbench module name.
 
 The hardware testbench checks against values produced from the software implementation, i.e. output from: 
 
@@ -48,7 +52,7 @@ cd $STOCHSUITE_HOME/rngs/hardware/
 The following command will attempt to use Xilinx primitives to create a netlist to implement design
 
 ```
-yosys -p 'synth_xilinx -top taus88' -p stat taus88.v -o taus88.netlist.v | tee  synth.log
+make synth DUT=taus88
 ```
 
 You should see output like:
@@ -84,8 +88,7 @@ the design functionally completes from it's netlist implementation. The followin
 commands rerun the simulation using the netlist output as the DUT:
 
 ```
-iverilog -g2005-sv -s Taus88_TB -DGATESIM -y XilinxUnisimLibrary/verilog/src -y XilinxUnisimLibrary/verilog/src/unisims taus88.netlist.v taus88_tb.v -o Taus88-gatesim
-./Taus88-gatesim +VCDFILE=gatesim.vcd +VCDLEVEL=1 | tee gatesim.log
+make gatesim DUT=taus88
 ```
 
 
@@ -94,13 +97,13 @@ iverilog -g2005-sv -s Taus88_TB -DGATESIM -y XilinxUnisimLibrary/verilog/src -y 
 TODO seems like this implementation is broken
 
 ```
-iverilog taus88_opt.v taus88_opt_tb.v -s Taus88_Optimized_TB -y XilinxUnisimLibrary/verilog/src -o TB-sim && ./TB-sim +VCDFILE=sim.vcd +VCDLEVEL=0 | tee sim.log
-yosys -p 'synth_xilinx -top taus88_opt' -p stat taus88_opt.v -o taus88_opt.netlist.v | tee  synth.log
+make sim DUT=taus88_opt
+make synth DUT=taus88_opt
 ```
 
 ## Testing JKISS
 
 ```
 ./util/correctness.o -iters 10 -seed 0xdeadbeef -rng JKISS
-iverilog jkiss.v jkiss_tb.v -s JKISS_TB -y XilinxUnisimLibrary/verilog/src -o JKISS-sim && ./JKISS-sim +VCDFILE=sim.vcd +VCDLEVEL=0 | tee sim.log
+make sim DUT=jkiss
 ```

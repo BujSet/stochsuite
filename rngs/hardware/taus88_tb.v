@@ -3,7 +3,7 @@
 
 `timescale 1ns/1ps
 
-module Taus88_TB;
+module taus88_tb;
 
     glbl glbl ();
     reg         clk;
