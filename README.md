@@ -55,7 +55,7 @@ back to the user.
 The generator library must be built before the applications. Run the following
 
 ```
-cd $STOCHSUITE_HOME/rngs/
+cd $STOCHSUITE_HOME/software/rngs/
 make
 ```
 
@@ -67,7 +67,7 @@ generators.
 After building the RNG library, we can now build the applications:
 
 ```
-cd $STOCHSUITE_HOME/apps/
+cd $STOCHSUITE_HOME/software/apps/
 make
 ```
 
@@ -77,8 +77,9 @@ This will generate object files that can be run in the `apps` directory.
 
 ## The Correctness Application
 
-The command below will run the correctness application for the JKISS generator. 
-See the RNGFactory.cpp file for a list of generator options.
+Running the command below from the `apps/` directory will run the correctness 
+application for the JKISS generator. See the [RNGFactory.cpp](rngs/software/RNGFactory.cpp) 
+file for a list of generator options.
 
 ```
 ./util/correctness.o -iters 5 -seed 0xdeadbeef -rng JKISS
