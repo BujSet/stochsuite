@@ -27,8 +27,8 @@ module taus113 (
     // ---- full state register ----
     Register 
     #(
-        .NUM_BITS (STATE_BITWIDTH),
-        .RST_VAL  ({(STATE_BITWIDTH){1'b0}})
+        .NUM_BITS (state_bitwidth),
+        .RST_VAL  ({(state_bitwidth){1'b0}})
     ) state_regs (
         .clk        (clk),
         .rst_n      (rst_n),

@@ -3,7 +3,7 @@
 
 `include "common/register.v"
 
-module xorshift32_opt (
+module xorshift32 (
     input  wire        clk,
     input  wire        rst_n,
 

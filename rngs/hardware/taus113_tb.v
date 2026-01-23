@@ -3,7 +3,7 @@
 
 `timescale 1ns/1ps
 
-module Taus113_TB;
+module taus113_tb;
 
     // only for gatesim
     // glbl glbl ();
@@ -34,7 +34,7 @@ module Taus113_TB;
         input [31:0] produced;
         begin
             if (produced != expected) begin
-                $fatal(1, "Expected rnd %d after reseed, got %d", expected, produced);
+                $fatal(1, "Expected rnd %h after reseed, got %h", expected, produced);
             end
             @(posedge clk);
         end

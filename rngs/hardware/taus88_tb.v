@@ -9,6 +9,7 @@ module taus88_tb;
     glbl glbl ();
 `endif
 
+
     reg         clk;
     reg         rst_n;
     reg  [31:0] seed;
