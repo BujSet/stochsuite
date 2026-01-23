@@ -7,6 +7,7 @@ module xorshift32_opt (
     input  wire        clk,
     input  wire        rst_n,
 
+
     input  wire [31:0] seed,     // reseed state s
     input  wire        re_seed,  // active high
 
