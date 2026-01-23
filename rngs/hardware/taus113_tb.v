@@ -1,14 +1,12 @@
-`ifndef __TAUSWORTHE_88_TESTBENCH_V__
-`define __TAUSWORTHE_88_TESTBENCH_V__
+`ifndef __TAUSWORTHE_113_TESTBENCH_V__
+`define __TAUSWORTHE_113_TESTBENCH_V__
 
 `timescale 1ns/1ps
 
-module taus88_tb;
+module Taus113_TB;
 
-`ifdef GATESIM
-    glbl glbl ();
-`endif
-
+    // only for gatesim
+    // glbl glbl ();
     reg         clk;
     reg         rst_n;
     reg  [31:0] seed;
@@ -17,7 +15,7 @@ module taus88_tb;
     wire [31:0] rnd;
 
     // dut
-    taus88 dut (
+    taus113 dut (
         .clk      (clk),
         .rst_n    (rst_n),
         .seed     (seed),
@@ -29,18 +27,17 @@ module taus88_tb;
     initial begin
         clk = 1'b0;
     end
-    always #5 clk = ~clk;   
+    always #5 clk = ~clk;
 
     task test_value;
         input integer expected;
         input [31:0] produced;
         begin
-            if (produced != expected) begin 
+            if (produced != expected) begin
                 $fatal(1, "Expected rnd %d after reseed, got %d", expected, produced);
             end
-            @(posedge clk); // Wait for a positive clock edge
+            @(posedge clk);
         end
-        
     endtask
 
     task reseed_dut;
@@ -59,50 +56,50 @@ module taus88_tb;
     initial begin
         rst_n   = 1'b1;
         re_seed = 1'b0;
+        seed    = 32'h1234_5678;
 
-        repeat (5) @(posedge clk);    
+        repeat (5) @(posedge clk);
         rst_n <= 1'b0;
         @(posedge clk);
         rst_n <= 1'b1;
         $display("%t ns : rnd = 0x%08h | %d", $time, rnd, rnd);
 
-        reseed_dut(32'h1234_5678);
-        // defualt S1, S2, S3
+        // default S1, S2, S3, S4
         repeat (10) begin : init_cycles
             @(posedge clk);
             $display("%t ns : rnd = 0x%08h | %d", $time, rnd, rnd);
         end
 
-        // TODO eventually just read values from software version here
-
         // Spot check a few iterations after reseed
+
         reseed_dut(32'hDEAD_BEEF);
-        test_value(32'd3687771566, rnd);
-        test_value(32'd4006792393, rnd);
-        test_value(32'd1712068217, rnd);
-        test_value(32'd3375142808, rnd);
-        test_value(32'd1509541458, rnd);
-        test_value(32'd45559123, rnd);
-        test_value(32'd4065404862, rnd);
-        test_value(32'd49953709, rnd);
-        test_value(32'd2327600246, rnd);
-        test_value(32'd3851033654, rnd);
+        test_value(32'd3091505929, rnd);
+        test_value(32'd2837792084, rnd);
+        test_value(32'd222548152,  rnd);
+        test_value(32'd2079507190, rnd);
+        test_value(32'd586323012,  rnd);
+        test_value(32'd3877301905, rnd);
+        test_value(32'd4006392071, rnd);
+        test_value(32'd3844192471, rnd);
+        test_value(32'd3234492883, rnd);
+        test_value(32'd2504638783, rnd);
 
         reseed_dut(32'hCAFEBABE);
-        test_value(32'd3951813429, rnd);
-        test_value(32'd3191570171, rnd);
-        test_value(32'd4247730860, rnd);
-        test_value(32'd4225878095, rnd);
-        test_value(32'd2349118836, rnd);
-        test_value(32'd3582280224, rnd);
-        test_value(32'd3567654117, rnd);
-        test_value(32'd1909425086, rnd);
-        test_value(32'd3510461680, rnd);
-        test_value(32'd4127355812, rnd);
+        test_value(32'd2852563200, rnd);
+        test_value(32'd2164347728, rnd);
+        test_value(32'd1431493044, rnd);
+        test_value(32'd1606426732, rnd);
+        test_value(32'd2828783638, rnd);
+        test_value(32'd4132597587, rnd);
+        test_value(32'd3922111040, rnd);
+        test_value(32'd2285868209, rnd);
+        test_value(32'd1901274490, rnd);
+        test_value(32'd3354361692, rnd);
 
         $display("%t: TEST PASSED", $time);
         $finish;
     end
 
 endmodule
-`endif // __TAUSWORTHE_88_TESTBENCH_V__
+
+`endif // __TAUSWORTHE_113_TESTBENCH_V__

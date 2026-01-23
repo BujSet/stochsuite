@@ -8,6 +8,7 @@ module taus88_opt_tb;
 `ifdef GATESIM
     glbl glbl ();
 `endif
+
     reg         clk;
     reg         rst_n;
     reg  [31:0] seed;

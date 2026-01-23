@@ -61,7 +61,7 @@ uint32_t HWRNG::_read_random() {
 #elif defined(__aarch64__)
     // Based on https://developer.arm.com/documentation/101028/0012/8--Data-processing-intrinsics
     uint64_t rand;
-    while(_rndr(&rand) != 0);
+    while(__rndr(&rand) != 0);
     rndval = rand & 0xFFFFFFFF;
     return rndval;
 #else
