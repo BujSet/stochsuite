@@ -40,7 +40,7 @@ Once the image is either built of pulled down to your local machine, it is
 ready to be used for running a container. E.g. you can do this via:
 
 ```
-docker run -it --rm -w /root -e "STOCHSUITE_HOME=/root/stochsuite/"  rselagam/stochsuite:v1_ubuntu_24.04 /bin/bash -c "git clone https://github.com/BujSet/stochsuite.git && cd stochsuite/ && /bin/bash"
+docker run -it --rm -w /root -e "STOCHSUITE_HOME=/root/stochsuite"  rselagam/stochsuite:v1_ubuntu_24.04 /bin/bash -c "git clone https://github.com/BujSet/stochsuite.git && cd stochsuite/ && /bin/bash"
 ```
 
 The command above creates a docker container with the necessary environment 
@@ -62,7 +62,7 @@ to use.
 The generator library must be built before the applications. Run the following
 
 ```
-cd $STOCHSUITE_HOME/software/rngs/
+cd $STOCHSUITE_HOME/rngs/software/
 make
 ```
 
@@ -74,7 +74,7 @@ generators.
 After building the RNG library, we can now build the applications:
 
 ```
-cd $STOCHSUITE_HOME/software/apps/
+cd $STOCHSUITE_HOME/apps/
 make
 ```
 
@@ -96,11 +96,11 @@ You should see the following output:
 
 ```
 Successfully initialized RNG: JKISS
-Rand Value = 1557129256
-Rand Value = 3607227500
-Rand Value = 2958840619
-Rand Value = 3983503383
-Rand Value = 1414710373
+Rand Value = 2778845915
+Rand Value = 2959504851
+Rand Value = 54303350
+Rand Value = 4063145910
+Rand Value = 255296776
 ```
 
 # TODO
