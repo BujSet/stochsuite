@@ -12,7 +12,7 @@ all:
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) MersenneTwister.cpp -o MersenneTwister.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) KISS11.cpp -o KISS11.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) PCGBasic.cpp -o PCGBasic.o
-	@$(CPP) -I$(RNG_LIB) $(CFLAGS) HWRNG.cpp -o HWRNG.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) -march=armv8.5-a+rng HWRNG.cpp -o HWRNG.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift32.cpp -o XorShift32.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift128.cpp -o XorShift128.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorWow.cpp -o XorWow.o

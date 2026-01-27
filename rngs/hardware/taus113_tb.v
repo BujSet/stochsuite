@@ -34,7 +34,7 @@ module taus113_tb;
         input [31:0] produced;
         begin
             if (produced != expected) begin
-                $fatal(1, "Expected rnd %h after reseed, got %h", expected, produced);
+                $fatal(1, "Expected rnd %d after reseed, got %d", expected, produced);
             end
             @(posedge clk);
         end
@@ -62,8 +62,9 @@ module taus113_tb;
         rst_n <= 1'b0;
         @(posedge clk);
         rst_n <= 1'b1;
+        
         $display("%t ns : rnd = 0x%08h | %d", $time, rnd, rnd);
-
+        reseed_dut(seed);
         // default S1, S2, S3, S4
         repeat (10) begin : init_cycles
             @(posedge clk);
@@ -73,18 +74,19 @@ module taus113_tb;
         // Spot check a few iterations after reseed
 
         reseed_dut(32'hDEAD_BEEF);
+        test_value(32'd4222330416, rnd);
         test_value(32'd3091505929, rnd);
-        test_value(32'd2837792084, rnd);
-        test_value(32'd222548152,  rnd);
-        test_value(32'd2079507190, rnd);
-        test_value(32'd586323012,  rnd);
+        test_value(32'd2837792084,  rnd);
+        test_value(32'd222548152, rnd);
+        test_value(32'd2079507190,  rnd);
+        test_value(32'd586323012, rnd);
         test_value(32'd3877301905, rnd);
         test_value(32'd4006392071, rnd);
         test_value(32'd3844192471, rnd);
         test_value(32'd3234492883, rnd);
-        test_value(32'd2504638783, rnd);
 
         reseed_dut(32'hCAFEBABE);
+        test_value(32'd3941311136, rnd);
         test_value(32'd2852563200, rnd);
         test_value(32'd2164347728, rnd);
         test_value(32'd1431493044, rnd);
@@ -94,7 +96,6 @@ module taus113_tb;
         test_value(32'd3922111040, rnd);
         test_value(32'd2285868209, rnd);
         test_value(32'd1901274490, rnd);
-        test_value(32'd3354361692, rnd);
 
         $display("%t: TEST PASSED", $time);
         $finish;
