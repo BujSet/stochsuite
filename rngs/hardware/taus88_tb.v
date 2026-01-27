@@ -9,14 +9,6 @@ module taus88_tb;
     glbl glbl ();
 `endif
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 69fd7e3 (debug taus)
-=======
-
->>>>>>> c610e43 (rename)
     reg         clk;
     reg         rst_n;
     reg  [31:0] seed;
