@@ -6,7 +6,9 @@
 module taus113_tb;
 
     // only for gatesim
-    // glbl glbl ();
+`ifdef GATESIM
+    glbl glbl ();
+`endif
     reg         clk;
     reg         rst_n;
     reg  [31:0] seed;
