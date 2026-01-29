@@ -1,5 +1,11 @@
 include $(STOCHSUITE_HOME)/stochsuite.mk
 
+ifeq ($(UNAME), Darwin)
+    PLATFORM_CFLAGS += -march=armv8.5-a+rng
+endif
+
+CFLAGS = $(COMMON_CFLAGS) $(PLATFORM_CFLAGS)
+    
 all:
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) RNGState.cpp -o RNGState.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) RandomNumberGenerator.cpp -o RandomNumberGenerator.o

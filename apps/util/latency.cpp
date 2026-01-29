@@ -7,7 +7,14 @@
 #include <cmath>
 #include <iostream>
 #include <numeric>
+
+#if defined(__x86_64__) || defined(__amd64__)
 #include <x86intrin.h>
+#endif
+
+#if defined(__aarch64__)
+#include <mach/mach_time.h>
+#endif
 #include <vector>
 
 int main(int argc, char *argv[]) {
@@ -63,11 +70,21 @@ int main(int argc, char *argv[]) {
     delays.reserve(niters / batch);
      
     for (size_t i = 0; i < niters/batch; i++) {
+#if defined(__x86_64__) || defined(__amd64__)
         start_ticks = __rdtsc(); 
+#endif
+#if defined(__aarch64__)
+        start_ticks = mach_continuous_time();
+#endif
         for (size_t j = 0; j < batch; j++) {
             rnd = rng->read_random();
         }
+#if defined(__x86_64__) || defined(__amd64__)
         delays.push_back(__rdtsc() - start_ticks);
+#endif
+#if defined(__aarch64__)
+        delays.push_back(mach_continuous_time() - start_ticks);
+#endif
     }
     uint64_t sum = 0;
     for (size_t i = 0; i < delays.size(); i++) {
