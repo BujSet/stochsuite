@@ -1,6 +1,10 @@
 include $(STOCHSUITE_HOME)/stochsuite.mk
 RNG_OBJS := $(wildcard $(RNG_LIB)/*.o) 
 
+ifeq ($(UNAME), Linux)
+    PLATFORM_CFLAGS += -msse2
+endif
+
 all:
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) pi.cpp -o pi.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/correctness.cpp -o util/correctness.o
@@ -10,7 +14,7 @@ all:
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) photon.cpp -o photon.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) tailwag.cpp -o tailwag.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/to_stdout.cpp -o util/to_stdout.o
-	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) -msse2 util/latency.cpp -o util/latency.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) $(PLATFORM_CFLAGS) util/latency.cpp -o util/latency.o
 
 clean:
 	@rm -f *.o
