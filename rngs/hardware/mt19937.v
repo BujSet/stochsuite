@@ -3,6 +3,23 @@
 
 `include "common/register.v"
 
+
+module twist (
+    input wire [31:0] m,
+    input wire [31:0] s0,
+    input wire [31:0] s1
+    output wire [31:0] twisted
+);
+
+    localparam C1 = 'h9908b0df;
+
+    wire [31:0] mixBits, lowBitS1;
+    assign mixBits = {s0[31], s1[30:0]};
+    assign lowBitS1 = (~({{31'b0, s1[0]}}) + 1);
+
+    assign twisted = m ^ (mixBits >> 1) ^ (lowBitS1 & C1);
+endmodule
+
 module mt19937
 #(  parameter         num_state_words = 32'd624,
     parameter         period          = 32'd397 
@@ -21,8 +38,6 @@ module mt19937
     localparam state_bitwidth = num_state_words* 32; // 624 32-bit words
     localparam C1 = 'h9d2c5680;
     localparam C2 = 'hefc60000;
-
-   
 
     reg [state_bitwidth-1:0] state;
     wire [state_bitwidth-1:0] next_state;
@@ -58,6 +73,29 @@ module mt19937
 
     // Next state logic
     // TODO need to do all the complicated reloading and twisting here
+    // Software implemetation looks incorrect - double check
+    // Looks like index out range issue, but not sure how it didn't crash
+    
+    // wire [state_bitwidth-1:0] twisted_state;
+    // genvar i, pNext;
+    // generate
+    //     for (i = 0; i < num_state_words - period; i++) begin 
+    //         twist twistInst0 (
+    //             .m(state[i*32 +: 32]),
+    //             .s0(state[(i + 1)*32 +: 32]),
+    //             .s1(state[(i + period)*32 +: 32]),
+    //             .twisted(twisted_state[i*32 +: 32])
+    //         );
+    //     end
+    //     for (j = 0; j < period; j++) begin 
+    //         twist twistInst1 (
+    //             .m(state[(j + num_state_words - period)*32 +: 32]),
+    //             .s0(state[((j + 1) % num_state_words)*32 +: 32]),
+    //             .s1(state[((j + period) % num_state_words)*32 +: 32]),
+    //             .twisted(twisted_state[(j + num_state_words - period)*32 +: 32])
+    //         );
+    //     end
+    // endgenerate 
     assign next_state = (rnd_count == num_state_words-1) ? state : state;
 
     // Output logic
