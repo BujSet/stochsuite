@@ -11,6 +11,7 @@ all:
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) tailwag.cpp -o tailwag.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/to_stdout.cpp -o util/to_stdout.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) -msse2 util/latency.cpp -o util/latency.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) mt19937_test.cpp -o mt19937_test.o
 
 clean:
 	@rm -f *.o
