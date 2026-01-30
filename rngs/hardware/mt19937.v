@@ -7,7 +7,7 @@
 module twist (
     input wire [31:0] m,
     input wire [31:0] s0,
-    input wire [31:0] s1
+    input wire [31:0] s1,
     output wire [31:0] twisted
 );
 
@@ -71,32 +71,35 @@ module mt19937
     );
     // ---------------------------------------------------
 
-    // Next state logic
-    // TODO need to do all the complicated reloading and twisting here
-    // Software implemetation looks incorrect - double check
-    // Looks like index out range issue, but not sure how it didn't crash
-    
-    // wire [state_bitwidth-1:0] twisted_state;
-    // genvar i, pNext;
-    // generate
-    //     for (i = 0; i < num_state_words - period; i++) begin 
-    //         twist twistInst0 (
-    //             .m(state[i*32 +: 32]),
-    //             .s0(state[(i + 1)*32 +: 32]),
-    //             .s1(state[(i + period)*32 +: 32]),
-    //             .twisted(twisted_state[i*32 +: 32])
-    //         );
-    //     end
-    //     for (j = 0; j < period; j++) begin 
-    //         twist twistInst1 (
-    //             .m(state[(j + num_state_words - period)*32 +: 32]),
-    //             .s0(state[((j + 1) % num_state_words)*32 +: 32]),
-    //             .s1(state[((j + period) % num_state_words)*32 +: 32]),
-    //             .twisted(twisted_state[(j + num_state_words - period)*32 +: 32])
-    //         );
-    //     end
-    // endgenerate 
-    assign next_state = (rnd_count == num_state_words-1) ? state : state;
+    // Next state logic 
+    wire [state_bitwidth-1:0] twisted_state;
+    genvar i;
+    generate
+        for (i = 0; i < num_state_words - period; i++) begin 
+            twist twistInst0 (
+                .m(state[(i + period)*32 +: 32]),
+                .s0(state[i*32 +: 32]),
+                .s1(state[(i + 1)*32 +: 32]),
+                .twisted(twisted_state[i*32 +: 32])
+            );
+        end
+        for (i = num_state_words - period; i < num_state_words; i++) begin 
+            twist twistInst1 (
+                .m(state[(i + period - num_state_words)*32 +: 32]),
+                .s0(state[i*32 +: 32]),
+                .s1(state[(i+1)*32 +: 32]),
+                .twisted(twisted_state[i*32 +: 32])
+            );
+        end
+        twist twistInstLast (
+            .m(state[(num_state_words - 1)*32 +: 32]),
+            .s0(state[0 +: 32]),
+            .s1(state[(period)*32 +: 32]),
+            .twisted(twisted_state[(num_state_words - 1)*32 +: 32])
+        );
+    endgenerate 
+    assign next_state = (rnd_count == num_state_words-1) ? 
+                        twisted_state : state;
 
     // Output logic
     wire [31:0] cur_state_word, S1, S2, S3;
