@@ -13,8 +13,9 @@
 #endif
 
 #if defined(__aarch64__)
-#include <mach/mach_time.h>
+#include <time.h>
 #endif
+
 #include <vector>
 
 int main(int argc, char *argv[]) {
@@ -59,13 +60,17 @@ int main(int argc, char *argv[]) {
         std::cout << "Failed to instantiate RNG instance!" << std::endl;
         return 1;
     }
+#if defined(__aarch64__)
+    struct timespec start_ts, end_ts;
+#endif
+    uint64_t start_ticks, end_ticks, elapsed;
+
 
     rng->seed_random(seed);
     uint32_t rnd;
     for (size_t i = 0; i < warmup_iters; i++) {
         rnd = rng->read_random();
     }
-    uint64_t start_ticks;
     std::vector<uint64_t> delays;
     delays.reserve(niters / batch);
      
@@ -74,17 +79,24 @@ int main(int argc, char *argv[]) {
         start_ticks = __rdtsc(); 
 #endif
 #if defined(__aarch64__)
-        start_ticks = mach_continuous_time();
+        start_ticks = clock_gettime(CLOCK_MONOTONIC, &start_ts);
 #endif
         for (size_t j = 0; j < batch; j++) {
             rnd = rng->read_random();
         }
 #if defined(__x86_64__) || defined(__amd64__)
-        delays.push_back(__rdtsc() - start_ticks);
+        end_ticks = __rdtsc(); 
+	elapsed = end_ticks - start_ticks;
 #endif
 #if defined(__aarch64__)
-        delays.push_back(mach_continuous_time() - start_ticks);
+        end_ticks = clock_gettime(CLOCK_MONOTONIC, &end_ts);
+	// For ease of comparison, we should convert to 
+	// same time unit (e.g. seconds):
+	elapsed = (end_ts.tv_sec - start_ts.tv_sec) * 1000000000ULL +
+	                (end_ts.tv_nsec - start_ts.tv_nsec);
+	// TODO need to do this for x86_64 machines as well
 #endif
+        delays.push_back(elapsed);
     }
     uint64_t sum = 0;
     for (size_t i = 0; i < delays.size(); i++) {

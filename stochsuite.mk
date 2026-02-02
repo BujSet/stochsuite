@@ -5,3 +5,5 @@ COMMON_CFLAGS := -c -std=c++11 -Wall -O3 -lm
 PLATFORM_CFLAGS := 
 LFLAGS := -std=c++11 -Wall -O3
 UNAME := $(shell uname)
+OS := $(shell uname -s)
+ARCH := $(shell uname -m)
