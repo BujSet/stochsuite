@@ -5,7 +5,10 @@
 
 module taus88_tb;
 
+`ifdef GATESIM
     glbl glbl ();
+`endif
+
     reg         clk;
     reg         rst_n;
     reg  [31:0] seed;
@@ -37,6 +40,7 @@ module taus88_tb;
             end
             @(posedge clk); // Wait for a positive clock edge
         end
+        
     endtask
 
     task reseed_dut;
@@ -55,7 +59,6 @@ module taus88_tb;
     initial begin
         rst_n   = 1'b1;
         re_seed = 1'b0;
-        seed    = 32'h1234_5678;
 
         repeat (5) @(posedge clk);    
         rst_n <= 1'b0;
@@ -63,6 +66,7 @@ module taus88_tb;
         rst_n <= 1'b1;
         $display("%t ns : rnd = 0x%08h | %d", $time, rnd, rnd);
 
+        reseed_dut(32'h1234_5678);
         // defualt S1, S2, S3
         repeat (10) begin : init_cycles
             @(posedge clk);
