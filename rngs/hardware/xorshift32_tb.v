@@ -3,7 +3,7 @@
 
 `timescale 1ns/1ps
 
-module XorShift32_TB;
+module xorshift32_tb;
 
     // only for gatesim
     `ifdef GATESIM
@@ -18,7 +18,7 @@ module XorShift32_TB;
     wire [31:0] rnd;
 
     // dut
-    xorshift32_opt dut (
+    xorshift32 dut (
         .clk     (clk),
         .rst_n   (rst_n),
         .seed    (seed),
@@ -66,6 +66,7 @@ module XorShift32_TB;
         @(posedge clk);
         rst_n <= 1'b1;
         $display("%t ns : rnd = 0x%08h | %0d", $time, rnd, rnd);
+        reseed_dut(seed);
 
         // After reset, xorshift32_opt state resets to 0 by design (RST_VAL = 0)
         // So we always reseed before checking.
@@ -74,33 +75,30 @@ module XorShift32_TB;
             $display("%t ns : rnd = 0x%08h | %0d", $time, rnd, rnd);
         end
 
-        // Spot check a few iterations after reseed
-        // Note: these expected values assume the RTL convention rnd = s_cur (pre-update),
-        // and that reseed drives state to seed, then updates start on subsequent cycles.
-        // If you choose rnd = s_next in RTL, these numbers will shift by 1 cycle.
+
         reseed_dut(32'hDEAD_BEEF);
-        test_value(32'd3735928559, rnd);
-        test_value(32'd1277311135, rnd);
-        test_value(32'd2318515675, rnd);
-        test_value(32'd1692061533, rnd);
-        test_value(32'd2914831697, rnd);
-        test_value(32'd2401654032, rnd);
-        test_value(32'd3195421333, rnd);
-        test_value(32'd239402786,  rnd);
-        test_value(32'd1013918553, rnd);
-        test_value(32'd2511123945, rnd);
+        test_value(32'd1199382711, rnd);
+        test_value(32'd2384302402, rnd);
+        test_value(32'd3129746520, rnd);
+        test_value(32'd4276113467, rnd);
+        test_value(32'd1745748808, rnd);
+        test_value(32'd2760751131, rnd);
+        test_value(32'd1649732188, rnd);
+        test_value(32'd486387635,  rnd);
+        test_value(32'd2289630710, rnd);
+        test_value(32'd1862841525, rnd);
 
         reseed_dut(32'hCAFEBABE);
-        test_value(32'd3405691582, rnd);
-        test_value(32'd3792176755, rnd);
-        test_value(32'd976299370,  rnd);
-        test_value(32'd1856029631, rnd);
-        test_value(32'd2875390495, rnd);
-        test_value(32'd4268168009, rnd);
-        test_value(32'd3000433025, rnd);
-        test_value(32'd3235076403, rnd);
-        test_value(32'd881332418,  rnd);
-        test_value(32'd1888437366, rnd);
+        test_value(32'd2827483434, rnd);
+        test_value(32'd2750467483, rnd);
+        test_value(32'd4064143354,  rnd);
+        test_value(32'd2526188539, rnd);
+        test_value(32'd1499439149, rnd);
+        test_value(32'd101746304, rnd);
+        test_value(32'd3469816288, rnd);
+        test_value(32'd4115003222, rnd);
+        test_value(32'd1045250721,  rnd);
+        test_value(32'd1430002701, rnd);
 
         $display("%t: TEST PASSED", $time);
         $finish;
