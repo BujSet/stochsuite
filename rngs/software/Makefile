@@ -24,12 +24,9 @@ all:
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) MersenneTwister.cpp -o MersenneTwister.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) KISS11.cpp -o KISS11.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) PCGBasic.cpp -o PCGBasic.o
-	if [ -f  /.dockerenv ]; then \
+	@if [ -f  /.dockerenv ]; then \
 		echo "[WARN] Detected docker environment, skipping build of HWRNG.o..."; \
 	else \
-	    $(info The value of OS is: $(OS)) \
-	    $(info The value of ARCH is: $(ARCH)) \
-	    $(info The value of PLATFORM_CFLAGS is: $(PLATFORM_CFLAGS)) \
 	    $(CPP) -I$(RNG_LIB) $(CFLAGS) HWRNG.cpp -o HWRNG.o; \
 	fi
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift32.cpp -o XorShift32.o
