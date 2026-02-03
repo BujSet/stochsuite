@@ -12,7 +12,7 @@ module xorshift32 (
 
     output wire [31:0] rnd
 );
-
+ 
     // Default XorShift32 configuration from your C:
     // a = 13 (left), b = 17 (right), c = 5 (left)
     localparam [4:0] A = 5'd13;
