@@ -6,7 +6,7 @@ ifeq ($(OS), Linux)
         PLATFORM_CFLAGS += -msse2
     endif
     ifeq ($(ARCH), aarch64)
-        PLATFORM_CFLAGS += -march=armv8-a+rng
+        PLATFORM_CFLAGS += -march=armv8.5-a+rng
     endif
 endif
 
