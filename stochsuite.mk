@@ -1,5 +1,9 @@
 RNG_LIB := $(STOCHSUITE_HOME)/rngs/software
 RNG_SRCS := $(wildcard $(RNG_LIB)/*.cpp) 
 CPP := g++
-CFLAGS := -c -std=c++11 -Wall -O3 -lm
+COMMON_CFLAGS := -c -std=c++11 -Wall -O3 -lm
+PLATFORM_CFLAGS := 
 LFLAGS := -std=c++11 -Wall -O3
+UNAME := $(shell uname)
+OS := $(shell uname -s)
+ARCH := $(shell uname -m)

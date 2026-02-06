@@ -1,5 +1,17 @@
 include $(STOCHSUITE_HOME)/stochsuite.mk
 
+ifeq ($(UNAME), Darwin)
+    PLATFORM_CFLAGS += -march=armv8.5-a+rng
+endif
+
+ifeq ($(OS), Linux)
+    ifeq ($(ARCH), aarch64)
+        PLATFORM_CFLAGS += -march=armv8.5-a+rng
+    endif
+endif
+
+CFLAGS = $(COMMON_CFLAGS) $(PLATFORM_CFLAGS)
+    
 all:
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) RNGState.cpp -o RNGState.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) RandomNumberGenerator.cpp -o RandomNumberGenerator.o
@@ -12,7 +24,11 @@ all:
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) MersenneTwister.cpp -o MersenneTwister.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) KISS11.cpp -o KISS11.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) PCGBasic.cpp -o PCGBasic.o
-	@$(CPP) -I$(RNG_LIB) $(CFLAGS) HWRNG.cpp -o HWRNG.o
+	@if [ -f  /.dockerenv ]; then \
+		echo "[WARN] Detected docker environment, skipping build of HWRNG.o..."; \
+	else \
+	    $(CPP) -I$(RNG_LIB) $(CFLAGS) HWRNG.cpp -o HWRNG.o; \
+	fi
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift32.cpp -o XorShift32.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift128.cpp -o XorShift128.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorWow.cpp -o XorWow.o
