@@ -1,5 +1,5 @@
-`ifndef __XORSHIFT_32_OPT_V__
-`define __XORSHIFT_32_OPT_V__
+`ifndef __XORSHIFT_32_V__
+`define __XORSHIFT_32_V__
 
 `include "common/register.v"
 
