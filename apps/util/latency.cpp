@@ -60,10 +60,13 @@ int main(int argc, char *argv[]) {
         std::cout << "Failed to instantiate RNG instance!" << std::endl;
         return 1;
     }
+#if defined(__x86_64__) || defined(__amd64__)
+    uint64_t start_ticks, end_ticks, elapsed;
+#endif
 #if defined(__aarch64__)
     struct timespec start_ts, end_ts;
 #endif
-    uint64_t start_ticks, end_ticks, elapsed;
+    uint64_t elapsed;
 
 
     rng->seed_random(seed);
@@ -79,7 +82,11 @@ int main(int argc, char *argv[]) {
         start_ticks = __rdtsc(); 
 #endif
 #if defined(__aarch64__)
-        start_ticks = clock_gettime(CLOCK_MONOTONIC, &start_ts);
+	// TODO save and restore errno
+        if (clock_gettime(CLOCK_MONOTONIC, &start_ts) ) {
+            std::cout << "Failed to read clocktime at start of ROI!" << std::endl;
+            return 1;
+	}
 #endif
         for (size_t j = 0; j < batch; j++) {
             rnd = rng->read_random();
@@ -89,7 +96,11 @@ int main(int argc, char *argv[]) {
 	elapsed = end_ticks - start_ticks;
 #endif
 #if defined(__aarch64__)
-        end_ticks = clock_gettime(CLOCK_MONOTONIC, &end_ts);
+	// TODO save and restore errno
+        if (clock_gettime(CLOCK_MONOTONIC, &end_ts)) {
+            std::cout << "Failed to read clocktime at end of ROI!" << std::endl;
+            return 1;
+	}
 	// For ease of comparison, we should convert to 
 	// same time unit (e.g. seconds):
 	elapsed = (end_ts.tv_sec - start_ts.tv_sec) * 1000000000ULL +

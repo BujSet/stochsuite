@@ -8,6 +8,9 @@
 
 #if defined(__aarch64__)
     #include <arm_acle.h>
+    #include <sys/auxv.h>
+    #include <asm/hwcap.h>
+    #include <arm_neon.h>
 #endif
 
 
@@ -20,7 +23,11 @@ HWRNG::HWRNG() : RNGBase(0) {
 #elif defined(__aarch64__)
 
 #if __ARM_FEATURE_RNG
-    _name = "AARCH64_RDRAND";
+    if (!(getauxval(AT_HWCAP2) & HWCAP2_RNG)) {
+        throw std::invalid_argument("__rndr instruction not supported on this CPU.");
+    } else {
+        _name = "AARCH64_RNDR";
+    }
 #else
     throw std::invalid_argument("Arm processor does not support HWRNG");
 #endif
@@ -59,9 +66,13 @@ uint32_t HWRNG::_read_random() {
     while(_x86_64_rdrand_step(&rndval) == 0);
     return rndval;
 #elif defined(__aarch64__)
-    // Based on https://developer.arm.com/documentation/101028/0012/8--Data-processing-intrinsics
     uint64_t rand;
-    while(__rndr(&rand) != 0);
+    if (_name ==  "AARCH64_RNDR") {
+        __builtin_aarch64_rndr(&rand);
+    } else {
+        // Based on https://developer.arm.com/documentation/101028/0012/8--Data-processing-intrinsics
+        while(__rndr(&rand) != 0);
+    }
     rndval = rand & 0xFFFFFFFF;
     return rndval;
 #else

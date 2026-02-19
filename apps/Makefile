@@ -24,21 +24,6 @@ all:
 	else \
 	    $(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) $(PLATFORM_CFLAGS) util/latency.cpp -o util/latency.o; \
 	fi
-CHECK_FILE := check_rng.c
-
-# Run the test
-check_rng:
-	@echo "Checking for __ARM_FEATURE_RNG..."
-	@echo '#include <arm_acle.h>' > $(CHECK_FILE)
-	@echo '#ifndef __ARM_FEATURE_RNG' >> $(CHECK_FILE)
-	@echo '#error "RNG not supported"' >> $(CHECK_FILE)
-	@echo '#endif' >> $(CHECK_FILE)
-	@echo 'int main() { return 0; }' >> $(CHECK_FILE)
-	@$(CC) -c $(CHECK_FILE) -o /dev/null >/dev/null 2>&1 && \
-		echo "YES: __ARM_FEATURE_RNG is available" || \
-		echo "NO: __ARM_FEATURE_RNG is not available"
-	@rm -f $(CHECK_FILE)
-
 clean:
 	@rm -f *.o
 	@rm -f util/*.o
