@@ -1,6 +1,6 @@
 # read design
-read -sv Taus88.v
-hierarchy -top taus88
+read -sv xorwow.v
+hierarchy -top xorwow
 
 # the high-level stuff
 proc; fsm; opt; memory; opt
@@ -14,6 +14,11 @@ dfflibmap -liberty vsclib013.lib
 # mapping logic to mycells.lib
 abc -liberty vsclib013.lib
 stat -liberty vsclib013.lib
+
+flatten; ltp 
+
+# Print some general statistics
+stat
 
 # cleanup
 clean

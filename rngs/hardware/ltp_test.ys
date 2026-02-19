@@ -1,0 +1,18 @@
+# read design
+read -sv xorshift32.v
+hierarchy -top xorshift32
+synth -top xorshift32
+
+# the high-level stuff
+proc; fsm; opt; memory; opt
+
+# mapping to internal cell library
+techmap; opt
+
+flatten
+ltp -noff 
+
+stat
+
+# cleanup
+clean
