@@ -10,7 +10,7 @@ apps/sim.logpwd
 .DS_Store
 rngs/hardware/*.vcd
 rngs/hardware/*-sim.log
-rngs/hardware/*-synth.log
+rngs/hardware/*-synth*.log
 rngs/hardware/*-gatesim.log
 rngs/hardware/*-sim
 rngs/hardware/*-gatesim

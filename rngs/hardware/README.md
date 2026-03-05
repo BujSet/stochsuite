@@ -19,6 +19,8 @@ The hardware testbench checks against values produced from the software implemen
 
 ### Troubleshooting
 
+<details>
+    <summary>Click to see details<summary>
 If you get an error like:
 
 ```
@@ -45,14 +47,16 @@ cd $STOCHSUITE_HOME
 git submodule update --init --recursive
 cd $STOCHSUITE_HOME/rngs/hardware/
 ```
+<details>
 
+## FPGA Synthesis Flow
 
-## Synthesizing Taus88 to Netlist
+### Synthesizing Taus88 to Netlist for Xilinx FPGA
 
 The following command will attempt to use Xilinx primitives to create a netlist to implement design
 
 ```
-make synth DUT=taus88
+make synth-fpga DUT=taus88
 ```
 
 You should see output like:
@@ -81,7 +85,11 @@ You should see output like:
      OBUF                           32
 ```
 
-## Functionality of Synthesizable Desgin
+The command prints output to stdout, but is also captured
+in a log file named off of the provide argument `DUT`, in this case, 
+`taus88-synth-asic.log`.
+
+### Functionality of Synthesizable Desgin
 
 If the design were to be routed onto a real FPGA, we would like to verify that 
 the design functionally completes from it's netlist implementation. The following 
@@ -91,19 +99,40 @@ commands rerun the simulation using the netlist output as the DUT:
 make gatesim DUT=taus88
 ```
 
+## ASIC Synthesis Flow
 
-## Testing with Optimized Taus88
+### Synthesizing Xorwow to Netlist from  Synopsys VLSI 13nm Standard Cell Library
 
-TODO seems like this implementation is broken
+The following command will attempt to download the open source standard cell 
+library `vsclib013.lib`, if not already present. The command then runs the Tcl
+script `area_and_path_length.tcl` to estimate the area of PRNG design, and the 
+number of gate on the topologically longest path. 
 
-```
-make sim DUT=taus88_opt
-make synth DUT=taus88_opt
-```
-
-## Testing JKISS
 
 ```
-./util/correctness.o -iters 10 -seed 0xdeadbeef -rng JKISS
-make sim DUT=jkiss
+make synth-asic DUT=xorwow
 ```
+
+The command prints output to stdout, but also capture the synthesis report in 
+a file named off of the provide argument `DUT`, in this case, 
+`xorwow-synth-asic.log`. The bottom of the output should look something like:
+
+```
+     ...
+     xor3v1x05                       7
+
+   Chip area for top module '\xorwow': 7519.000000
+
+7. Executing LTP pass (find longest path).
+
+Longest topological path in $paramod$5abd54821b56aca50aadf8f6ee000d4bf520e9b2\Register (length=0):
+    0: \write_data [191]
+
+Longest topological path in xorwow (length=1):
+    0: \z_wd [31]
+    1: \x_cur [0] (via state_regs)
+
+```
+
+The output above indicates the design has a chip area of `7519` nm<sup>2<sup>, and
+has a longest topological path length of `1`.
