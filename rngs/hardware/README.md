@@ -48,7 +48,7 @@ git submodule update --init --recursive
 cd $STOCHSUITE_HOME/rngs/hardware/
 ```
 
-<details>
+</details>
 
 ## FPGA Synthesis Flow
 
