@@ -137,5 +137,5 @@ Longest topological path in xorwow (length=1):
     1: \x_cur [0] (via state_regs)
 ```
 
-The output above indicates the design has a chip area of `7519` nm<sup>2<sup>, and
+The output above indicates the design has a chip area of `7519` nm<sup>2</sup>, and
 has a longest topological path length of `1`.
