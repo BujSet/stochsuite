@@ -20,7 +20,7 @@ The hardware testbench checks against values produced from the software implemen
 ### Troubleshooting
 
 <details>
-    <summary>Click to see details<summary>
+
 If you get an error like:
 
 ```
@@ -47,6 +47,7 @@ cd $STOCHSUITE_HOME
 git submodule update --init --recursive
 cd $STOCHSUITE_HOME/rngs/hardware/
 ```
+
 <details>
 
 ## FPGA Synthesis Flow
