@@ -1,0 +1,8 @@
+{
+    "sources": {
+        "my-json-data-source": {
+            "url": "$STOCHSUITE_HOME/gem5_sim/my-resources.json",
+            "isMongo": false
+        }
+    }
+}
