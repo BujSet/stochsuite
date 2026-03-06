@@ -104,14 +104,16 @@ make gatesim DUT=taus88
 
 ### Synthesizing Xorwow to Netlist from  Synopsys VLSI 13nm Standard Cell Library
 
-The following command will attempt to download the open source standard cell 
-library `vsclib013.lib`, if not already present. The command then runs the Tcl
-script `area_and_path_length.tcl` to estimate the area of PRNG design, and the 
-number of gate on the topologically longest path. 
+The following command will attempt to download a supported open source 
+standard cell library liberty file, if not already present. The command then 
+runs the Tcl script `area_and_path_length.tcl` to estimate the area of PRNG 
+design, and the number of gate on the topologically longest path. The example 
+in the following command examines the `xorwow` PRNG using the VLSI Technologies 
+Synopsys liberty file for a 13nm technology node:
 
 
 ```
-make synth-asic DUT=xorwow
+make synth-asic DUT=xorwow SCL=vsclib013
 ```
 
 The command prints output to stdout, but also capture the synthesis report in 

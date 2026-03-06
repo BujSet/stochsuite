@@ -1,4 +1,5 @@
 include $(STOCHSUITE_HOME)/stochsuite.mk
+include $(STOCHSUITE_HOME)/rngs/hardware/vlsi_technologies_synopsys.mk
 
 DUT ?= taus88
 XILINX_CELLS_DIR ?= XilinxUnisimLibrary/verilog/src
@@ -6,7 +7,7 @@ IVERILOG ?= /usr/bin/iverilog
 YOSYS ?= /usr/bin/yosys
 
 # Which standard cell library to use
-SCL ?= vsclib013.lib
+SCL ?= vsclib013
 
 # IVerilog Simulation
 sim: ${DUT}-sim
@@ -27,12 +28,21 @@ gatesim: ./${DUT}-gatesim
 ${DUT}-gatesim: ${DUT}_tb.v ${DUT}.netlist.v
 	${IVERILOG} -g2005-sv -s ${DUT}_tb -DGATESIM -y ${XILINX_CELLS_DIR} -y ${XILINX_CELLS_DIR}/unisims -o $@ $^
 
-vsclib013.lib:
-	@echo "Downloading vsclib013.lib ..."
-	wget http://www.vlsitechnology.org/synopsys/vsclib013.lib
+ifneq ($(filter synth-asic,$(MAKECMDGOALS)),)
+    ifeq ($(filter $(SCL),$(VALID_TECH_NODES)),)
+        $(info Please choose from valid tech nodes: $(VALID_TECH_NODES))
+        $(error Invalid Standard Cell Library selection: "$(SCL)".)
+    endif
+endif
 
-synth-asic: ${DUT}.v ${SCL}
-	export MODULE=${DUT}; ${YOSYS} -c area_and_path_length.tcl | tee ${DUT}-synth-asic.log
+${SCL}.lib:
+	@echo "Downloading ${SC}.lib ..."
+	wget http://www.vlsitechnology.org/synopsys/${SCL}.lib
+
+synth-asic: ${DUT}.v ${SCL}.lib
+	export MODULE=${DUT}; \
+	export TECH_NODE=${SCL}; \
+    ${YOSYS} -c area_and_path_length.tcl | tee ${DUT}-synth-asic.log
 
 clean:
 	@rm -f *-sim
