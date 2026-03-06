@@ -6,10 +6,10 @@ yosys hierarchy -top $::env(MODULE)
 yosys "synth -top $::env(MODULE)"
 
 # 3. Map to your specific Library (Fixes Area)
-yosys "dfflibmap -liberty vsclib013.lib"
-yosys "abc -liberty vsclib013.lib"
+yosys "dfflibmap -liberty $::env(TECH_NODE).lib"
+yosys "abc -liberty $::env(TECH_NODE).lib"
 
 # 4. Clean and Report
 yosys clean
-yosys "stat -liberty vsclib013.lib"
+yosys "stat -liberty $::env(TECH_NODE).lib"
 yosys "ltp -noff"
