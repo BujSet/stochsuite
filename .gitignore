@@ -15,4 +15,4 @@ rngs/hardware/*-gatesim.log
 rngs/hardware/*-sim
 rngs/hardware/*-gatesim
 rngs/hardware/*.netlist.v
-rngs/hardware/vsclib013.lib
+rngs/hardware/*.lib
