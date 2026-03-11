@@ -32,6 +32,7 @@ all:
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift32.cpp -o XorShift32.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift128.cpp -o XorShift128.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorWow.cpp -o XorWow.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XoShiRo128PlusPlus.cpp -o XoShiRo128PlusPlus.o
 
 clean:
 	@rm -f *.o

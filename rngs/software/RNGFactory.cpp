@@ -12,6 +12,7 @@
 #include "XorShift128.hpp"
 #include "XorShift32.hpp"
 #include "XorWow.hpp"
+#include "XoShiRo128PlusPlus.hpp"
 
 #include <string>
 #include <memory>
@@ -72,6 +73,9 @@ std::unique_ptr<RNGBase> RNGFactory::createRNG(const std::string type) {
         // https://www.jstatsoft.org/article/view/v008i14
         // Default generator for NVIDIA CUDA toolkit: https://docs.nvidia.com/cuda/curand/testing.html
         return std::unique_ptr<RNGBase>(new XorWow());
+    } else if (type == "XoShiRo128++") {
+        // Implemented from https://prng.di.unimi.it/xoshiro128plusplus.c
+        return std::unique_ptr<RNGBase>(new XoShiRo128PlusPlus());
     } else {
         return nullptr;
     }
