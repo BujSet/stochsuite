@@ -62,10 +62,6 @@ module xorwow (
     // ---- output  ----
     assign rnd = d_cur + v_cur;
 
-
-    // ---- output  ----
-    assign rnd = d_cur + v_cur;
-
 endmodule
 
 `endif // __XORWOW_V__
