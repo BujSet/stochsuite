@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 #if defined(__x86_64__) || defined(__amd64__)
-    uint64_t start_ticks, end_ticks, elapsed;
+    uint64_t start_ticks, end_ticks;
 #endif
 #if defined(__aarch64__)
     struct timespec start_ts, end_ts;
