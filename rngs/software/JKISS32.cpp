@@ -25,7 +25,7 @@ std::string JKISS32::name() {
 }
 
 uint32_t JKISS32::_read_random(){
-    uint32_t t;
+    int32_t t;
     uint32_t x = state->get_state_bytes_as_int(0);
     uint32_t y = state->get_state_bytes_as_int(4);
     uint32_t z = state->get_state_bytes_as_int(8);
