@@ -8,7 +8,7 @@ module jkiss (
     input  wire        clk,
     input  wire        rst_n,
 
-    input  wire [31:0] seed,        // reseed x
+    input  wire [31:0] seed,        // reseed x0 register
     input  wire        re_seed,      // active high
 
     output wire [31:0] rnd
