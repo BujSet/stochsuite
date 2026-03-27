@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <cstddef>
+#include <string>
 
 class RNGState {
     public:
@@ -19,6 +20,7 @@ class RNGState {
         uint8_t get_state_byte(size_t state_offset);
         uint8_t *getState();
         size_t size();
+        void dump(std::string filename);
     protected:
         uint8_t *allState;
         size_t numBytes;

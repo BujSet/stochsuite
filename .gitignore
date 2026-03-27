@@ -2,6 +2,8 @@ rngs/software/*.o
 apps/*.o
 apps/util/*.o
 apps/*.ppm
+apps/*.bin
+apps/*.hex
 apps/*_results.txt
 apps/*_results.csv
 apps/sim.logcd
@@ -16,3 +18,5 @@ rngs/hardware/*-sim
 rngs/hardware/*-gatesim
 rngs/hardware/*.netlist.v
 rngs/hardware/*.lib
+rngs/hardware/*.bin
+rngs/hardware/*.hex
