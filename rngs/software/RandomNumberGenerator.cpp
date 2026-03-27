@@ -80,6 +80,10 @@ void RNGBase::seed_random(uint32_t new_seed) {
     _seed_random(new_seed);
 }
 
+void RNGBase::dump_state(std::string filename) {
+    state->dump(filename);
+}
+
 RNGBase::~RNGBase() {
     delete state;
 }
