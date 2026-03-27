@@ -34,6 +34,8 @@ class RNGBase {
         double gaussian_box_muller();
         double gaussian_box_muller(double mean, double stddev);
         double lognormal_distribution(double mean, double stddev);
+
+        void dump_state(std::string filename);
         
     protected:
         RNGState* state;

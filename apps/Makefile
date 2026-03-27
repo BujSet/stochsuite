@@ -25,6 +25,5 @@ all:
 	    $(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) $(PLATFORM_CFLAGS) util/latency.cpp -o util/latency.o; \
 	fi
 clean:
-	@rm -f *.o
+	@rm -f *.o *.ppm *.bin *.hex
 	@rm -f util/*.o
-	@rm -f *.ppm

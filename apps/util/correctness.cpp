@@ -12,13 +12,15 @@ int main(int argc, char *argv[]) {
     size_t niters = 10;
     uint32_t seed = 1634404289;
     std::string rngStr = "Taus88";
+    bool dumpState = false;
+    std::string dumpStateFilename = "Taus88_initial_state.hex";
     int saved_errno;
     char* endptr;
 
     if (argc > 1) {
         if (argc > 7) {
             std::cout << "usage: ./" << argv[0] << " -seed <SEED> ";
-            std::cout << " -iters <NUM_ITERS> -rng <RNG>" << std::endl;
+            std::cout << " -iters <NUM_ITERS> -rng <RNG> -dump_state <FILENAME>" << std::endl;
             return 1;
         }
         for (size_t i = 0; i < (size_t)argc; i++) {
@@ -51,6 +53,12 @@ int main(int argc, char *argv[]) {
                 rngStr = (std::string) argv[i+1];
                 i++;
             }
+            if (strcmp("-dump_state", argv[i]) == 0) {
+                assert(i + 1 < (size_t)argc);
+                dumpStateFilename = (std::string) argv[i+1];
+                dumpState = true;
+                i++;
+            }
         }
     }
     std::unique_ptr<RNGBase> rng = RNGFactory::createRNG(rngStr);
@@ -61,6 +69,11 @@ int main(int argc, char *argv[]) {
     std::cout << "Successfully initialized RNG: " << rng->name() << std::endl;
 
     rng->seed_random(seed);
+
+    if (dumpState) {
+        rng->dump_state(dumpStateFilename);
+    }
+    
     uint32_t rnd;
     for (size_t i = 0; i < niters; i++) {
         rnd = rng->read_random();

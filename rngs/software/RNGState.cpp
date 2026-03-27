@@ -1,6 +1,8 @@
 #include "RNGState.hpp"
 
 #include <cassert>
+#include <cstdio>
+
 
 RNGState::RNGState(size_t numBytes)
     : numBytes(numBytes) {
@@ -63,7 +65,18 @@ uint8_t RNGState::get_state_byte(size_t state_offset) {
 
 size_t RNGState::size() { 
     return numBytes; 
-} 
+}
+
+void RNGState::dump(std::string filename) { 
+
+    // Write the hex values of the state bytes to a file, one byte per line and also print them to the console
+    FILE *f = fopen(filename.c_str(), "w");
+    for (size_t i = 0; i < numBytes; i++) {
+        fprintf(f, "%02x\n", allState[i]);
+        printf("State byte %zu: %u %02x\n", i, (uint32_t) allState[i], allState[i]);
+    }
+    fclose(f);
+}
 
 RNGState::~RNGState() {
     delete[] allState;
