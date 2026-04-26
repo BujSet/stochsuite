@@ -84,6 +84,10 @@ void RNGBase::dump_state(std::string filename) {
     state->dump(filename);
 }
 
+uint32_t RNGBase::dump_state_word(size_t offset) {
+    return state->get_state_bytes_as_int(offset);
+}
+
 RNGBase::~RNGBase() {
     delete state;
 }

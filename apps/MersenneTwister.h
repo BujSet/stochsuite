@@ -74,7 +74,7 @@ public:
 	enum { N = 624 };       // length of state vector
 	enum { SAVE = N + 1 };  // length of array for save()
 
-protected:
+public:
 	enum { M = 397 };  // period parameter
 	
 	uint32 state[N];   // internal state
