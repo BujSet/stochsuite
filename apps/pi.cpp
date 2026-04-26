@@ -6,7 +6,17 @@
 #include <iostream>
 #include <limits>
 
+#ifdef GEM5_ENABLE
+#include <gem5/m5ops.h>
+#include <m5_mmap.h>
+#endif
+
+
 int main(int argc, char *argv[]) {
+#ifdef GEM5_ENABLE
+    m5op_addr = 0xFFFF0000;
+    map_m5_mem();
+#endif
 
     size_t niters = 100;
     uint32_t seed = 12312332;
@@ -49,6 +59,9 @@ int main(int argc, char *argv[]) {
     rng->seed_random(seed);
 
     // Begin ROI
+#ifdef GEM5_ENABLE
+    m5_work_begin_addr(0,0);
+#endif
     for (size_t i = 0; i < niters; i++) {
         x = rng->read_random_double();
         y = rng->read_random_double();
@@ -58,6 +71,10 @@ int main(int argc, char *argv[]) {
         }
     }
     pi = 4.0 * ((double)count) / ((double)niters);
+#ifdef GEM5_ENABLE
+    m5_work_end_addr(0,0);
+    unmap_m5_mem();
+#endif
     // End ROI
     
     std::cout << "pi = " << pi << std::endl;

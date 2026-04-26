@@ -1,6 +1,12 @@
 rngs/software/*.o
+rngs/software/*.S
+rngs/software/*.s
 apps/*.o
+apps/*.S
+apps/*.s
 apps/util/*.o
+apps/util/*.S
+apps/util/*.s
 apps/*.ppm
 apps/*.bin
 apps/*.hex

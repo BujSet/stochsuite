@@ -10,6 +10,12 @@ ifeq ($(OS), Linux)
     endif
 endif
 
+
+gem5:
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS)  pi.cpp -o pi_gem5.o $(GEM5_CFLAGS) $(LFLAGS) $(GEM5_LFLAGS)
+
+asm:
+	@$(CPP) -S -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) pi.cpp -o pi.S
 all:
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) pi.cpp -o pi.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/correctness.cpp -o util/correctness.o
