@@ -3,5 +3,5 @@
 	url = https://github.com/Xilinx/XilinxUnisimLibrary
 [submodule "gem5_sim/gem5"]
 	path = gem5_sim/gem5
-	url = https://github.com/BujSet/gem5.git
-	branch = stochsuite
+    url = https://github.com/pi-dee/stochsuite_gem5.git
+	branch =more_details
