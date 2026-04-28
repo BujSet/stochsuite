@@ -1,6 +1,7 @@
 rngs/software/*.o
 apps/*.o
 apps/util/*.o
+apps/util/*.memh
 apps/verify/*.o
 apps/*.ppm
 apps/*.bin

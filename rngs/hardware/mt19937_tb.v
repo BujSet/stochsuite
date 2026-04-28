@@ -3,6 +3,8 @@
 
 `timescale 1ns/1ps
 
+import "DPI-C" function string getenv(input string env_name);
+
 module mt19937_tb;
 
 `ifdef GATESIM
@@ -55,12 +57,14 @@ module mt19937_tb;
     endtask
 
     reg [7:0] data_mem [0:12 - 1];
+    string memh_path;
     initial begin
         rst_n   = 1'b1;
         re_seed = 1'b0;
         seed    = 32'h1234_5678;
-
-        $readmemh("Taus88_initial_state.hex", data_mem);
+        
+        memh_path = {getenv("STOCHSUITE_HOME"), "/MersenneTwister_seed_12312332.memh"};
+        $readmemh(memh, data_mem);
         $display("Loaded data:");
         for (int i = 0; i < 10; i++) begin
             $display("data_mem[%0d] = %b", i, data_mem[i]);
