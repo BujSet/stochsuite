@@ -36,6 +36,7 @@ class RNGBase {
         double lognormal_distribution(double mean, double stddev);
 
         void dump_state(std::string filename);
+        uint32_t dump_state_word(size_t offset);
         
     protected:
         RNGState* state;

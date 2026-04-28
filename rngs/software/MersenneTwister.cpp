@@ -40,6 +40,16 @@ MersenneTwister::MersenneTwister(uint32_t *seeds, size_t numWords)
 
 void MersenneTwister::_seed_random(uint32_t new_seed) {
     state->set_state_bytes_from_int(new_seed, 4, 0);
+    uint32_t prev = state->get_state_bytes_as_int(0);
+    uint32_t curr;
+    for (size_t i = 1; i < MersenneTwister::N; i++) {
+        curr = 1812433253UL * ( prev ^ (prev >> 30) ) + i;
+        state->set_state_bytes_from_int(curr, 4, i*4);
+        prev = curr;
+    }
+    nextRandWord = 0;
+
+    reload();
 }
 
 std::string MersenneTwister::name() {
@@ -52,22 +62,22 @@ void MersenneTwister::reload() {
     uint32_t p0, p1, pM, pMN, s0;
     size_t pNext = 0;
     for (size_t i = 0; i < MersenneTwister::N - MersenneTwister::M; i++) {
-        p0 = state->get_state_bytes_as_int(pNext +   0);
-        p1 = state->get_state_bytes_as_int(pNext +   1);
-        pM = state->get_state_bytes_as_int(pNext + MersenneTwister::M);
+        p0 = state->get_state_bytes_as_int(4*(pNext +   0));
+        p1 = state->get_state_bytes_as_int(4*(pNext +   1));
+        pM = state->get_state_bytes_as_int(4*(pNext + MersenneTwister::M));
         state->set_state_bytes_from_int(twist(pM, p0, p1), 4, pNext*4);
         pNext++;
     }
-    for(size_t i = 0; i < MersenneTwister::M; i++) {
-        p0  = state->get_state_bytes_as_int(pNext +   0);
-        p1  = state->get_state_bytes_as_int(pNext +   1);
-        pMN = state->get_state_bytes_as_int(pNext + MersenneTwister::M - MersenneTwister::N);
+    for(size_t i = 0; i < MersenneTwister::M - 1; i++) {
+        p0  = state->get_state_bytes_as_int(4*(pNext +   0));
+        p1  = state->get_state_bytes_as_int(4*(pNext +   1));
+        pMN = state->get_state_bytes_as_int(4*(pNext + MersenneTwister::M - MersenneTwister::N));
         state->set_state_bytes_from_int(twist(pMN, p0, p1), 4, pNext*4);
         pNext++;
     }
-    p0  = state->get_state_bytes_as_int(pNext +   0);
-    s0  = state->get_state_bytes_as_int(          0);
-    pMN = state->get_state_bytes_as_int(pNext + MersenneTwister::M - MersenneTwister::N);
+    p0  = state->get_state_bytes_as_int(4*pNext);
+    s0  = state->get_state_bytes_as_int(0);
+    pMN = state->get_state_bytes_as_int(4*(pNext + MersenneTwister::M - MersenneTwister::N));
     state->set_state_bytes_from_int(twist(pMN, p0, s0), 4, (MersenneTwister::N-1)*4);
 
     nextRandWord = 0;
@@ -78,7 +88,7 @@ uint32_t MersenneTwister::_read_random() {
         reload();
     }
 
-    uint32_t S1 = state->get_state_bytes_as_int(nextRandWord);
+    uint32_t S1 = state->get_state_bytes_as_int(4*nextRandWord);
     S1 ^= (S1 >> 11);
     S1 ^= (S1 <<  7) & 0x9d2c5680UL;
     S1 ^= (S1 << 15) & 0xefc60000UL;
