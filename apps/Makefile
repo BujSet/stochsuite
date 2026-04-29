@@ -25,8 +25,9 @@ all:
 	    $(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) $(PLATFORM_CFLAGS) util/latency.cpp -o util/latency.o; \
 	fi
 	@$(CPP) -I$(RNG_LIB) -I$(RNG_LIB)/verify $(RNG_OBJS) $(LFLAGS) verify/mt19937_test.cpp -o verify/mt19937_test.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/state_to_memh.cpp -o util/state_to_memh.o
 
 clean:
-	@rm -f *.o *.ppm *.bin *.hex
-	@rm -f util/*.o
+	@rm -f *.o *.ppm *.bin *.hex *.memh
+	@rm -f util/*.o util/*.memh
 	@rm -f verify/*.o

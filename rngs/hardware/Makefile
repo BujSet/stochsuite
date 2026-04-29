@@ -11,7 +11,7 @@ SCL ?= vsclib013
 
 # IVerilog Simulation
 sim: ${DUT}-sim
-	./$< +VCDFILE=sim.vcd +VCDLEVEL=0 | tee ${DUT}-sim.log
+	./$< +VCDFILE=sim.vcd +VCDLEVEL=0 +STOCH_HOME=${STOCHSUITE_HOME} | tee ${DUT}-sim.log
 
 ${DUT}-sim: ${DUT}_tb.v ${DUT}.v
 	${IVERILOG} -g2005-sv -s ${DUT}_tb -y ${XILINX_CELLS_DIR} -o $@ $^
@@ -23,7 +23,7 @@ ${DUT}.netlist.v: ${DUT}.v
 	${YOSYS} -p 'synth_xilinx -top ${DUT}' -p stat $< -L ${DUT}-synth-fpga.log -o $@
 
 gatesim: ./${DUT}-gatesim
-	./$< +VCDFILE=gatesim.vcd +VCDLEVEL=1 | tee ${DUT}-gatesim.log
+	./$< +VCDFILE=gatesim.vcd +VCDLEVEL=1 +STOCH_HOME=${STOCHSUITE_HOME} | tee ${DUT}-gatesim.log
 
 ${DUT}-gatesim: ${DUT}_tb.v ${DUT}.netlist.v
 	${IVERILOG} -g2005-sv -s ${DUT}_tb -DGATESIM -y ${XILINX_CELLS_DIR} -y ${XILINX_CELLS_DIR}/unisims -o $@ $^

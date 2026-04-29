@@ -1,0 +1,123 @@
+`ifndef __MERSENNE_TWISTER_19937_V__
+`define __MERSENNE_TWISTER_19937_V__
+
+`include "common/register.v"
+
+
+module twist (
+    input wire [31:0] m,
+    input wire [31:0] s0,
+    input wire [31:0] s1,
+    output wire [31:0] twisted
+);
+
+    localparam C1 = 'h9908b0df;
+
+    wire [31:0] mixBits, lowBitS1;
+    assign mixBits = {s0[31], s1[30:0]};
+    assign lowBitS1 = (~({{31'b0, s1[0]}}) + 1);
+
+    assign twisted = m ^ (mixBits >> 1) ^ (lowBitS1 & C1);
+endmodule
+
+module mt19937
+#(  parameter         num_state_words = 32'd624,
+    parameter         period          = 32'd397 
+)
+(
+    input wire        clk,         // clock
+    input wire        rst_n,       // active-low synchronous reset
+
+    input wire [31:0] seed,        // seed to reset state register S1
+    input wire        re_seed,     // active high to reset S1 with seed (S2 & S3 unchanged)
+
+    output wire [31:0] rnd         // random number output
+);
+
+    // mt19937 constants
+    localparam state_bitwidth = num_state_words* 32; // 624 32-bit words
+    localparam C1 = 'h9d2c5680;
+    localparam C2 = 'hefc60000;
+
+    reg [state_bitwidth-1:0] state;
+    wire [state_bitwidth-1:0] next_state;
+
+    reg [$clog2(num_state_words)-1:0] rnd_count;
+    wire [$clog2(num_state_words)-1:0] rnd_count_next;
+
+    assign rnd_count_next = (rnd_count == num_state_words-1) ? 0 : rnd_count + 1;
+
+    Register
+    #(
+        .NUM_BITS ($clog2(num_state_words)),
+        .RST_VAL  ({$clog2(num_state_words){1'b0}})
+    ) indexReg (
+        .clk        (clk),
+        .rst_n      (rst_n),
+        .write_data (rnd_count_next),
+        .read_data  (rnd_count)
+    );
+
+    // ---------- Full State Register --------------------
+    Register
+    #(
+        .NUM_BITS (state_bitwidth),
+        .RST_VAL  ({(state_bitwidth){1'b0}})
+    ) state_regs (
+        .clk        (clk),
+        .rst_n      (rst_n),
+        .write_data (next_state),
+        .read_data  (state)
+    );
+    // ---------------------------------------------------
+
+    // Next state logic 
+    wire [state_bitwidth-1:0] twisted_state;
+    genvar i;
+    generate
+        for (i = 0; i < num_state_words - period; i++) begin 
+            twist twistInst0 (
+                .m(state[(i + period)*32 +: 32]),
+                .s0(state[i*32 +: 32]),
+                .s1(state[(i + 1)*32 +: 32]),
+                .twisted(twisted_state[i*32 +: 32])
+            );
+        end
+        for (i = num_state_words - period; i < num_state_words - 1; i++) begin 
+            twist twistInst1 (
+                .m(state[(i + period - num_state_words)*32 +: 32]),
+                .s0(state[i*32 +: 32]),
+                .s1(state[(i+1)*32 +: 32]),
+                .twisted(twisted_state[i*32 +: 32])
+            );
+        end
+        twist twistInstLast (
+            .m(state[(period - 1)*32 +: 32]),
+            .s0(state[(num_state_words - 1)*32 +: 32]),
+            .s1(state[0 +: 32]),
+            .twisted(twisted_state[(num_state_words - 1)*32 +: 32])
+        );
+    endgenerate 
+    assign next_state[0 +:(num_state_words - period)*32] = (rnd_count == num_state_words - period) ?
+                        twisted_state[0 +:(num_state_words - period)*32] : state[0 +:(num_state_words - period)*32];
+
+    assign next_state[(num_state_words - period)*32 +: (period/2)*32] = (rnd_count == num_state_words - period + (period/2)) ?
+                        twisted_state[(num_state_words - period)*32 +: (period/2)*32] : state[(num_state_words - period)*32 +: (period/2)*32];
+
+    assign next_state[(num_state_words - period + (period/2))*32 +: (period/2)*32] = (rnd_count == num_state_words - 1) ?
+                        twisted_state[(num_state_words - period + (period/2))*32 +: (period/2)*32] : state[(num_state_words - period + (period/2))*32 +: (period/2)*32];
+    
+    assign next_state[(num_state_words - 1)*32 +: 32] = (rnd_count_next == 0) ? 
+                        twisted_state[(num_state_words - 1)*32 +: 32] : state[(num_state_words - 1)*32 +: 32];
+
+    // Output logic
+    wire [31:0] cur_state_word, S1, S2, S3;
+    assign cur_state_word = state[rnd_count*32 +: 32];
+    assign S1 = cur_state_word ^ (cur_state_word >> 11);
+    assign S2 = S1 ^ (S1 <<  7) & C1;
+    assign S3 = S2 ^ (S2 << 15) & C2;
+    assign rnd  = S3 ^ (S3 >> 18);
+
+endmodule
+
+`endif // __MERSENNE_TWISTER_19937_V__
