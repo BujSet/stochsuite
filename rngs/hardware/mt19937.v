@@ -83,7 +83,7 @@ module mt19937
                 .twisted(twisted_state[i*32 +: 32])
             );
         end
-        for (i = num_state_words - period; i < num_state_words; i++) begin 
+        for (i = num_state_words - period; i < num_state_words - 1; i++) begin 
             twist twistInst1 (
                 .m(state[(i + period - num_state_words)*32 +: 32]),
                 .s0(state[i*32 +: 32]),
