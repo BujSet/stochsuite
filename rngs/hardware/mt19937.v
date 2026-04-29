@@ -92,14 +92,23 @@ module mt19937
             );
         end
         twist twistInstLast (
-            .m(state[(num_state_words - 1)*32 +: 32]),
-            .s0(state[0 +: 32]),
-            .s1(state[(period)*32 +: 32]),
+            .m(state[(period - 1)*32 +: 32]),
+            .s0(state[(num_state_words - 1)*32 +: 32]),
+            .s1(state[0 +: 32]),
             .twisted(twisted_state[(num_state_words - 1)*32 +: 32])
         );
     endgenerate 
-    assign next_state = (rnd_count == num_state_words-1) ? 
-                        twisted_state : state;
+    assign next_state[0 +:(num_state_words - period)*32] = (rnd_count == num_state_words - period) ?
+                        twisted_state[0 +:(num_state_words - period)*32] : state[0 +:(num_state_words - period)*32];
+
+    assign next_state[(num_state_words - period)*32 +: (period/2)*32] = (rnd_count == num_state_words - period + (period/2)) ?
+                        twisted_state[(num_state_words - period)*32 +: (period/2)*32] : state[(num_state_words - period)*32 +: (period/2)*32];
+
+    assign next_state[(num_state_words - period + (period/2))*32 +: (period/2)*32] = (rnd_count == num_state_words - 1) ?
+                        twisted_state[(num_state_words - period + (period/2))*32 +: (period/2)*32] : state[(num_state_words - period + (period/2))*32 +: (period/2)*32];
+    
+    assign next_state[(num_state_words - 1)*32 +: 32] = (rnd_count_next == 0) ? 
+                        twisted_state[(num_state_words - 1)*32 +: 32] : state[(num_state_words - 1)*32 +: 32];
 
     // Output logic
     wire [31:0] cur_state_word, S1, S2, S3;
