@@ -48,12 +48,12 @@ int main(int argc, char *argv[]) {
         rng->read_random();
     }
 
-    std::ofstream outfile(rngStr + "_seed_" + std::to_string(seed) + "_reload_1.memh");
+    std::ofstream outfile_reload(rngStr + "_seed_" + std::to_string(seed) + "_reload_1.memh");
     for(int i = 0; i < 624; ++i) {
         // Write each integer in hex without the '0x' prefix
-        outfile << std::hex << rng->dump_state_word(4*i) << "\n"; 
+        outfile_reload << std::hex << rng->dump_state_word(4*i) << "\n"; 
     }
-    outfile.close();
+    outfile_reload.close();
 
 	return 0;
 }
