@@ -1,0 +1,757 @@
+desc: (none)
+cmd: ./pi.o -iters 100000000 -rng XorShift32 -seed 20020909
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=1626481
+mem_heap_B=73728
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=1632648
+mem_heap_B=74540
+mem_heap_extra_B=172
+mem_stacks_B=0
+heap_tree=detailed
+n2: 74540 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 73728 0x4955863: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x4004B13: call_init (dl-init.c:74)
+   n1: 73728 0x4004B13: call_init (dl-init.c:26)
+    n1: 73728 0x4004C23: _dl_init (dl-init.c:121)
+     n0: 73728 0x401AA77: (below main) (dl-start.S:46)
+ n0: 812 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=3
+#-----------
+time=1635754
+mem_heap_B=75116
+mem_heap_extra_B=268
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=1642412
+mem_heap_B=76268
+mem_heap_extra_B=460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=1649575
+mem_heap_B=77468
+mem_heap_extra_B=660
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1655562
+mem_heap_B=78716
+mem_heap_extra_B=868
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=1662058
+mem_heap_B=79868
+mem_heap_extra_B=1060
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=1667190
+mem_heap_B=80732
+mem_heap_extra_B=1204
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=1674627
+mem_heap_B=81980
+mem_heap_extra_B=1412
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=1680333
+mem_heap_B=82940
+mem_heap_extra_B=1572
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=1687004
+mem_heap_B=83996
+mem_heap_extra_B=1748
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=1691711
+mem_heap_B=84716
+mem_heap_extra_B=1868
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=1699168
+mem_heap_B=85964
+mem_heap_extra_B=2076
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=1704904
+mem_heap_B=86876
+mem_heap_extra_B=2228
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=1709103
+mem_heap_B=87500
+mem_heap_extra_B=2332
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=1715461
+mem_heap_B=88460
+mem_heap_extra_B=2492
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=1720131
+mem_heap_B=89180
+mem_heap_extra_B=2612
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=1726382
+mem_heap_B=90140
+mem_heap_extra_B=2772
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=1729001
+mem_heap_B=90524
+mem_heap_extra_B=2836
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=1734047
+mem_heap_B=91292
+mem_heap_extra_B=2964
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=1737848
+mem_heap_B=91868
+mem_heap_extra_B=3060
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=1744163
+mem_heap_B=92828
+mem_heap_extra_B=3220
+mem_stacks_B=0
+heap_tree=detailed
+n4: 92828 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 73728 0x4955863: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x4004B13: call_init (dl-init.c:74)
+   n1: 73728 0x4004B13: call_init (dl-init.c:26)
+    n1: 73728 0x4004C23: _dl_init (dl-init.c:121)
+     n0: 73728 0x401AA77: (below main) (dl-start.S:46)
+ n8: 15024 0x10EB7F: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >(std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>&&) (in /root/stochsuite/apps/pi.o)
+  n1: 1920 0x10DEFF: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1920 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1920 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1920 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1872 0x10DF1B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1872 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1872 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1872 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1872 0x10DF37: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1872 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1872 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1872 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1872 0x10DF53: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1872 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1872 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1872 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1872 0x10DF6F: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1872 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1872 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1872 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1872 0x10DF8B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1872 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1872 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1872 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1872 0x10DFA7: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1872 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1872 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1872 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1872 0x10DFC3: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1872 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1872 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1872 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+ n1: 3888 0x10E963: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int>, std::tuple<unsigned int, unsigned int, unsigned int>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int> >(std::tuple<unsigned int, unsigned int, unsigned int>&&) (in /root/stochsuite/apps/pi.o)
+  n0: 3888 in 81 places, all below massif's threshold (1.00%)
+ n0: 188 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=23
+#-----------
+time=1749334
+mem_heap_B=93596
+mem_heap_extra_B=3348
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=1755697
+mem_heap_B=94556
+mem_heap_extra_B=3508
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=1761117
+mem_heap_B=95324
+mem_heap_extra_B=3636
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=1764930
+mem_heap_B=95900
+mem_heap_extra_B=3732
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=1770147
+mem_heap_B=96668
+mem_heap_extra_B=3860
+mem_stacks_B=0
+heap_tree=detailed
+n4: 96668 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 73728 0x4955863: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x4004B13: call_init (dl-init.c:74)
+   n1: 73728 0x4004B13: call_init (dl-init.c:26)
+    n1: 73728 0x4004C23: _dl_init (dl-init.c:121)
+     n0: 73728 0x401AA77: (below main) (dl-start.S:46)
+ n8: 18864 0x10EB7F: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >(std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>&&) (in /root/stochsuite/apps/pi.o)
+  n1: 2400 0x10DEFF: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2400 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2400 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2400 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2352 0x10DF1B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2352 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2352 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2352 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2352 0x10DF37: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2352 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2352 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2352 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2352 0x10DF53: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2352 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2352 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2352 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2352 0x10DF6F: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2352 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2352 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2352 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2352 0x10DF8B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2352 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2352 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2352 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2352 0x10DFA7: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2352 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2352 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2352 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2352 0x10DFC3: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2352 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2352 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2352 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+ n1: 3888 0x10E963: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int>, std::tuple<unsigned int, unsigned int, unsigned int>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int> >(std::tuple<unsigned int, unsigned int, unsigned int>&&) (in /root/stochsuite/apps/pi.o)
+  n0: 3888 in 81 places, all below massif's threshold (1.00%)
+ n0: 188 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=28
+#-----------
+time=1774538
+mem_heap_B=97340
+mem_heap_extra_B=3972
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=1780996
+mem_heap_B=98300
+mem_heap_extra_B=4132
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=1785396
+mem_heap_B=98924
+mem_heap_extra_B=4236
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=1792065
+mem_heap_B=99884
+mem_heap_extra_B=4396
+mem_stacks_B=0
+heap_tree=detailed
+n4: 99884 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 73728 0x4955863: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x4004B13: call_init (dl-init.c:74)
+   n1: 73728 0x4004B13: call_init (dl-init.c:26)
+    n1: 73728 0x4004C23: _dl_init (dl-init.c:121)
+     n0: 73728 0x401AA77: (below main) (dl-start.S:46)
+ n8: 22080 0x10EB7F: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >(std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>&&) (in /root/stochsuite/apps/pi.o)
+  n1: 2784 0x10DEFF: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2784 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2784 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2784 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2784 0x10DF1B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2784 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2784 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2784 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2784 0x10DF37: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2784 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2784 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2784 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2784 0x10DF53: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2784 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2784 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2784 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2736 0x10DF6F: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2736 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2736 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2736 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2736 0x10DF8B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2736 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2736 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2736 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2736 0x10DFA7: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2736 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2736 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2736 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 2736 0x10DFC3: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 2736 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 2736 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 2736 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+ n1: 3888 0x10E963: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int>, std::tuple<unsigned int, unsigned int, unsigned int>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int> >(std::tuple<unsigned int, unsigned int, unsigned int>&&) (in /root/stochsuite/apps/pi.o)
+  n0: 3888 in 81 places, all below massif's threshold (1.00%)
+ n0: 188 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=32
+#-----------
+time=1796796
+mem_heap_B=100604
+mem_heap_extra_B=4516
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=1801261
+mem_heap_B=101228
+mem_heap_extra_B=4620
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=1808017
+mem_heap_B=102236
+mem_heap_extra_B=4788
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=1814528
+mem_heap_B=103148
+mem_heap_extra_B=4940
+mem_stacks_B=0
+heap_tree=detailed
+n4: 103148 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 73728 0x4955863: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x4004B13: call_init (dl-init.c:74)
+   n1: 73728 0x4004B13: call_init (dl-init.c:26)
+    n1: 73728 0x4004C23: _dl_init (dl-init.c:121)
+     n0: 73728 0x401AA77: (below main) (dl-start.S:46)
+ n8: 25344 0x10EB7F: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >(std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>&&) (in /root/stochsuite/apps/pi.o)
+  n1: 3168 0x10DEFF: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3168 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3168 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3168 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3168 0x10DF1B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3168 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3168 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3168 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3168 0x10DF37: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3168 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3168 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3168 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3168 0x10DF53: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3168 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3168 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3168 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3168 0x10DF6F: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3168 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3168 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3168 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3168 0x10DF8B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3168 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3168 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3168 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3168 0x10DFA7: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3168 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3168 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3168 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3168 0x10DFC3: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3168 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3168 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3168 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+ n1: 3888 0x10E963: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int>, std::tuple<unsigned int, unsigned int, unsigned int>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int> >(std::tuple<unsigned int, unsigned int, unsigned int>&&) (in /root/stochsuite/apps/pi.o)
+  n0: 3888 in 81 places, all below massif's threshold (1.00%)
+ n0: 188 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=36
+#-----------
+time=1818854
+mem_heap_B=103772
+mem_heap_extra_B=5044
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=1825447
+mem_heap_B=104732
+mem_heap_extra_B=5204
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=1830039
+mem_heap_B=105404
+mem_heap_extra_B=5316
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=1834351
+mem_heap_B=106028
+mem_heap_extra_B=5420
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=1838790
+mem_heap_B=106700
+mem_heap_extra_B=5532
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=1843392
+mem_heap_B=107372
+mem_heap_extra_B=5644
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=1849962
+mem_heap_B=108332
+mem_heap_extra_B=5804
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=1854371
+mem_heap_B=108908
+mem_heap_extra_B=5900
+mem_stacks_B=0
+heap_tree=peak
+n4: 108908 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 73728 0x4955863: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x4004B13: call_init (dl-init.c:74)
+   n1: 73728 0x4004B13: call_init (dl-init.c:26)
+    n1: 73728 0x4004C23: _dl_init (dl-init.c:121)
+     n0: 73728 0x401AA77: (below main) (dl-start.S:46)
+ n8: 31104 0x10EB7F: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >(std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>&&) (in /root/stochsuite/apps/pi.o)
+  n1: 3888 0x10DEFF: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3888 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3888 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3888 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3888 0x10DF1B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3888 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3888 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3888 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3888 0x10DF37: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3888 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3888 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3888 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3888 0x10DF53: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3888 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3888 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3888 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3888 0x10DF6F: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3888 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3888 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3888 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3888 0x10DF8B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3888 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3888 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3888 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3888 0x10DFA7: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3888 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3888 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3888 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3888 0x10DFC3: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3888 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3888 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3888 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+ n1: 3888 0x10E963: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int>, std::tuple<unsigned int, unsigned int, unsigned int>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int> >(std::tuple<unsigned int, unsigned int, unsigned int>&&) (in /root/stochsuite/apps/pi.o)
+  n0: 3888 in 81 places, all below massif's threshold (1.00%)
+ n0: 188 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=1858542
+mem_heap_B=105788
+mem_heap_extra_B=5380
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=1862714
+mem_heap_B=102764
+mem_heap_extra_B=4876
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=1866896
+mem_heap_B=99692
+mem_heap_extra_B=4364
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=1871022
+mem_heap_B=96668
+mem_heap_extra_B=3860
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=1875220
+mem_heap_B=93596
+mem_heap_extra_B=3348
+mem_stacks_B=0
+heap_tree=detailed
+n3: 93596 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 73728 0x4955863: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x4004B13: call_init (dl-init.c:74)
+   n1: 73728 0x4004B13: call_init (dl-init.c:26)
+    n1: 73728 0x4004C23: _dl_init (dl-init.c:121)
+     n0: 73728 0x401AA77: (below main) (dl-start.S:46)
+ n8: 19728 0x10EB7F: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >(std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>&&) (in /root/stochsuite/apps/pi.o)
+  n1: 3744 0x10DEFF: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3744 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3744 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3744 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3744 0x10DF37: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3744 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3744 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3744 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3696 0x10DF6F: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3696 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3696 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3696 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 3696 0x10DFA7: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 3696 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 3696 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 3696 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1248 0x10DFC3: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1248 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1248 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1248 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1200 0x10DF1B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1200 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1200 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1200 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1200 0x10DF53: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1200 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1200 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1200 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+  n1: 1200 0x10DF8B: XorShift32::_init_valid_configs() (in /root/stochsuite/apps/pi.o)
+   n1: 1200 0x10E143: XorShift32::XorShift32() (in /root/stochsuite/apps/pi.o)
+    n1: 1200 0x10BFFB: RNGFactory::createRNG(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (in /root/stochsuite/apps/pi.o)
+     n0: 1200 0x10A16B: main (in /root/stochsuite/apps/pi.o)
+ n0: 140 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=49
+#-----------
+time=1879404
+mem_heap_B=90524
+mem_heap_extra_B=2836
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=1882086
+mem_heap_B=88556
+mem_heap_extra_B=2508
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=1884712
+mem_heap_B=86636
+mem_heap_extra_B=2188
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=1887386
+mem_heap_B=84668
+mem_heap_extra_B=1860
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=1890022
+mem_heap_B=82748
+mem_heap_extra_B=1540
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=1892684
+mem_heap_B=80780
+mem_heap_extra_B=1212
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=1895353
+mem_heap_B=78812
+mem_heap_extra_B=884
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=1897984
+mem_heap_B=76892
+mem_heap_extra_B=564
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=1900611
+mem_heap_B=74972
+mem_heap_extra_B=244
+mem_stacks_B=0
+heap_tree=detailed
+n3: 74972 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 73728 0x4955863: ??? (in /usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x4004B13: call_init (dl-init.c:74)
+   n1: 73728 0x4004B13: call_init (dl-init.c:26)
+    n1: 73728 0x4004C23: _dl_init (dl-init.c:121)
+     n0: 73728 0x401AA77: (below main) (dl-start.S:46)
+ n1: 1104 0x10EB7F: std::pair<std::_Rb_tree_iterator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, bool> std::_Rb_tree<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>, std::_Identity<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::less<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >, std::allocator<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> > >::_M_insert_unique<std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool> >(std::tuple<unsigned int, unsigned int, unsigned int, bool, bool, bool>&&) (in /root/stochsuite/apps/pi.o)
+  n0: 1104 in 8 places, all below massif's threshold (1.00%)
+ n0: 140 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=58
+#-----------
+time=1903873
+mem_heap_B=74844
+mem_heap_extra_B=60
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=25258992743
+mem_heap_B=74840
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=25259006844
+mem_heap_B=1024
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty

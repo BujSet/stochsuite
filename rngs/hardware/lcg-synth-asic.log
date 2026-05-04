@@ -1,0 +1,1220 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+1. Executing Verilog-2005 frontend: lcg.v
+Parsing SystemVerilog input from `lcg.v' to AST representation.
+Storing AST representation for module `$abstract\Register'.
+Storing AST representation for module `$abstract\lcg'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+3. Executing AST frontend in derive mode using pre-parsed AST for module `\lcg'.
+Generating RTLIL representation for module `\lcg'.
+
+3.1. Analyzing design hierarchy..
+Top module:  \lcg
+Parameter \NUM_BITS = 32
+Parameter \RST_VAL = 1634404289
+
+3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\Register'.
+Parameter \NUM_BITS = 32
+Parameter \RST_VAL = 1634404289
+Generating RTLIL representation for module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+
+3.3. Analyzing design hierarchy..
+Top module:  \lcg
+Used module:     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register
+
+3.4. Analyzing design hierarchy..
+Top module:  \lcg
+Used module:     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register
+Removing unused module `$abstract\lcg'.
+Removing unused module `$abstract\Register'.
+Removed 2 unused modules.
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \lcg
+Used module:     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register
+
+4.1.2. Analyzing design hierarchy..
+Top module:  \lcg
+Used module:     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register
+Removed 0 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$67 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$65 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$63 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$61 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$59 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$57 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$55 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$53 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$51 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$49 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$47 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$45 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$43 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$41 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$39 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$37 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$35 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$33 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$31 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$29 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$27 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$25 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$23 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$21 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$19 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$17 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$15 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$13 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$11 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$9 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$7 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$5 in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 32 redundant assignments.
+Promoted 0 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~32 debug messages>
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$67'.
+     1/1: $0\mem[31:31]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$65'.
+     1/1: $0\mem[30:30]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$63'.
+     1/1: $0\mem[29:29]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$61'.
+     1/1: $0\mem[28:28]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$59'.
+     1/1: $0\mem[27:27]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$57'.
+     1/1: $0\mem[26:26]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$55'.
+     1/1: $0\mem[25:25]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$53'.
+     1/1: $0\mem[24:24]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$51'.
+     1/1: $0\mem[23:23]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$49'.
+     1/1: $0\mem[22:22]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$47'.
+     1/1: $0\mem[21:21]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$45'.
+     1/1: $0\mem[20:20]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$43'.
+     1/1: $0\mem[19:19]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$41'.
+     1/1: $0\mem[18:18]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$39'.
+     1/1: $0\mem[17:17]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$37'.
+     1/1: $0\mem[16:16]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$35'.
+     1/1: $0\mem[15:15]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$33'.
+     1/1: $0\mem[14:14]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$31'.
+     1/1: $0\mem[13:13]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$29'.
+     1/1: $0\mem[12:12]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$27'.
+     1/1: $0\mem[11:11]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$25'.
+     1/1: $0\mem[10:10]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$23'.
+     1/1: $0\mem[9:9]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$21'.
+     1/1: $0\mem[8:8]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$19'.
+     1/1: $0\mem[7:7]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$17'.
+     1/1: $0\mem[6:6]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$15'.
+     1/1: $0\mem[5:5]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$13'.
+     1/1: $0\mem[4:4]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$11'.
+     1/1: $0\mem[3:3]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$9'.
+     1/1: $0\mem[2:2]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$7'.
+     1/1: $0\mem[1:1]
+Creating decoders for process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$5'.
+     1/1: $0\mem[0:0]
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [31]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$67'.
+  created $dff cell `$procdff$165' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [30]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$65'.
+  created $dff cell `$procdff$166' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [29]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$63'.
+  created $dff cell `$procdff$167' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [28]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$61'.
+  created $dff cell `$procdff$168' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [27]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$59'.
+  created $dff cell `$procdff$169' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [26]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$57'.
+  created $dff cell `$procdff$170' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [25]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$55'.
+  created $dff cell `$procdff$171' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [24]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$53'.
+  created $dff cell `$procdff$172' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [23]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$51'.
+  created $dff cell `$procdff$173' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [22]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$49'.
+  created $dff cell `$procdff$174' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [21]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$47'.
+  created $dff cell `$procdff$175' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [20]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$45'.
+  created $dff cell `$procdff$176' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [19]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$43'.
+  created $dff cell `$procdff$177' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [18]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$41'.
+  created $dff cell `$procdff$178' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [17]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$39'.
+  created $dff cell `$procdff$179' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [16]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$37'.
+  created $dff cell `$procdff$180' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [15]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$35'.
+  created $dff cell `$procdff$181' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [14]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$33'.
+  created $dff cell `$procdff$182' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [13]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$31'.
+  created $dff cell `$procdff$183' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [12]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$29'.
+  created $dff cell `$procdff$184' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [11]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$27'.
+  created $dff cell `$procdff$185' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [10]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$25'.
+  created $dff cell `$procdff$186' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [9]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$23'.
+  created $dff cell `$procdff$187' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [8]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$21'.
+  created $dff cell `$procdff$188' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [7]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$19'.
+  created $dff cell `$procdff$189' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [6]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$17'.
+  created $dff cell `$procdff$190' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [5]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$15'.
+  created $dff cell `$procdff$191' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [4]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$13'.
+  created $dff cell `$procdff$192' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [3]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$11'.
+  created $dff cell `$procdff$193' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [2]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$9'.
+  created $dff cell `$procdff$194' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [1]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$7'.
+  created $dff cell `$procdff$195' with positive edge clock.
+Creating register for signal `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.\mem [0]' using process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$5'.
+  created $dff cell `$procdff$196' with positive edge clock.
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$67'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$67'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$65'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$65'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$63'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$63'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$61'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$61'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$59'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$59'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$57'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$57'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$55'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$55'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$53'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$53'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$51'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$51'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$49'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$49'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$47'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$47'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$45'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$45'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$43'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$43'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$41'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$41'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$39'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$39'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$37'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$37'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$35'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$35'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$33'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$33'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$31'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$31'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$29'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$29'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$27'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$27'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$25'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$25'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$23'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$23'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$21'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$21'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$19'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$19'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$17'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$17'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$15'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$15'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$13'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$13'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$11'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$11'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$9'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$9'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$7'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$7'.
+Found and cleaned up 1 empty switch in `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$5'.
+Removing empty process `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.$proc$common/register.v:21$5'.
+Cleaned up 32 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+<suppressed ~32 debug messages>
+Optimizing module lcg.
+<suppressed ~1 debug messages>
+
+4.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+Removed 32 unused cells and 99 unused wires.
+<suppressed ~34 debug messages>
+
+4.5. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register...
+Checking module lcg...
+Found and reported 0 problems.
+
+4.6. Executing OPT pass (performing simple optimizations).
+
+4.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \lcg..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~33 debug messages>
+
+4.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+  Optimizing cells in module \lcg.
+Performed a total of 0 changes.
+
+4.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+
+4.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.6.9. Finished OPT passes. (There is nothing left to do.)
+
+4.7. Executing FSM pass (extract and optimize FSM).
+
+4.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+4.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+4.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+
+4.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+4.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+4.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+4.8. Executing OPT pass (performing simple optimizations).
+
+4.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \lcg..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~33 debug messages>
+
+4.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+  Optimizing cells in module \lcg.
+Performed a total of 0 changes.
+
+4.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$196 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [0], Q = \mem [0], rval = 1'1).
+Adding SRST signal on $procdff$195 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [1], Q = \mem [1], rval = 1'0).
+Adding SRST signal on $procdff$194 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [2], Q = \mem [2], rval = 1'0).
+Adding SRST signal on $procdff$193 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [3], Q = \mem [3], rval = 1'0).
+Adding SRST signal on $procdff$192 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [4], Q = \mem [4], rval = 1'0).
+Adding SRST signal on $procdff$191 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [5], Q = \mem [5], rval = 1'0).
+Adding SRST signal on $procdff$190 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [6], Q = \mem [6], rval = 1'1).
+Adding SRST signal on $procdff$189 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [7], Q = \mem [7], rval = 1'1).
+Adding SRST signal on $procdff$188 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [8], Q = \mem [8], rval = 1'1).
+Adding SRST signal on $procdff$187 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [9], Q = \mem [9], rval = 1'1).
+Adding SRST signal on $procdff$186 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [10], Q = \mem [10], rval = 1'1).
+Adding SRST signal on $procdff$185 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [11], Q = \mem [11], rval = 1'0).
+Adding SRST signal on $procdff$184 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [12], Q = \mem [12], rval = 1'0).
+Adding SRST signal on $procdff$183 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [13], Q = \mem [13], rval = 1'0).
+Adding SRST signal on $procdff$182 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [14], Q = \mem [14], rval = 1'0).
+Adding SRST signal on $procdff$181 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [15], Q = \mem [15], rval = 1'0).
+Adding SRST signal on $procdff$180 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [16], Q = \mem [16], rval = 1'1).
+Adding SRST signal on $procdff$179 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [17], Q = \mem [17], rval = 1'1).
+Adding SRST signal on $procdff$178 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [18], Q = \mem [18], rval = 1'0).
+Adding SRST signal on $procdff$177 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [19], Q = \mem [19], rval = 1'1).
+Adding SRST signal on $procdff$176 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [20], Q = \mem [20], rval = 1'0).
+Adding SRST signal on $procdff$175 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [21], Q = \mem [21], rval = 1'1).
+Adding SRST signal on $procdff$174 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [22], Q = \mem [22], rval = 1'1).
+Adding SRST signal on $procdff$173 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [23], Q = \mem [23], rval = 1'0).
+Adding SRST signal on $procdff$172 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [24], Q = \mem [24], rval = 1'1).
+Adding SRST signal on $procdff$171 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [25], Q = \mem [25], rval = 1'0).
+Adding SRST signal on $procdff$170 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [26], Q = \mem [26], rval = 1'0).
+Adding SRST signal on $procdff$169 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [27], Q = \mem [27], rval = 1'0).
+Adding SRST signal on $procdff$168 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [28], Q = \mem [28], rval = 1'0).
+Adding SRST signal on $procdff$167 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [29], Q = \mem [29], rval = 1'1).
+Adding SRST signal on $procdff$166 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [30], Q = \mem [30], rval = 1'1).
+Adding SRST signal on $procdff$165 ($dff) from module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (D = \write_data [31], Q = \mem [31], rval = 1'0).
+
+4.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+Removed 32 unused cells and 32 unused wires.
+<suppressed ~33 debug messages>
+
+4.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \lcg..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+4.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+  Optimizing cells in module \lcg.
+Performed a total of 0 changes.
+
+4.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+
+4.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.8.16. Finished OPT passes. (There is nothing left to do.)
+
+4.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 47 bits (of 64) from port A of cell lcg.$mul$lcg.v:43$1 ($mul).
+Removed top 15 bits (of 64) from port Y of cell lcg.$mul$lcg.v:43$1 ($mul).
+Removed top 15 bits (of 64) from port A of cell lcg.$add$lcg.v:43$2 ($add).
+Removed top 43 bits (of 64) from port B of cell lcg.$add$lcg.v:43$2 ($add).
+Removed top 32 bits (of 64) from port Y of cell lcg.$add$lcg.v:43$2 ($add).
+Removed top 17 bits (of 49) from port A of cell lcg.$add$lcg.v:43$2 ($add).
+Removed top 17 bits (of 49) from port Y of cell lcg.$mul$lcg.v:43$1 ($mul).
+Removed top 32 bits (of 64) from wire lcg.$mul$lcg.v:43$1_Y.
+
+4.10. Executing PEEPOPT pass (run peephole optimizers).
+
+4.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+4.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module lcg:
+  creating $macc model for $add$lcg.v:43$2 ($add).
+  creating $macc model for $mul$lcg.v:43$1 ($mul).
+  merging $macc model for $mul$lcg.v:43$1 into $add$lcg.v:43$2.
+  creating $macc cell for $add$lcg.v:43$2: $auto$alumacc.cc:365:replace_macc$230
+  created 0 $alu and 1 $macc cells.
+
+4.13. Executing SHARE pass (SAT-based resource sharing).
+
+4.14. Executing OPT pass (performing simple optimizations).
+
+4.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \lcg..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+4.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+  Optimizing cells in module \lcg.
+Performed a total of 0 changes.
+
+4.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+Removed 1 unused cells and 1 unused wires.
+<suppressed ~2 debug messages>
+
+4.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \lcg..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+4.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+  Optimizing cells in module \lcg.
+Performed a total of 0 changes.
+
+4.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+
+4.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.14.16. Finished OPT passes. (There is nothing left to do.)
+
+4.15. Executing MEMORY pass.
+
+4.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+4.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+4.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+4.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+4.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+4.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+
+4.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+4.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+4.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+
+4.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+
+4.17. Executing OPT pass (performing simple optimizations).
+
+4.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+<suppressed ~3 debug messages>
+
+4.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+
+4.17.5. Finished fast OPT passes.
+
+4.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+4.19. Executing OPT pass (performing simple optimizations).
+
+4.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \lcg..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+4.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+  Optimizing cells in module \lcg.
+Performed a total of 0 changes.
+
+4.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+Removed a total of 0 cells.
+
+4.19.6. Executing OPT_SHARE pass.
+
+4.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+
+4.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.19.10. Finished OPT passes. (There is nothing left to do.)
+
+4.20. Executing TECHMAP pass (map to technology primitives).
+
+4.20.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+4.20.2. Continuing TECHMAP pass.
+Using extmapper maccmap for cells of type $macc.
+  add \s_cur * 17'10000110111001101 (32x17 bits, unsigned)
+  add 1234567 (32 bits, unsigned)
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $sdff.
+No more expansions possible.
+<suppressed ~538 debug messages>
+
+4.21. Executing OPT pass (performing simple optimizations).
+
+4.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+<suppressed ~2076 debug messages>
+
+4.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+<suppressed ~156 debug messages>
+Removed a total of 52 cells.
+
+4.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+Removed 70 unused cells and 272 unused wires.
+<suppressed ~71 debug messages>
+
+4.21.5. Finished fast OPT passes.
+
+4.22. Executing ABC pass (technology mapping using ABC).
+
+4.22.1. Extracting gate netlist of module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+4.22.2. Extracting gate netlist of module `\lcg' to `<abc-temp-dir>/input.blif'..
+Extracted 1252 gates and 1317 wires to a netlist network with 65 inputs and 32 outputs.
+
+4.22.2.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.22.2.2. Re-integrating ABC results.
+ABC RESULTS:               NOT cells:       39
+ABC RESULTS:              XNOR cells:      134
+ABC RESULTS:               AND cells:       40
+ABC RESULTS:              NAND cells:       21
+ABC RESULTS:             ORNOT cells:       40
+ABC RESULTS:                OR cells:      171
+ABC RESULTS:               NOR cells:       46
+ABC RESULTS:            ANDNOT cells:      396
+ABC RESULTS:               XOR cells:      362
+ABC RESULTS:               MUX cells:       32
+ABC RESULTS:        internal signals:     1220
+ABC RESULTS:           input signals:       65
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+
+4.23. Executing OPT pass (performing simple optimizations).
+
+4.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register.
+Optimizing module lcg.
+
+4.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register'.
+Finding identical cells in module `\lcg'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+4.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register..
+Finding unused cells or wires in module \lcg..
+Removed 0 unused cells and 234 unused wires.
+<suppressed ~1 debug messages>
+
+4.23.5. Finished fast OPT passes.
+
+4.24. Executing HIERARCHY pass (managing design hierarchy).
+
+4.24.1. Analyzing design hierarchy..
+Top module:  \lcg
+Used module:     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register
+
+4.24.2. Analyzing design hierarchy..
+Top module:  \lcg
+Used module:     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register
+Removed 0 unused modules.
+
+4.25. Printing statistics.
+
+=== $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register ===
+
+   Number of wires:                  5
+   Number of wire bits:             98
+   Number of public wires:           5
+   Number of public wire bits:      98
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 32
+     $_SDFF_PN0_                    18
+     $_SDFF_PN1_                    14
+
+=== lcg ===
+
+   Number of wires:               1255
+   Number of wire bits:           1473
+   Number of public wires:           9
+   Number of public wire bits:     227
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1279
+     $_ANDNOT_                     396
+     $_AND_                         40
+     $_MUX_                         32
+     $_NAND_                        21
+     $_NOR_                         46
+     $_NOT_                         39
+     $_ORNOT_                       40
+     $_OR_                         171
+     $_XNOR_                       131
+     $_XOR_                        362
+     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register      1
+
+=== design hierarchy ===
+
+   lcg                               1
+     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register      1
+
+   Number of wires:               1260
+   Number of wire bits:           1571
+   Number of public wires:          14
+   Number of public wire bits:     325
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1310
+     $_ANDNOT_                     396
+     $_AND_                         40
+     $_MUX_                         32
+     $_NAND_                        21
+     $_NOR_                         46
+     $_NOT_                         39
+     $_ORNOT_                       40
+     $_OR_                         171
+     $_SDFF_PN0_                    18
+     $_SDFF_PN1_                    14
+     $_XNOR_                       131
+     $_XOR_                        362
+
+4.26. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register...
+Checking module lcg...
+Found and reported 0 problems.
+
+5. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell dfnt1v0x2 (noninv, pins=3, area=18.00) is a direct match for cell type $_DFF_P_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \dfnt1v0x2 _DFF_P_ (.cp( C), .d( D), .z( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    unmapped dff cell: $_DFF_PN0_
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+5.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register':
+  mapped 32 $_DFF_P_ cells to \dfnt1v0x2 cells.
+Mapping DFF cells in module `\lcg':
+
+6. Executing ABC pass (technology mapping using ABC).
+
+6.1. Extracting gate netlist of module `$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register' to `<abc-temp-dir>/input.blif'..
+Extracted 32 gates and 67 wires to a netlist network with 33 inputs and 32 outputs.
+
+6.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /root/stochsuite/rngs/hardware/vsclib013.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "dfnt1v0x2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "lant1v0x05".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "lant1v0x1".
+ABC: Library "vsclib013" from "/root/stochsuite/rngs/hardware/vsclib013.lib" has 319 cells (3 skipped: 3 seq; 0 tri-state; 0 no func; 0 dont_use).  Time =     0.04 sec
+ABC: Memory =    8.11 MB. Time =     0.04 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "bsi2v2x1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.1.2. Re-integrating ABC results.
+ABC RESULTS:         nd2av0x05 cells:       14
+ABC RESULTS:          an2v0x05 cells:       18
+ABC RESULTS:        internal signals:        2
+ABC RESULTS:           input signals:       33
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+
+6.2. Extracting gate netlist of module `\lcg' to `<abc-temp-dir>/input.blif'..
+Extracted 1278 gates and 1343 wires to a netlist network with 65 inputs and 32 outputs.
+
+6.2.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /root/stochsuite/rngs/hardware/vsclib013.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "dfnt1v0x2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "lant1v0x05".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "lant1v0x1".
+ABC: Library "vsclib013" from "/root/stochsuite/rngs/hardware/vsclib013.lib" has 319 cells (3 skipped: 3 seq; 0 tri-state; 0 no func; 0 dont_use).  Time =     0.04 sec
+ABC: Memory =    8.11 MB. Time =     0.04 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "bsi2v2x1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.2.2. Re-integrating ABC results.
+ABC RESULTS:          nr4v1x05 cells:        2
+ABC RESULTS:      oai21a2v0x05 cells:        2
+ABC RESULTS:        cgi2cv0x05 cells:        3
+ABC RESULTS:        aon21v0x05 cells:        4
+ABC RESULTS:       cgi2abv0x05 cells:       12
+ABC RESULTS:          or2v0x05 cells:        5
+ABC RESULTS:          nd4v0x05 cells:        6
+ABC RESULTS:          iv1v0x05 cells:       28
+ABC RESULTS:          nd3v0x05 cells:        9
+ABC RESULTS:          an2v0x05 cells:       14
+ABC RESULTS:        nd3abv0x05 cells:        4
+ABC RESULTS:       aon21bv0x05 cells:       17
+ABC RESULTS:         xnr3v1x05 cells:       22
+ABC RESULTS:        nr3abv0x05 cells:       11
+ABC RESULTS:       aoi21bv0x05 cells:        4
+ABC RESULTS:       xaoi21v0x05 cells:       15
+ABC RESULTS:       xnai21v2x05 cells:       13
+ABC RESULTS:          nr2av0x1 cells:       23
+ABC RESULTS:          nr2v0x05 cells:       37
+ABC RESULTS:          nd2v0x05 cells:       56
+ABC RESULTS:          nr3v0x05 cells:       20
+ABC RESULTS:         nd2av0x05 cells:       25
+ABC RESULTS:       xoon21v0x05 cells:        6
+ABC RESULTS:       xaon21v0x05 cells:        7
+ABC RESULTS:        oan21v0x05 cells:        6
+ABC RESULTS:          an3v0x05 cells:        3
+ABC RESULTS:        oai31v0x05 cells:       10
+ABC RESULTS:        aoi21v0x05 cells:       17
+ABC RESULTS:        cgi2bv0x05 cells:       43
+ABC RESULTS:         cgi2v0x05 cells:       48
+ABC RESULTS:        oai21v0x05 cells:       53
+ABC RESULTS:         xor2v0x05 cells:       97
+ABC RESULTS:         mxi2v0x05 cells:        1
+ABC RESULTS:         xor3v1x05 cells:       84
+ABC RESULTS:         xnr2v0x05 cells:       56
+ABC RESULTS:       xooi21v0x05 cells:       28
+ABC RESULTS:         mxn2v0x05 cells:        4
+ABC RESULTS:        internal signals:     1246
+ABC RESULTS:           input signals:       65
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+Removed 0 unused cells and 1408 unused wires.
+
+7. Printing statistics.
+
+=== $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register ===
+
+   Number of wires:                 37
+   Number of wire bits:            130
+   Number of public wires:           5
+   Number of public wire bits:      98
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 64
+     an2v0x05                       18
+     dfnt1v0x2                      32
+     nd2av0x05                      14
+
+   Chip area for module '$paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register': 736.000000
+
+=== lcg ===
+
+   Number of wires:                772
+   Number of wire bits:            990
+   Number of public wires:           9
+   Number of public wire bits:     227
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                796
+     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register      1
+     an2v0x05                       14
+     an3v0x05                        3
+     aoi21bv0x05                     4
+     aoi21v0x05                     17
+     aon21bv0x05                    17
+     aon21v0x05                      4
+     cgi2abv0x05                    12
+     cgi2bv0x05                     43
+     cgi2cv0x05                      3
+     cgi2v0x05                      48
+     iv1v0x05                       28
+     mxi2v0x05                       1
+     mxn2v0x05                       4
+     nd2av0x05                      25
+     nd2v0x05                       56
+     nd3abv0x05                      4
+     nd3v0x05                        9
+     nd4v0x05                        6
+     nr2av0x1                       23
+     nr2v0x05                       37
+     nr3abv0x05                     11
+     nr3v0x05                       20
+     nr4v1x05                        2
+     oai21a2v0x05                    2
+     oai21v0x05                     53
+     oai31v0x05                     10
+     oan21v0x05                      6
+     or2v0x05                        5
+     xaoi21v0x05                    15
+     xaon21v0x05                     7
+     xnai21v2x05                    13
+     xnr2v0x05                      56
+     xnr3v1x05                      22
+     xooi21v0x05                    28
+     xoon21v0x05                     6
+     xor2v0x05                      97
+     xor3v1x05                      84
+
+   Area for cell type $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register is unknown!
+
+   Chip area for module '\lcg': 6195.000000
+
+=== design hierarchy ===
+
+   lcg                               1
+     $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register      1
+
+   Number of wires:                809
+   Number of wire bits:           1120
+   Number of public wires:          14
+   Number of public wire bits:     325
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                859
+     an2v0x05                       32
+     an3v0x05                        3
+     aoi21bv0x05                     4
+     aoi21v0x05                     17
+     aon21bv0x05                    17
+     aon21v0x05                      4
+     cgi2abv0x05                    12
+     cgi2bv0x05                     43
+     cgi2cv0x05                      3
+     cgi2v0x05                      48
+     dfnt1v0x2                      32
+     iv1v0x05                       28
+     mxi2v0x05                       1
+     mxn2v0x05                       4
+     nd2av0x05                      39
+     nd2v0x05                       56
+     nd3abv0x05                      4
+     nd3v0x05                        9
+     nd4v0x05                        6
+     nr2av0x1                       23
+     nr2v0x05                       37
+     nr3abv0x05                     11
+     nr3v0x05                       20
+     nr4v1x05                        2
+     oai21a2v0x05                    2
+     oai21v0x05                     53
+     oai31v0x05                     10
+     oan21v0x05                      6
+     or2v0x05                        5
+     xaoi21v0x05                    15
+     xaon21v0x05                     7
+     xnai21v2x05                    13
+     xnr2v0x05                      56
+     xnr3v1x05                      22
+     xooi21v0x05                    28
+     xoon21v0x05                     6
+     xor2v0x05                      97
+     xor3v1x05                      84
+
+   Chip area for top module '\lcg': 6931.000000
+
+8. Executing LTP pass (find longest path).
+
+Longest topological path in $paramod$b06405ef25bbbf58b2e6f1958517ef01c9e02d5f\Register (length=0):
+    0: \write_data [31]
+
+Longest topological path in lcg (length=1):
+    0: \s_wd [31]
+    1: \s_cur [0] (via state_reg)
+
+End of script. Logfile hash: cc827eee01, CPU: user 0.28s system 0.01s, MEM: 27.39 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 55% 2x abc (0 sec), 9% 17x opt_expr (0 sec), ...

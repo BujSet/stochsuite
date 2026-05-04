@@ -1,0 +1,1042 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+1. Executing Verilog-2005 frontend: xorshift32.v
+Parsing SystemVerilog input from `xorshift32.v' to AST representation.
+Storing AST representation for module `$abstract\Register'.
+Storing AST representation for module `$abstract\xorshift32'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+3. Executing AST frontend in derive mode using pre-parsed AST for module `\xorshift32'.
+Generating RTLIL representation for module `\xorshift32'.
+
+3.1. Analyzing design hierarchy..
+Top module:  \xorshift32
+Parameter \NUM_BITS = 32
+Parameter \RST_VAL = 0
+
+3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\Register'.
+Parameter \NUM_BITS = 32
+Parameter \RST_VAL = 0
+Generating RTLIL representation for module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+
+3.3. Analyzing design hierarchy..
+Top module:  \xorshift32
+Used module:     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register
+
+3.4. Analyzing design hierarchy..
+Top module:  \xorshift32
+Used module:     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register
+Removing unused module `$abstract\xorshift32'.
+Removing unused module `$abstract\Register'.
+Removed 2 unused modules.
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \xorshift32
+Used module:     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register
+
+4.1.2. Analyzing design hierarchy..
+Top module:  \xorshift32
+Used module:     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register
+Removed 0 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$70 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$68 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$66 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$64 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$62 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$60 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$58 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$56 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$54 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$52 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$50 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$48 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$46 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$44 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$42 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$40 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$38 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$36 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$34 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$32 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$30 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$28 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$26 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$24 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$22 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$20 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$18 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$16 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$14 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$12 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$10 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Marked 1 switch rules as full_case in process $proc$common/register.v:21$8 in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 32 redundant assignments.
+Promoted 0 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~32 debug messages>
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$70'.
+     1/1: $0\mem[31:31]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$68'.
+     1/1: $0\mem[30:30]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$66'.
+     1/1: $0\mem[29:29]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$64'.
+     1/1: $0\mem[28:28]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$62'.
+     1/1: $0\mem[27:27]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$60'.
+     1/1: $0\mem[26:26]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$58'.
+     1/1: $0\mem[25:25]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$56'.
+     1/1: $0\mem[24:24]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$54'.
+     1/1: $0\mem[23:23]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$52'.
+     1/1: $0\mem[22:22]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$50'.
+     1/1: $0\mem[21:21]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$48'.
+     1/1: $0\mem[20:20]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$46'.
+     1/1: $0\mem[19:19]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$44'.
+     1/1: $0\mem[18:18]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$42'.
+     1/1: $0\mem[17:17]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$40'.
+     1/1: $0\mem[16:16]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$38'.
+     1/1: $0\mem[15:15]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$36'.
+     1/1: $0\mem[14:14]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$34'.
+     1/1: $0\mem[13:13]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$32'.
+     1/1: $0\mem[12:12]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$30'.
+     1/1: $0\mem[11:11]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$28'.
+     1/1: $0\mem[10:10]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$26'.
+     1/1: $0\mem[9:9]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$24'.
+     1/1: $0\mem[8:8]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$22'.
+     1/1: $0\mem[7:7]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$20'.
+     1/1: $0\mem[6:6]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$18'.
+     1/1: $0\mem[5:5]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$16'.
+     1/1: $0\mem[4:4]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$14'.
+     1/1: $0\mem[3:3]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$12'.
+     1/1: $0\mem[2:2]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$10'.
+     1/1: $0\mem[1:1]
+Creating decoders for process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$8'.
+     1/1: $0\mem[0:0]
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [31]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$70'.
+  created $dff cell `$procdff$168' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [30]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$68'.
+  created $dff cell `$procdff$169' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [29]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$66'.
+  created $dff cell `$procdff$170' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [28]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$64'.
+  created $dff cell `$procdff$171' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [27]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$62'.
+  created $dff cell `$procdff$172' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [26]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$60'.
+  created $dff cell `$procdff$173' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [25]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$58'.
+  created $dff cell `$procdff$174' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [24]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$56'.
+  created $dff cell `$procdff$175' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [23]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$54'.
+  created $dff cell `$procdff$176' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [22]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$52'.
+  created $dff cell `$procdff$177' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [21]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$50'.
+  created $dff cell `$procdff$178' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [20]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$48'.
+  created $dff cell `$procdff$179' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [19]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$46'.
+  created $dff cell `$procdff$180' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [18]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$44'.
+  created $dff cell `$procdff$181' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [17]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$42'.
+  created $dff cell `$procdff$182' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [16]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$40'.
+  created $dff cell `$procdff$183' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [15]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$38'.
+  created $dff cell `$procdff$184' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [14]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$36'.
+  created $dff cell `$procdff$185' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [13]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$34'.
+  created $dff cell `$procdff$186' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [12]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$32'.
+  created $dff cell `$procdff$187' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [11]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$30'.
+  created $dff cell `$procdff$188' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [10]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$28'.
+  created $dff cell `$procdff$189' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [9]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$26'.
+  created $dff cell `$procdff$190' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [8]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$24'.
+  created $dff cell `$procdff$191' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [7]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$22'.
+  created $dff cell `$procdff$192' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [6]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$20'.
+  created $dff cell `$procdff$193' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [5]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$18'.
+  created $dff cell `$procdff$194' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [4]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$16'.
+  created $dff cell `$procdff$195' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [3]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$14'.
+  created $dff cell `$procdff$196' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [2]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$12'.
+  created $dff cell `$procdff$197' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [1]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$10'.
+  created $dff cell `$procdff$198' with positive edge clock.
+Creating register for signal `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.\mem [0]' using process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$8'.
+  created $dff cell `$procdff$199' with positive edge clock.
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$70'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$70'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$68'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$68'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$66'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$66'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$64'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$64'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$62'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$62'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$60'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$60'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$58'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$58'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$56'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$56'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$54'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$54'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$52'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$52'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$50'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$50'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$48'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$48'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$46'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$46'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$44'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$44'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$42'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$42'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$40'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$40'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$38'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$38'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$36'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$36'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$34'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$34'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$32'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$32'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$30'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$30'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$28'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$28'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$26'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$26'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$24'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$24'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$22'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$22'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$20'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$20'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$18'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$18'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$16'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$16'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$14'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$14'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$12'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$12'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$10'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$10'.
+Found and cleaned up 1 empty switch in `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$8'.
+Removing empty process `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.$proc$common/register.v:21$8'.
+Cleaned up 32 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+<suppressed ~32 debug messages>
+Optimizing module xorshift32.
+<suppressed ~3 debug messages>
+
+4.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+Removed 32 unused cells and 103 unused wires.
+<suppressed ~34 debug messages>
+
+4.5. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register...
+Checking module xorshift32...
+Found and reported 0 problems.
+
+4.6. Executing OPT pass (performing simple optimizations).
+
+4.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \xorshift32..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~33 debug messages>
+
+4.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+  Optimizing cells in module \xorshift32.
+Performed a total of 0 changes.
+
+4.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.6.9. Finished OPT passes. (There is nothing left to do.)
+
+4.7. Executing FSM pass (extract and optimize FSM).
+
+4.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+4.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+4.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+4.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+4.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+4.8. Executing OPT pass (performing simple optimizations).
+
+4.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \xorshift32..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~33 debug messages>
+
+4.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+  Optimizing cells in module \xorshift32.
+Performed a total of 0 changes.
+
+4.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$199 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [0], Q = \mem [0], rval = 1'0).
+Adding SRST signal on $procdff$198 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [1], Q = \mem [1], rval = 1'0).
+Adding SRST signal on $procdff$197 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [2], Q = \mem [2], rval = 1'0).
+Adding SRST signal on $procdff$196 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [3], Q = \mem [3], rval = 1'0).
+Adding SRST signal on $procdff$195 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [4], Q = \mem [4], rval = 1'0).
+Adding SRST signal on $procdff$194 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [5], Q = \mem [5], rval = 1'0).
+Adding SRST signal on $procdff$193 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [6], Q = \mem [6], rval = 1'0).
+Adding SRST signal on $procdff$192 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [7], Q = \mem [7], rval = 1'0).
+Adding SRST signal on $procdff$191 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [8], Q = \mem [8], rval = 1'0).
+Adding SRST signal on $procdff$190 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [9], Q = \mem [9], rval = 1'0).
+Adding SRST signal on $procdff$189 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [10], Q = \mem [10], rval = 1'0).
+Adding SRST signal on $procdff$188 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [11], Q = \mem [11], rval = 1'0).
+Adding SRST signal on $procdff$187 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [12], Q = \mem [12], rval = 1'0).
+Adding SRST signal on $procdff$186 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [13], Q = \mem [13], rval = 1'0).
+Adding SRST signal on $procdff$185 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [14], Q = \mem [14], rval = 1'0).
+Adding SRST signal on $procdff$184 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [15], Q = \mem [15], rval = 1'0).
+Adding SRST signal on $procdff$183 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [16], Q = \mem [16], rval = 1'0).
+Adding SRST signal on $procdff$182 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [17], Q = \mem [17], rval = 1'0).
+Adding SRST signal on $procdff$181 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [18], Q = \mem [18], rval = 1'0).
+Adding SRST signal on $procdff$180 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [19], Q = \mem [19], rval = 1'0).
+Adding SRST signal on $procdff$179 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [20], Q = \mem [20], rval = 1'0).
+Adding SRST signal on $procdff$178 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [21], Q = \mem [21], rval = 1'0).
+Adding SRST signal on $procdff$177 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [22], Q = \mem [22], rval = 1'0).
+Adding SRST signal on $procdff$176 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [23], Q = \mem [23], rval = 1'0).
+Adding SRST signal on $procdff$175 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [24], Q = \mem [24], rval = 1'0).
+Adding SRST signal on $procdff$174 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [25], Q = \mem [25], rval = 1'0).
+Adding SRST signal on $procdff$173 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [26], Q = \mem [26], rval = 1'0).
+Adding SRST signal on $procdff$172 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [27], Q = \mem [27], rval = 1'0).
+Adding SRST signal on $procdff$171 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [28], Q = \mem [28], rval = 1'0).
+Adding SRST signal on $procdff$170 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [29], Q = \mem [29], rval = 1'0).
+Adding SRST signal on $procdff$169 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [30], Q = \mem [30], rval = 1'0).
+Adding SRST signal on $procdff$168 ($dff) from module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (D = \write_data [31], Q = \mem [31], rval = 1'0).
+
+4.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+Removed 32 unused cells and 32 unused wires.
+<suppressed ~33 debug messages>
+
+4.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \xorshift32..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+4.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+  Optimizing cells in module \xorshift32.
+Performed a total of 0 changes.
+
+4.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.8.16. Finished OPT passes. (There is nothing left to do.)
+
+4.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 17 bits (of 32) from port B of cell xorshift32.$xor$xorshift32.v:44$4 ($xor).
+
+4.10. Executing PEEPOPT pass (run peephole optimizers).
+
+4.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module xorshift32:
+  created 0 $alu and 0 $macc cells.
+
+4.13. Executing SHARE pass (SAT-based resource sharing).
+
+4.14. Executing OPT pass (performing simple optimizations).
+
+4.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \xorshift32..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+4.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+  Optimizing cells in module \xorshift32.
+Performed a total of 0 changes.
+
+4.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.14.9. Finished OPT passes. (There is nothing left to do.)
+
+4.15. Executing MEMORY pass.
+
+4.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+4.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+4.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+4.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+4.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+4.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+4.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+4.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.17. Executing OPT pass (performing simple optimizations).
+
+4.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+<suppressed ~15 debug messages>
+
+4.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+4.17.5. Finished fast OPT passes.
+
+4.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+4.19. Executing OPT pass (performing simple optimizations).
+
+4.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \xorshift32..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+4.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+  Optimizing cells in module \xorshift32.
+Performed a total of 0 changes.
+
+4.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.19.6. Executing OPT_SHARE pass.
+
+4.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.19.10. Finished OPT passes. (There is nothing left to do.)
+
+4.20. Executing TECHMAP pass (map to technology primitives).
+
+4.20.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+4.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $sdff.
+No more expansions possible.
+<suppressed ~109 debug messages>
+
+4.21. Executing OPT pass (performing simple optimizations).
+
+4.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+
+4.21.5. Finished fast OPT passes.
+
+4.22. Executing ABC pass (technology mapping using ABC).
+
+4.22.1. Extracting gate netlist of module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register' to `<abc-temp-dir>/input.blif'..
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+4.22.2. Extracting gate netlist of module `\xorshift32' to `<abc-temp-dir>/input.blif'..
+Extracted 93 gates and 158 wires to a netlist network with 65 inputs and 32 outputs.
+
+4.22.2.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.22.2.2. Re-integrating ABC results.
+ABC RESULTS:              XNOR cells:       27
+ABC RESULTS:               XOR cells:       34
+ABC RESULTS:               MUX cells:       32
+ABC RESULTS:        internal signals:       61
+ABC RESULTS:           input signals:       65
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+
+4.23. Executing OPT pass (performing simple optimizations).
+
+4.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register.
+Optimizing module xorshift32.
+
+4.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register'.
+Finding identical cells in module `\xorshift32'.
+Removed a total of 0 cells.
+
+4.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register..
+Finding unused cells or wires in module \xorshift32..
+Removed 0 unused cells and 97 unused wires.
+<suppressed ~1 debug messages>
+
+4.23.5. Finished fast OPT passes.
+
+4.24. Executing HIERARCHY pass (managing design hierarchy).
+
+4.24.1. Analyzing design hierarchy..
+Top module:  \xorshift32
+Used module:     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register
+
+4.24.2. Analyzing design hierarchy..
+Top module:  \xorshift32
+Used module:     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register
+Removed 0 unused modules.
+
+4.25. Printing statistics.
+
+=== $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register ===
+
+   Number of wires:                  5
+   Number of wire bits:             98
+   Number of public wires:           5
+   Number of public wire bits:      98
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 32
+     $_SDFF_PN0_                    32
+
+=== xorshift32 ===
+
+   Number of wires:                 72
+   Number of wire bits:            320
+   Number of public wires:          11
+   Number of public wire bits:     259
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 94
+     $_MUX_                         32
+     $_XNOR_                        27
+     $_XOR_                         34
+     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register      1
+
+=== design hierarchy ===
+
+   xorshift32                        1
+     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register      1
+
+   Number of wires:                 77
+   Number of wire bits:            418
+   Number of public wires:          16
+   Number of public wire bits:     357
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                125
+     $_MUX_                         32
+     $_SDFF_PN0_                    32
+     $_XNOR_                        27
+     $_XOR_                         34
+
+4.26. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register...
+Checking module xorshift32...
+Found and reported 0 problems.
+
+5. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell dfnt1v0x2 (noninv, pins=3, area=18.00) is a direct match for cell type $_DFF_P_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \dfnt1v0x2 _DFF_P_ (.cp( C), .d( D), .z( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    unmapped dff cell: $_DFF_PN0_
+    unmapped dff cell: $_DFF_PN1_
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFSR_NNN_
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+5.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register':
+  mapped 32 $_DFF_P_ cells to \dfnt1v0x2 cells.
+Mapping DFF cells in module `\xorshift32':
+
+6. Executing ABC pass (technology mapping using ABC).
+
+6.1. Extracting gate netlist of module `$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register' to `<abc-temp-dir>/input.blif'..
+Extracted 32 gates and 66 wires to a netlist network with 33 inputs and 32 outputs.
+
+6.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /root/stochsuite/rngs/hardware/vsclib013.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "dfnt1v0x2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "lant1v0x05".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "lant1v0x1".
+ABC: Library "vsclib013" from "/root/stochsuite/rngs/hardware/vsclib013.lib" has 319 cells (3 skipped: 3 seq; 0 tri-state; 0 no func; 0 dont_use).  Time =     0.04 sec
+ABC: Memory =    8.11 MB. Time =     0.04 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "bsi2v2x1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.1.2. Re-integrating ABC results.
+ABC RESULTS:          an2v0x05 cells:       32
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       33
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+
+6.2. Extracting gate netlist of module `\xorshift32' to `<abc-temp-dir>/input.blif'..
+Extracted 93 gates and 158 wires to a netlist network with 65 inputs and 32 outputs.
+
+6.2.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /root/stochsuite/rngs/hardware/vsclib013.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.02 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "dfnt1v0x2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "lant1v0x05".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "lant1v0x1".
+ABC: Library "vsclib013" from "/root/stochsuite/rngs/hardware/vsclib013.lib" has 319 cells (3 skipped: 3 seq; 0 tri-state; 0 no func; 0 dont_use).  Time =     0.04 sec
+ABC: Memory =    8.11 MB. Time =     0.04 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "bsi2v2x1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+6.2.2. Re-integrating ABC results.
+ABC RESULTS:         xor2v0x05 cells:       17
+ABC RESULTS:         xor3v1x05 cells:       20
+ABC RESULTS:         mxn2v0x05 cells:       26
+ABC RESULTS:         xnr2v0x05 cells:       19
+ABC RESULTS:          nd2v0x05 cells:        6
+ABC RESULTS:        oai21v0x05 cells:        6
+ABC RESULTS:        internal signals:       61
+ABC RESULTS:           input signals:       65
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+Removed 0 unused cells and 223 unused wires.
+
+7. Printing statistics.
+
+=== $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register ===
+
+   Number of wires:                 37
+   Number of wire bits:            130
+   Number of public wires:           5
+   Number of public wire bits:      98
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 64
+     an2v0x05                       32
+     dfnt1v0x2                      32
+
+   Chip area for module '$paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register': 736.000000
+
+=== xorshift32 ===
+
+   Number of wires:                 73
+   Number of wire bits:            321
+   Number of public wires:          11
+   Number of public wire bits:     259
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 95
+     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register      1
+     mxn2v0x05                      26
+     nd2v0x05                        6
+     oai21v0x05                      6
+     xnr2v0x05                      19
+     xor2v0x05                      17
+     xor3v1x05                      20
+
+   Area for cell type $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register is unknown!
+
+   Chip area for module '\xorshift32': 850.000000
+
+=== design hierarchy ===
+
+   xorshift32                        1
+     $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register      1
+
+   Number of wires:                110
+   Number of wire bits:            451
+   Number of public wires:          16
+   Number of public wire bits:     357
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                158
+     an2v0x05                       32
+     dfnt1v0x2                      32
+     mxn2v0x05                      26
+     nd2v0x05                        6
+     oai21v0x05                      6
+     xnr2v0x05                      19
+     xor2v0x05                      17
+     xor3v1x05                      20
+
+   Chip area for top module '\xorshift32': 1586.000000
+
+8. Executing LTP pass (find longest path).
+
+Longest topological path in $paramod$1d525fe90bfdcc16af00a062cf09c181d6c17079\Register (length=0):
+    0: \write_data [31]
+
+Longest topological path in xorshift32 (length=1):
+    0: \s_wd [31]
+    1: \s_cur [0] (via state_reg)
+
+End of script. Logfile hash: 3d22bfbd77, CPU: user 0.15s system 0.01s, MEM: 25.15 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 59% 2x abc (0 sec), 10% 1x dfflibmap (0 sec), ...
