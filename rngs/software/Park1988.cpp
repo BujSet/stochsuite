@@ -5,7 +5,6 @@ Park1988::Park1988() : RNGBase(4) {
 }
 
 Park1988::Park1988(uint32_t seed): RNGBase(4) {
-    _name = name;
     state->set_state_bytes_from_int(seed, 4, 0);
 }
 
@@ -13,12 +12,17 @@ void Park1988::_seed_random(uint32_t new_seed) {
     state->set_state_bytes_from_int(new_seed, 4, 0);
 }
 
-
 std::string Park1988::name() {
     return "Park1988";
 }
 
-uint32_t LCG::_read_random(){
+double Park1988::read_random_double(){
+    uint32_t int_out = _read_random();
+    double result = 1.0 * int_out / Park1988::m;
+    return result;
+}
+
+uint32_t Park1988::_read_random(){
     uint32_t s = state->get_state_bytes_as_int(0);
     uint32_t hi, lo;
     int32_t test;
@@ -30,5 +34,5 @@ uint32_t LCG::_read_random(){
         s += Park1988::m;
     }
     state->set_state_bytes_from_int(s, 4, 0);
-    return s / Park1988::m;
+    return s;
 }

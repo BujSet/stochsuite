@@ -12,13 +12,12 @@ class Park1988: public RNGBase {
         Park1988(uint32_t seed);
         uint32_t _read_random() override;
         void _seed_random(uint32_t new_seed) override;
+        double read_random_double() override;
         std::string name() override;
 
         static const uint32_t a = 16807;
-        static const uint32_t m = ;
-        static const uint32_t q = ;
-        static const uint32_t r = ;
-    private:
-        std::string _name;
+        static const uint32_t m = 2147483647;
+        static const uint32_t q = 127773;
+        static const uint32_t r = 2836;
 };
 #endif // __PARK_AND_MILLER_1988_GENERATOR__
