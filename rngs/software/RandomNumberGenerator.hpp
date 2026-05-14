@@ -29,7 +29,7 @@ class RNGBase {
         virtual uint32_t MAX() { return 0xFFFFFFFF; };
         virtual uint32_t MIN() { return 0xFFFFFFFF; };
 
-        double read_random_double();
+        virtual double read_random_double();
 
         double gaussian_box_muller();
         double gaussian_box_muller(double mean, double stddev);

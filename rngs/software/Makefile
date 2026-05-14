@@ -23,6 +23,7 @@ all:
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) LCG.cpp -o LCG.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) MersenneTwister.cpp -o MersenneTwister.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) KISS11.cpp -o KISS11.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) Park1988.cpp -o Park1988.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) PCGBasic.cpp -o PCGBasic.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) HWRNG.cpp -o HWRNG.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) XorShift32.cpp -o XorShift32.o
