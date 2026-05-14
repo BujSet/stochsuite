@@ -18,6 +18,7 @@ all:
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) RNGFactory.cpp -o RNGFactory.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) Taus88.cpp -o Taus88.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) Taus113.cpp -o Taus113.o
+	@$(CPP) -I$(RNG_LIB) $(CFLAGS) UpCounter.cpp -o UpCounter.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) JKISS.cpp -o JKISS.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) JKISS32.cpp -o JKISS32.o
 	@$(CPP) -I$(RNG_LIB) $(CFLAGS) LCG.cpp -o LCG.o
