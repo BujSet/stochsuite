@@ -5,6 +5,8 @@
 #include <cstring>
 #include <iostream>
 #include <limits>
+#include <gem5/m5ops.h>
+#include "m5_mmap.h"
 
 int main(int argc, char *argv[]) {
 
@@ -67,8 +69,9 @@ int main(int argc, char *argv[]) {
 
     double rnd, resultantProb;
     size_t count = 0;
+    map_m5_mem();
+    m5_work_begin_addr(0, 0);
     for (size_t i = 0; i < niters; i++) {
-        // Begin ROI
         for (size_t j = 0; j < inputs; j++) {
             rnd = rng->read_random_double();
             if (rnd < dropProb) {
@@ -79,11 +82,11 @@ int main(int argc, char *argv[]) {
                 layer[j] /= (1.0 - dropProb);
             }
         }
-        // End ROI, reset
         for (size_t j = 0; j < inputs; j++) {
             layer[j] = 3.14;
         }
     }
+    m5_work_end_addr(0, 0);
     resultantProb = ((double)count) / ((double)niters*inputs);
     std::cout << "Dropped Outputs = " << resultantProb << std::endl;
     delete[] layer;
