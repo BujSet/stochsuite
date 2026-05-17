@@ -5,6 +5,10 @@
 #include <cstring>
 #include <iostream>
 #include <limits>
+#ifdef GEM5_FS
+#include <gem5/m5ops.h>
+#include "m5_mmap.h"
+#endif
 
 int main(int argc, char *argv[]) {
 
@@ -47,8 +51,10 @@ int main(int argc, char *argv[]) {
     std::cout << "Successfully initialized RNG: " << rng->name() << std::endl;
 
     rng->seed_random(seed);
-
-    // Begin ROI
+#ifdef GEM5_FS
+    map_m5_mem();
+    m5_work_begin_addr(0, 0);
+#endif
     for (size_t i = 0; i < niters; i++) {
         x = rng->read_random_double();
         y = rng->read_random_double();
@@ -58,8 +64,10 @@ int main(int argc, char *argv[]) {
         }
     }
     pi = 4.0 * ((double)count) / ((double)niters);
-    // End ROI
-    
+#ifdef GEM5_FS
+    m5_work_end_addr(0, 0);
+#endif
+
     std::cout << "pi = " << pi << std::endl;
 	return 0;
 }

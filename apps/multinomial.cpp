@@ -6,6 +6,10 @@
 #include <iostream>
 #include <limits>
 #include <memory>
+#ifdef GEM5_FS
+#include <gem5/m5ops.h>
+#include "m5_mmap.h"
+#endif
 
 void normalize(double *layer, bool *used, size_t len) {
     double sum = 0.0;
@@ -21,12 +25,12 @@ void normalize(double *layer, bool *used, size_t len) {
     }
 }
 
-void softmax_reset(double *layer, bool *used, size_t len, 
+void softmax_reset(double *layer, bool *used, size_t len,
     const std::unique_ptr<RNGBase>& rng) {
 
     for (size_t i = 0; i < len; i++) {
         layer[i] = rng->read_random_double();
-        used[i] = false; 
+        used[i] = false;
     }
     normalize(layer, used, len);
 
@@ -101,11 +105,16 @@ int main(int argc, char *argv[]) {
     double *results = new double[outputs];
 
     softmax_reset(layer, used, inputs, rng);
-    
+
     double rnd;
     double cdf = 0.0;
+#ifdef GEM5_FS
+    map_m5_mem();
+#endif
     if (!without_replacement) {
-        // Begin ROI
+#ifdef GEM5_FS
+        m5_work_begin_addr(0, 0);
+#endif
         for (size_t i = 0; i < niters; i++) {
             for (size_t j = 0; j < outputs; j++) {
                 rnd = rng->read_random_double();
@@ -119,17 +128,21 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-        // End ROI
+#ifdef GEM5_FS
+        m5_work_end_addr(0, 0);
+#endif
     } else {
-        // When sampling without replacement, we must renormalize after 
+        // When sampling without replacement, we must renormalize after
         // every draw to re-comput the cdf
+#ifdef GEM5_FS
+        m5_work_begin_addr(0, 0);
+#endif
         for (size_t i = 0; i < niters; i++) {
-            // Begin ROI
             for (size_t j = 0; j < outputs; j++) {
                 rnd = rng->read_random_double();
                 for (size_t k = 0; k < inputs; k++) {
                     if (used[k]) {
-                        // If we have already drawn a sample for this 
+                        // If we have already drawn a sample for this
                         // index, we can just skip to the next
                         continue;
                     }
@@ -143,9 +156,11 @@ int main(int argc, char *argv[]) {
                     }
                 }
             }
-            // End ROI
             softmax_reset(layer, used, inputs, rng);
         }
+#ifdef GEM5_FS
+        m5_work_end_addr(0, 0);
+#endif
     }
     delete[] layer;
     delete[] used;
