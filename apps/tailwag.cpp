@@ -5,8 +5,10 @@
 #include <cstring>
 #include <cassert>
 #include <cmath>
+#ifdef GEM5_FS
 #include <gem5/m5ops.h>
 #include "m5_mmap.h"
+#endif
 
 int main(int argc, char* argv[]) {
     size_t niters = 100;
@@ -93,8 +95,10 @@ int main(int argc, char* argv[]) {
 
     uint32_t distNum, noiseNum;
 
+#ifdef GEM5_FS
     map_m5_mem();
     m5_work_begin_addr(0, 0);
+#endif
     for (size_t i = 0; i < niters; i++) {
         distNum = rng->read_random_range(0, 999999, 10000000);
         if (block1Ave) {
@@ -119,7 +123,9 @@ int main(int argc, char* argv[]) {
             for (size_t b2 = 0; b2 < block2Cycle; b2++) block2Cnt++;
         }
     }
+#ifdef GEM5_FS
     m5_work_end_addr(0, 0);
+#endif
 
     size_t blocked = block1Cnt + block2Cnt;
     double blockPercentage = 100.0 * blocked / (blocked + freeCnt);

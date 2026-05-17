@@ -14,8 +14,10 @@ https://github.com/scratchapixel/scratchapixel-code/blob/main/monte-carlo-method
 #include <iostream>
 #include <cstring>
 #include <memory>
+#ifdef GEM5_FS
 #include <gem5/m5ops.h>
 #include "m5_mmap.h"
+#endif
 
 // sampling the H-G scattering phase function
 double getCosTheta(const double &g, const std::unique_ptr<RNGBase>& rng) {
@@ -158,15 +160,19 @@ int main(int argc, char *argv[]) {
     float *pixels = new float[image_size * image_size]; // image
 
     // Iterate for niters refinement passes
+#ifdef GEM5_FS
     map_m5_mem();
     m5_work_begin_addr(0, 0);
+#endif
     for (uint32_t npasses = 1; npasses < niters; npasses++) {
         MCSimulation(records, image_size, photons, rng);
         for (uint32_t i = 0; i < image_size * image_size; i++) {
             pixels[i] = records[i] / npasses;
         }
     }
+#ifdef GEM5_FS
     m5_work_end_addr(0, 0);
+#endif
 
     if (save_result) {
         // save image to file

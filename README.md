@@ -156,7 +156,7 @@ export STOCHSUITE_HOME=$GEM5_HOME/stochsuite
 
    ```
    cd $STOCHSUITE_HOME/apps/
-   make
+   make gem5_fs
    ```
 
 4. Obtain a base FS disk image. The cleanest option is to use gem5's
