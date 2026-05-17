@@ -77,6 +77,8 @@ trap cleanup EXIT
 # without the detach/reattach-with-offset trick that gem5img.py uses.
 LOOPDEV=$(losetup --find --partscan --show "$DISK_IMG")
 echo "attached $DISK_IMG to $LOOPDEV"
+sudo blockdev --setrw /dev/loop11
+sudo blockdev --setrw /dev/loop11p2
 
 # Wait for udev to create the partition device nodes.
 udevadm settle
@@ -108,12 +110,12 @@ if [[ -z "$PART" ]]; then
     exit 1
 fi
 
-mount "$PART" "$MOUNTPOINT"
+mount -o rw "$PART" "$MOUNTPOINT"
 MOUNTED=1
 echo "mounted $PART at $MOUNTPOINT"
 
 TARGET_DIR="$MOUNTPOINT/home/gem5/stochsuite"
-mkdir -p "$TARGET_DIR"
+sudo mkdir -p "$TARGET_DIR"
 
 for w in "${WORKLOADS[@]}"; do
     cp "$APPS_DIR/${w}.o" "$TARGET_DIR/${w}_gem5"
