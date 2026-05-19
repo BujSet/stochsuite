@@ -12,11 +12,11 @@
 #include"definitions.h"
 
 // Read data files (as preprocessed by code)
-#define X_matrix "X_ent.txt" //size MxN
-#define X_v_matrix "X_valida.txt" //size MxN
-#define b_vector "b_bh.txt" //size Nx1
-#define y_vector "y_train.txt" //size Mx1
-#define y_v_vector "y_val.txt" //size Mx1
+#define X_matrix "sgd/X_ent.txt" //size MxN
+#define X_v_matrix "sgd/X_valida.txt" //size MxN
+#define b_vector "sgd/b_bh.txt" //size Nx1
+#define y_vector "sgd/y_train.txt" //size Mx1
+#define y_v_vector "sgd/y_val.txt" //size Mx1
 
 void fill_matrix(array_2d_T p, const char *s){
     std::cout << "Top of fill matrix" << std::endl;
@@ -25,9 +25,16 @@ void fill_matrix(array_2d_T p, const char *s){
     std::cout << "Read m=" << m << ", n=" << n << std::endl;
 	FILE * pFile;
   	pFile = fopen (s,"r");
+    double *parr = p->arr;
+    if (!parr) {
+        std::cout << "parr is NULL!" << std::endl;
+    } else { 
+        std::cout << "parr is not null!" << std::endl;
+    }
+    std::cout << "parr[0]=" << parr[0] << std::endl;
   	for(int i=0;i<m;i++) {
 		for(int j=0;j<n;j++) {
-            std::cout << "Reading entry i=" << i << ", j=" << j << std::endl;
+           // std::cout << "Reading entry i=" << i << ", j=" << j << std::endl;
 			fscanf(pFile,"%lf", &value(p,i,j));
         }
     }
@@ -170,8 +177,12 @@ int main(int argc, char const *argv[]) {
     std::cout<< "Done with dimension assignments" << std::endl;
 
 // Fill our structures with our data from .txt files
-    std::cout<< "Malloc call for X matrix" << std::endl;
+    std::cout<< "Malloc call for X matrix with rows=" << rows(X) << " and cols=" << columns(X) << std::endl;
 	values(X)=(double*)malloc(rows(X)*columns(X)*sizeof(double));
+    if (!(X->arr)) {
+        std::cout << "Malloc return null!" << std::endl;
+        return 1;
+    }
     std::cout<< "Filling the X matrix" << std::endl;
 	fill_matrix(X,X_matrix);
 
