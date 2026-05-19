@@ -10,6 +10,7 @@ apps/*_results.txt
 apps/*_results.csv
 apps/sgd/*.txt
 apps/sgd/*.csv
+apps/sgd/*.o
 apps/sim.logcd
 apps/sim.logpwd
 .vscode/
