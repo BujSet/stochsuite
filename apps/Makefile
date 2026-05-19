@@ -26,10 +26,11 @@ all:
 	fi
 	@$(CPP) -I$(RNG_LIB) -I$(RNG_LIB)/verify $(RNG_OBJS) $(LFLAGS) verify/mt19937_test.cpp -o verify/mt19937_test.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/state_to_memh.cpp -o util/state_to_memh.o
-	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) sgd/sgd.cpp sgd/functions.c -o sgd/sgd.out -lblas -lm
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) sgd/sgd.cpp sgd/functions.c -o sgd/sgd.o -lblas -lm
     
 
 clean:
 	@rm -f *.o *.ppm *.bin *.hex *.memh
 	@rm -f util/*.o util/*.memh
+	@rm -f sgd/*.o
 	@rm -f verify/*.o

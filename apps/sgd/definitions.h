@@ -25,8 +25,7 @@ typedef array_1d *array_1d_T;
 //functions
 void print_vector(array_1d_T);
 void print_matrix(array_2d_T);
-void fill_matrix(array_2d_T, char *);
-void fill_vector(array_1d_T, char *);
+void fill_vector(array_1d_T, const char *);
 void print_vector_integer(array_1d_T);
 void fill_batch(array_2d_T, array_2d_T, array_1d_T, array_1d_T);
 void fill_zeros(array_1d_T,int);

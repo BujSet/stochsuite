@@ -3,17 +3,7 @@
 #include <string.h>
 #include"definitions.h"
 static int i,j;
-void fill_matrix(array_2d_T p, char *s){
-	int m = rows(p);
-	int n = columns(p);
-	FILE * pFile;
-  	pFile = fopen (s,"r");
-  	for(i=0;i<m;i++)
-		for(j=0;j<n;j++)
-			fscanf(pFile,"%lf", &value(p,i,j));
-	fclose(pFile);
-}
-void fill_vector(array_1d_T p, char *s){
+void fill_vector(array_1d_T p, const char *s){
 	int m = rows_vector(p);
 	FILE * pFile;
   	pFile = fopen (s,"r");
