@@ -126,6 +126,7 @@ int main(int argc, char const *argv[]) {
 
     //size_t niters = 100;
     uint32_t seed = 12312332;
+    int iter=200;//atoi(argv[5]);
     std::string rngStr = "Taus88";
     //size_t M = 3999805;      // Number of rows for training 
     //size_t N = 39;           // Number of columns
@@ -134,6 +135,30 @@ int main(int argc, char const *argv[]) {
 	int incx=1;
     double lr=-0.001;        // Learning rate
     double ALPHA, BETA;
+    if (argc > 1) {
+        if (argc > 7) {
+            std::cout << "usage: ./" << argv[0] << " -seed <SEED> ";
+            std::cout << " -iters <NUM_ITERS> -rng <RNG>" << std::endl;
+            return 1;
+        }
+        for (size_t i = 0; i < (size_t)argc; i++) {
+            if (strcmp("-seed", argv[i]) == 0) {
+                assert(i + 1 < (size_t)argc);
+                seed = (uint32_t) strtol(argv[i+1], NULL, 10);
+                i++;
+            }
+            if (strcmp("-iters", argv[i]) == 0) {
+                assert(i + 1 < (size_t)argc);
+                iter = (int) strtol(argv[i+1], NULL, 10);
+                i++;
+            }
+            if (strcmp("-rng", argv[i]) == 0) {
+                assert(i + 1 < (size_t)argc);
+                rngStr = (std::string) argv[i+1];
+                i++;
+            }
+        }
+    }
 
     std::unique_ptr<RNGBase> rng = RNGFactory::createRNG(rngStr);
     if (!rng) {
@@ -156,7 +181,6 @@ int main(int argc, char const *argv[]) {
   // Read batch size
   int batch_size=256;//atoi(argv[4]);
   // Read number of iterations
-  int iter=200;//atoi(argv[5]);
   // Read learning rate value
 
 
