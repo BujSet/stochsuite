@@ -1,5 +1,3 @@
-#include "RNGFactory.hpp"
-#include "RandomNumberGenerator.hpp"
 #include <cassert>
 #include <cmath>
 #include <limits>
@@ -126,9 +124,28 @@ void daxpy_(const int *n, const double *alpha, const double *x, const int *incx,
 
 int main(int argc, char const *argv[]) {
 
+    //size_t niters = 100;
+    uint32_t seed = 12312332;
+    std::string rngStr = "Taus88";
+    //size_t M = 3999805;      // Number of rows for training 
+    //size_t N = 39;           // Number of columns
+    //size_t M_v = 1714203;    // Number of rows for validation
+    //size_t batch_size = 256; // Batch size for training
+	int incx=1;
+    double lr=-0.001;        // Learning rate
+    double ALPHA, BETA;
+
+    std::unique_ptr<RNGBase> rng = RNGFactory::createRNG(rngStr);
+    if (!rng) {
+        std::cout << "Failed to instantiate RNG instance!" << std::endl;
+        return 1;
+    }
+    std::cout << "Successfully initialized RNG: " << rng->name() << std::endl;
+
+    rng->seed_random(seed);
     std::cout<< "Top of main" << std::endl;
-  // Declaration of structures to store data
-  array_2d_T X, X_v, batch;
+    // Declaration of structures to store data
+    array_2d_T X, X_v, batch;
 	array_1d_T y, y_v, b, g, y_b, rmse, rmse_v;
 
 
@@ -141,10 +158,6 @@ int main(int argc, char const *argv[]) {
   // Read number of iterations
   int iter=200;//atoi(argv[5]);
   // Read learning rate value
-  double lr=-0.001;//atof(argv[6]);
-
-	int incx=1;
-  double ALPHA, BETA;
 
 
     std::cout<< "Beginning malloc calls" << std::endl;
@@ -217,7 +230,7 @@ for(int it = 0; it < iter; it++){
   fill_vector(y_v,y_v_vector);
   
   // Fill batch matrix. This step is what makes this algorithm stochastic as it randomly chooses a fixed number of records to train on every iteration
-  fill_batch(batch, X, y_b, y);
+  fill_batch(batch, X, y_b, y, *rng);
 
 // Calculate prediction error: e = - X %*% b + y
 // Because of how dgemv function was programmed, vector y is overwrittten by result e (which is why we re-fill the y vector every iteration)

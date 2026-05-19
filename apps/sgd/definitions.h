@@ -1,4 +1,6 @@
 //2darray:
+#include "RNGFactory.hpp"
+#include "RandomNumberGenerator.hpp"
 typedef struct{
 int m, n;
 #define rows(array) ((array)->m)
@@ -27,5 +29,5 @@ void print_vector(array_1d_T);
 void print_matrix(array_2d_T);
 void fill_vector(array_1d_T, const char *);
 void print_vector_integer(array_1d_T);
-void fill_batch(array_2d_T, array_2d_T, array_1d_T, array_1d_T);
+void fill_batch(array_2d_T, array_2d_T, array_1d_T, array_1d_T, RNGBase& rng);
 void fill_zeros(array_1d_T,int);
