@@ -1,0 +1,23 @@
+# 1. Read source and check design hierarchy
+read_verilog lcg.v
+hierarchy -check -top lcg
+
+# 2. Translate behavioral RTL into coarse internal logic structures
+synth -top lcg
+
+# 3. Read target cell definitions
+read_liberty -lib vsclib013.lib
+
+# 4. Map the internal sequential flip-flops to vsclib013 standard cells
+dfflibmap -liberty vsclib013.lib
+
+# 5. Map the remaining combinational logic paths
+abc -liberty vsclib013.lib
+
+# 6. Format and clean structural syntax for OpenSTA
+simplemap
+splitnets -ports
+opt_clean -purge
+
+# 7. Export clean structural netlist
+write_verilog -noattr -noexpr -nohex lcg_synthesized_netlist.v
