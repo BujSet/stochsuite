@@ -9,20 +9,20 @@ synth -top lcg
 # vsclib013.lib
 # NangateOpenCellLibrary_45nm_typical.lib
 # NanGate_15nm_OCL_typical_conditional_nldm.lib
-read_liberty -lib NangateOpenCellLibrary_45nm_typical.lib
+read_liberty -lib vsclib013.lib
 
 # 4. Map the internal sequential flip-flops to vsclib013 standard cells
-dfflibmap -liberty NangateOpenCellLibrary_45nm_typical.lib
+dfflibmap -liberty vsclib013.lib
 
 # 5. Map the remaining combinational logic paths
-abc -liberty NangateOpenCellLibrary_45nm_typical.lib -D 4000 -constr abc_constraints.txt
+abc -liberty vsclib013.lib -D 4000 -constr abc_constraints.txt
 
 # 6. Format and clean structural syntax for OpenSTA
 simplemap
 splitnets -ports
 opt_clean -purge
 
-stat -liberty NangateOpenCellLibrary_45nm_typical.lib
+stat -liberty vsclib013.lib
 
 # 7. Export clean structural netlist
 write_verilog -noattr -noexpr -nohex lcg_synthesized_netlist.v

@@ -1,7 +1,7 @@
 set_cmd_units -time ps -capacitance ff -current mA -voltage V -resistance kOhm
 
 # OpenSTA script (run_sta.tcl)
-read_liberty NangateOpenCellLibrary_45nm_typical.lib
+read_liberty vsclib013.lib
 read_verilog lcg_synthesized_netlist.v
 link_design lcg
 
