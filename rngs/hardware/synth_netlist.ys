@@ -5,19 +5,24 @@ hierarchy -check -top lcg
 # 2. Translate behavioral RTL into coarse internal logic structures
 synth -top lcg
 
-# 3. Read target cell definitions
-read_liberty -lib vsclib013.lib
+# 3. Read target cell definitions. Successfully tested options:
+# vsclib013.lib
+# NangateOpenCellLibrary_45nm_typical.lib
+# NanGate_15nm_OCL_typical_conditional_nldm.lib
+read_liberty -lib NangateOpenCellLibrary_45nm_typical.lib
 
 # 4. Map the internal sequential flip-flops to vsclib013 standard cells
-dfflibmap -liberty vsclib013.lib
+dfflibmap -liberty NangateOpenCellLibrary_45nm_typical.lib
 
 # 5. Map the remaining combinational logic paths
-abc -liberty vsclib013.lib
+abc -liberty NangateOpenCellLibrary_45nm_typical.lib -D 4000 -constr abc_constraints.txt
 
 # 6. Format and clean structural syntax for OpenSTA
 simplemap
 splitnets -ports
 opt_clean -purge
+
+stat -liberty NangateOpenCellLibrary_45nm_typical.lib
 
 # 7. Export clean structural netlist
 write_verilog -noattr -noexpr -nohex lcg_synthesized_netlist.v

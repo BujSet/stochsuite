@@ -5,3 +5,11 @@
 	path = gem5_sim/gem5
     url = https://github.com/pi-dee/stochsuite_gem5.git
 	branch =more_details
+[submodule "cudd"]
+	path = cudd
+	url = https://github.com/cuddorg/cudd.git
+[submodule "OpenSTA"]
+	path = OpenSTA
+	url = https://github.com/parallaxsw/OpenSTA.git
+[submodule "cudd/"]
+	branch = 3.0.0
