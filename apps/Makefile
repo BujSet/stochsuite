@@ -1,5 +1,5 @@
 include $(STOCHSUITE_HOME)/stochsuite.mk
-RNG_OBJS := $(wildcard $(RNG_LIB)/*.o) 
+RNG_OBJS := $(wildcard $(RNG_LIB)/*.o)
 
 ifeq ($(OS), Linux)
     ifeq ($(ARCH), x86_64)
@@ -11,23 +11,28 @@ ifeq ($(OS), Linux)
 endif
 
 all:
-	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) pi.cpp -o pi.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_FS) pi.cpp -o pi.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/correctness.cpp -o util/correctness.o
-	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) dropout.cpp -o dropout.o
-	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) multinomial.cpp -o multinomial.o
-	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) dop.cpp -o dop.o
-	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) photon.cpp -o photon.o
-	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) tailwag.cpp -o tailwag.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_FS) dropout.cpp -o dropout.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_FS) multinomial.cpp -o multinomial.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_FS) dop.cpp -o dop.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_FS) photon.cpp -o photon.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_FS) tailwag.cpp -o tailwag.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/to_stdout.cpp -o util/to_stdout.o
 	@if [ -f  /.dockerenv ]; then \
 		echo "[WARN] Detected docker environment, skipping build of latency.o..."; \
 	else \
 	    $(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) $(PLATFORM_CFLAGS) util/latency.cpp -o util/latency.o; \
 	fi
-	@$(CPP) -I$(RNG_LIB) -I$(RNG_LIB)/verify $(RNG_OBJS) $(LFLAGS) verify/mt19937_test.cpp -o verify/mt19937_test.o
-	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/state_to_memh.cpp -o util/state_to_memh.o
+
+gem5_fs:
+	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) pi.cpp $(M5OPS_LIBS) -o pi.o
+	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) dropout.cpp $(M5OPS_LIBS) -o dropout.o
+	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) multinomial.cpp $(M5OPS_LIBS) -o multinomial.o
+	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) dop.cpp $(M5OPS_LIBS) -o dop.o
+	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) photon.cpp $(M5OPS_LIBS) -o photon.o
+	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) tailwag.cpp $(M5OPS_LIBS) -o tailwag.o
 
 clean:
-	@rm -f *.o *.ppm *.bin *.hex *.memh
-	@rm -f util/*.o util/*.memh
-	@rm -f verify/*.o
+	@rm -f *.o *.ppm *.bin *.hex
+	@rm -f util/*.o
