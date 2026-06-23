@@ -8,11 +8,16 @@
 #include <iostream>
 #include <cstring>
 #include <memory>
+#ifndef GEM5_SE_MODE
+#include <gem5/m5ops.h>
+#include "m5_mmap.h"
+#endif
 
 // This is the Heaviside step function, named after English
 // mathematician Oliver Heaviside. It returns unity when val
 // is greater than or equal to zero and returns zero otherwise
-double heaviside(const double& val) {
+__attribute__((noinline)) double heaviside(const double& val) {
+  asm volatile(".globl __stoch_br_dop\n__stoch_br_dop:");
   if (val >= 0) {
       return 1.0;
   } else {
@@ -27,13 +32,13 @@ double monte_carlo_digital_call_price(const int& num_sims, const double& S,
     double S_adjust = S * exp(T*(r-0.5*v*v));
     double S_cur = 0.0;
     double payoff_sum = 0.0;
-  
+
         for (int i=0; i<num_sims; i++) {
             double gauss_bm = rng->gaussian_box_muller();
             S_cur = S_adjust * exp(sqrt(v*v*T)*gauss_bm);
             payoff_sum += heaviside(S_cur - K);
         }
-  
+
     return (payoff_sum / static_cast<double>(num_sims)) * exp(-r*T);
 }
 
@@ -55,24 +60,16 @@ double monte_carlo_digital_put_price(const int& num_sims, const double& S,
 }
 
 int main(int argc, char **argv) {
-    // First we create the parameter list                                                                               
+    // First we create the parameter list
     uint32_t num_sims = 10000000;   // Number of simulated asset paths
     uint32_t seed = 123141323;
     std::string rngStr = "Taus88";
 
-    double S = 100.0;  // Option price                                                                                  
-    double K = 100.0;  // Strike price                                                                                  
-    double r = 0.05;   // Risk-free rate (5%)                                                                           
-    double v = 0.2;    // Volatility of the underlying (20%)                                                            
-    double T = 1.0;    // One year until expiry                                                                         
-    std::unique_ptr<RNGBase> rng = RNGFactory::createRNG(rngStr);
-    if (!rng) {
-        std::cout << "Failed to instantiate RNG instance!" << std::endl;
-        return 1;
-    }
-    std::cout << "Successfully initialized RNG: " << rng->name() << std::endl;
-
-    rng->seed_random(seed);
+    double S = 100.0;  // Option price
+    double K = 100.0;  // Strike price
+    double r = 0.05;   // Risk-free rate (5%)
+    double v = 0.2;    // Volatility of the underlying (20%)
+    double T = 1.0;    // One year until expiry
     if (argc > 1) {
         if (argc > 7) {
             std::cout << "Usage: ./" << argv[0] << " -seed <SEED>";
@@ -99,11 +96,27 @@ int main(int argc, char **argv) {
             }
         }
     }
-    // Then we calculate the call/put values via Monte Carlo                                                                          
+
+    std::unique_ptr<RNGBase> rng = RNGFactory::createRNG(rngStr);
+    if (!rng) {
+        std::cout << "Failed to instantiate RNG instance!" << std::endl;
+        return 1;
+    }
+    std::cout << "Successfully initialized RNG: " << rng->name() << std::endl;
+
+    rng->seed_random(seed);
+    // Then we calculate the call/put values via Monte Carlo
+#ifndef GEM5_SE_MODE
+    map_m5_mem();
+    m5_work_begin_addr(0, 0);
+#endif
     double call = monte_carlo_digital_call_price(num_sims, S, K, r, v, T, rng);
     double put = monte_carlo_digital_put_price(num_sims, S, K, r, v, T, rng);
+#ifndef GEM5_SE_MODE
+    m5_work_end_addr(0, 0);
+#endif
     // Finally we output the parameters and prices
-        
+
     std::cout << "Number of Paths: " << num_sims << std::endl;
     std::cout << "Underlying:      " << S << std::endl;
     std::cout << "Strike:          " << K << std::endl;
@@ -113,6 +126,6 @@ int main(int argc, char **argv) {
 
     std::cout << "Call Price:      " << call << std::endl;
     std::cout << "Put Price:       " << put << std::endl;
-    
+
     return 0;
 }
