@@ -2,12 +2,17 @@ rngs/software/*.o
 apps/*.o
 apps/util/*.o
 apps/util/*.memh
+apps/util/sw_latencies.pdf
+apps/util/latency_stats.csv
 apps/verify/*.o
 apps/*.ppm
 apps/*.bin
 apps/*.hex
 apps/*_results.txt
 apps/*_results.csv
+apps/sgd/*.txt
+apps/sgd/*.csv
+apps/sgd/*.o
 apps/sim.logcd
 apps/sim.logpwd
 .vscode/

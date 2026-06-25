@@ -48,6 +48,8 @@ all:
 	else \
 	    $(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) $(PLATFORM_CFLAGS) util/latency.cpp -o util/latency.o; \
 	fi
+	@$(CPP) -I$(RNG_LIB) -I$(RNG_LIB)/verify $(RNG_OBJS) $(LFLAGS) verify/mt19937_test.cpp -o verify/mt19937_test.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/state_to_memh.cpp -o util/state_to_memh.o
 	@for w in $(WORKLOADS); do \
 		objcopy --strip-all $(STOCH_KEEP) $$w.o $$w.stripped; \
 	done
@@ -88,6 +90,7 @@ se:
 	@objcopy --strip-all $(STOCH_MEM_KEEP) sgd/sgd_se sgd/sgd_se.stripped
 
 clean:
-	@rm -f *.o *_se *.stripped *.ppm *.bin *.hex
-	@rm -f sgd/sgd.o sgd/sgd_se sgd/sgd.stripped sgd/sgd_se.stripped
-	@rm -f util/*.o
+	@rm -f *.o *_se *.stripped *.ppm *.bin *.hex *.memh
+	@rm -f sgd/sgd.o sgd/sgd_se sgd/sgd.stripped sgd/sgd_se.stripped sgd/*.o
+	@rm -f util/*.o util/*.memh
+	@rm -f verify/*.o
