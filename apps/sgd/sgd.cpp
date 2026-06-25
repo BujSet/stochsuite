@@ -8,6 +8,9 @@
 #include <string.h>
 #include <math.h>
 #include"definitions.h"
+#ifdef GEM5_FS
+#include "../m5_roi.h"
+#endif
 
 // Read data files (as preprocessed by code)
 #define X_matrix "sgd/X_ent.txt" //size MxN
@@ -247,14 +250,25 @@ int main(int argc, char const *argv[]) {
   values_vector(rmse_v)=(double*)malloc(iter*sizeof(double));
     std::cout<< "Done with malloc calls" << std::endl;
 
+#ifdef GEM5_FS
+    map_m5_mem();
+#endif
+
 // Start  iterations
 for(int it = 0; it < iter; it++){ 
 // Re-fill our response variable vectors every iteration as they get modified in each one (Details below)
+// These run on KVM (before the HC10 switch to O3).
   fill_vector(y,y_vector);
   fill_vector(y_v,y_v_vector);
-  
+
   // Fill batch matrix. This step is what makes this algorithm stochastic as it randomly chooses a fixed number of records to train on every iteration
+#ifdef GEM5_FS
+  M5_ROI_BEGIN();
+#endif
   fill_batch(batch, X, y_b, y, *rng);
+#ifdef GEM5_FS
+  M5_ROI_END();
+#endif
 
 // Calculate prediction error: e = - X %*% b + y
 // Because of how dgemv function was programmed, vector y is overwrittten by result e (which is why we re-fill the y vector every iteration)

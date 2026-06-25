@@ -25,6 +25,10 @@ STOCH_KEEP := \
 	--keep-symbol=__stoch_br_tailwag_1 \
 	--keep-symbol=__stoch_br_tailwag_2
 
+STOCH_MEM_KEEP := \
+	--keep-symbol=__stoch_mem_sgd_y \
+	--keep-symbol=__stoch_mem_sgd_x
+
 WORKLOADS := pi dropout multinomial dop photon tailwag
 
 # FS build (default): address-mode m5 ops via mmap. Requires map_m5_mem() in
@@ -48,7 +52,6 @@ all:
 		objcopy --strip-all $(STOCH_KEEP) $$w.o $$w.stripped; \
 	done
 
-<<<<<<< Updated upstream
 # Full-system gem5: link libm5 and enable ROI markers (run `make gem5_fs` before
 # populate_disk_image.sh).
 gem5_fs:
@@ -58,12 +61,12 @@ gem5_fs:
 	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) dop.cpp $(M5OPS_LIBS) -o dop.o
 	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) photon.cpp $(M5OPS_LIBS) -o photon.o
 	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) tailwag.cpp $(M5OPS_LIBS) -o tailwag.o
+	@$(CPP) -I$(RNG_LIB) -DGEM5_FS $(M5OPS_INC) $(RNG_OBJS) $(LFLAGS_FS) sgd/sgd.cpp sgd/functions.c $(M5OPS_LIBS) -o sgd/sgd.o
 	@for w in $(WORKLOADS); do \
 		objcopy --strip-all $(STOCH_KEEP) $$w.o $$w.stripped; \
 	done
+	@objcopy --strip-all $(STOCH_MEM_KEEP) sgd/sgd.o sgd/sgd.stripped
 
-# SE build: no m5 ROI markers or libm5. Produces *_se binaries for syscall emulation.
-=======
 # SE build: no m5 ROI markers or libm5. Produces *_se binaries alongside FS *.o.
 # -fno-if-conversion -fno-if-conversion2: prevent GCC from replacing stochastic
 # branches (e.g. "if (z<=1.0) count++") with branchless comisd+sbb sequences.
@@ -71,7 +74,6 @@ gem5_fs:
 # loop-counter branch rather than the stochastic Jcc, causing StochBranchMonitor
 # to track the wrong branch.
 LFLAGS_SE := $(LFLAGS_FS) -fno-if-conversion -fno-if-conversion2
->>>>>>> Stashed changes
 se:
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_SE) -DGEM5_SE_MODE pi.cpp -o pi_se
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_SE) -DGEM5_SE_MODE dropout.cpp -o dropout_se
@@ -79,10 +81,13 @@ se:
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_SE) -DGEM5_SE_MODE dop.cpp -o dop_se
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_SE) -DGEM5_SE_MODE photon.cpp -o photon_se
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_SE) -DGEM5_SE_MODE tailwag.cpp -o tailwag_se
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS_SE) -DGEM5_SE_MODE sgd/sgd.cpp sgd/functions.c -o sgd/sgd_se
 	@for w in $(WORKLOADS); do \
 		objcopy --strip-all $(STOCH_KEEP) $${w}_se $${w}_se.stripped; \
 	done
+	@objcopy --strip-all $(STOCH_MEM_KEEP) sgd/sgd_se sgd/sgd_se.stripped
 
 clean:
 	@rm -f *.o *_se *.stripped *.ppm *.bin *.hex
+	@rm -f sgd/sgd.o sgd/sgd_se sgd/sgd.stripped sgd/sgd_se.stripped
 	@rm -f util/*.o

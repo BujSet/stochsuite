@@ -7,8 +7,7 @@
 #include <limits>
 #include <memory>
 #ifdef GEM5_FS
-#include <gem5/m5ops.h>
-#include "m5_mmap.h"
+#include "m5_roi.h"
 #endif
 
 void normalize(double *layer, bool *used, size_t len) {
@@ -113,7 +112,7 @@ int main(int argc, char *argv[]) {
 #endif
     if (!without_replacement) {
 #ifdef GEM5_FS
-        m5_work_begin_addr(0, 0);
+        M5_ROI_BEGIN();
 #endif
         for (size_t i = 0; i < niters; i++) {
             for (size_t j = 0; j < outputs; j++) {
@@ -130,13 +129,13 @@ int main(int argc, char *argv[]) {
             }
         }
 #ifdef GEM5_FS
-        m5_work_end_addr(0, 0);
+        M5_ROI_END();
 #endif
     } else {
         // When sampling without replacement, we must renormalize after
         // every draw to re-comput the cdf
 #ifdef GEM5_FS
-        m5_work_begin_addr(0, 0);
+        M5_ROI_BEGIN();
 #endif
         for (size_t i = 0; i < niters; i++) {
             for (size_t j = 0; j < outputs; j++) {
@@ -161,7 +160,7 @@ int main(int argc, char *argv[]) {
             softmax_reset(layer, used, inputs, rng);
         }
 #ifdef GEM5_FS
-        m5_work_end_addr(0, 0);
+        M5_ROI_END();
 #endif
     }
     delete[] layer;

@@ -15,8 +15,7 @@ https://github.com/scratchapixel/scratchapixel-code/blob/main/monte-carlo-method
 #include <cstring>
 #include <memory>
 #ifdef GEM5_FS
-#include <gem5/m5ops.h>
-#include "m5_mmap.h"
+#include "m5_roi.h"
 #endif
 
 // sampling the H-G scattering phase function
@@ -164,7 +163,7 @@ int main(int argc, char *argv[]) {
     // Iterate for niters refinement passes
 #ifdef GEM5_FS
     map_m5_mem();
-    m5_work_begin_addr(0, 0);
+    M5_ROI_BEGIN();
 #endif
     for (uint32_t npasses = 1; npasses < niters; npasses++) {
         MCSimulation(records, image_size, photons, rng);
@@ -173,7 +172,7 @@ int main(int argc, char *argv[]) {
         }
     }
 #ifdef GEM5_FS
-    m5_work_end_addr(0, 0);
+    M5_ROI_END();
 #endif
 
     if (save_result) {

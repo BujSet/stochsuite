@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # populate_disk_image.sh
 #
-# Mount a gem5 x86 disk image's first partition, copy the six stochsuite
-# workload binaries into /home/gem5/stochsuite/ (renamed with a `_gem5`
-# suffix so they don't collide with the source `.o` filenames), and
-# clean up.
+# Mount a gem5 x86 disk image's first partition, copy stochsuite workload
+# binaries into /home/gem5/stochsuite/ (renamed with a `_gem5` suffix so they
+# don't collide with the source `.o` filenames), copy SGD data files into
+# /home/gem5/stochsuite/sgd/, and clean up.
 #
 # We use Linux's `losetup --partscan` (`-P`) directly instead of the
 # older `gem5/util/gem5img.py`, which detaches and reattaches the same
@@ -51,10 +51,14 @@ fi
 WORKLOADS=(pi dop dropout multinomial photon tailwag)
 for w in "${WORKLOADS[@]}"; do
     if [[ ! -f "$APPS_DIR/${w}.o" ]]; then
-        echo "error: missing $APPS_DIR/${w}.o (run 'make' in $APPS_DIR first)" >&2
+        echo "error: missing $APPS_DIR/${w}.o (run 'make gem5_fs' in $APPS_DIR first)" >&2
         exit 1
     fi
 done
+if [[ ! -f "$APPS_DIR/sgd/sgd.o" ]]; then
+    echo "error: missing $APPS_DIR/sgd/sgd.o (run 'make gem5_fs' in $APPS_DIR first)" >&2
+    exit 1
+fi
 
 mkdir -p "$MOUNTPOINT"
 
@@ -121,6 +125,22 @@ for w in "${WORKLOADS[@]}"; do
     echo "installed $TARGET_DIR/${w}_gem5"
 done
 
+cp "$APPS_DIR/sgd/sgd.o" "$TARGET_DIR/sgd_gem5"
+chmod 0755 "$TARGET_DIR/sgd_gem5"
+echo "installed $TARGET_DIR/sgd_gem5"
+
+mkdir -p "$TARGET_DIR/sgd"
+sgd_data_count=0
+for txt in "$APPS_DIR/sgd"/*.txt; do
+    [[ -f "$txt" ]] || continue
+    cp "$txt" "$TARGET_DIR/sgd/"
+    echo "installed $TARGET_DIR/sgd/$(basename "$txt")"
+    (( sgd_data_count++ )) || true
+done
+if (( sgd_data_count == 0 )); then
+    echo "warning: no SGD data files found at $APPS_DIR/sgd/*.txt" >&2
+fi
+
 sync
 umount "$MOUNTPOINT"
 MOUNTED=0
@@ -128,4 +148,4 @@ losetup -d "$LOOPDEV"
 LOOPDEV=""
 trap - EXIT
 
-echo "disk image $DISK_IMG now contains the six stochsuite workloads"
+echo "disk image $DISK_IMG now contains stochsuite workloads (including sgd)"

@@ -9,8 +9,7 @@
 #include <cstring>
 #include <memory>
 #ifndef GEM5_SE_MODE
-#include <gem5/m5ops.h>
-#include "m5_mmap.h"
+#include "m5_roi.h"
 #endif
 
 // This is the Heaviside step function, named after English
@@ -108,12 +107,12 @@ int main(int argc, char **argv) {
     // Then we calculate the call/put values via Monte Carlo
 #ifndef GEM5_SE_MODE
     map_m5_mem();
-    m5_work_begin_addr(0, 0);
+    M5_ROI_BEGIN();
 #endif
     double call = monte_carlo_digital_call_price(num_sims, S, K, r, v, T, rng);
     double put = monte_carlo_digital_put_price(num_sims, S, K, r, v, T, rng);
 #ifndef GEM5_SE_MODE
-    m5_work_end_addr(0, 0);
+    M5_ROI_END();
 #endif
     // Finally we output the parameters and prices
 

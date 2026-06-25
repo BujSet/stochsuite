@@ -6,8 +6,7 @@
 #include <cassert>
 #include <cmath>
 #ifdef GEM5_FS
-#include <gem5/m5ops.h>
-#include "m5_mmap.h"
+#include "m5_roi.h"
 #endif
 
 int main(int argc, char* argv[]) {
@@ -97,7 +96,7 @@ int main(int argc, char* argv[]) {
 
 #ifdef GEM5_FS
     map_m5_mem();
-    m5_work_begin_addr(0, 0);
+    M5_ROI_BEGIN();
 #endif
     for (size_t i = 0; i < niters; i++) {
         distNum = rng->read_random_range(0, 999999, 10000000);
@@ -129,7 +128,7 @@ int main(int argc, char* argv[]) {
         }
     }
 #ifdef GEM5_FS
-    m5_work_end_addr(0, 0);
+    M5_ROI_END();
 #endif
 
     size_t blocked = block1Cnt + block2Cnt;

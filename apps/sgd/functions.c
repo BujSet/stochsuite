@@ -21,8 +21,10 @@ void fill_batch(array_2d_T b, array_2d_T X, array_1d_T y_b, array_1d_T y, RNGBas
 		//r = rand() % m;
 
         r = rng.read_random() % m;
+		asm volatile(".globl __stoch_mem_sgd_y\n__stoch_mem_sgd_y:");
 		value_vector(y_b,i)=value_vector(y, r);
 		for(j=0; j<n; j++){
+			asm volatile(".globl __stoch_mem_sgd_x\n__stoch_mem_sgd_x:");
 			value(b,i,j) = value(X,r,j);
 		}
 	}
