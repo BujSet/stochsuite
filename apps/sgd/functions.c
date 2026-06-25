@@ -12,6 +12,13 @@ void fill_vector(array_1d_T p, const char *s){
 	fclose(pFile);
 }
 
+void fill_vector_binary(array_1d_T p, const char *s){
+	int m = rows_vector(p);
+	FILE *f = fopen(s, "rb");
+	fread(values_vector(p), sizeof(double), m, f);
+	fclose(f);
+}
+
 void fill_batch(array_2d_T b, array_2d_T X, array_1d_T y_b, array_1d_T y, RNGBase& rng){
 	int m_b = rows(b);
 	int m = rows(X);

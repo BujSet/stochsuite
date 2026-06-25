@@ -18,6 +18,8 @@
 #define b_vector "sgd/b_bh.txt" //size Nx1
 #define y_vector "sgd/y_train.txt" //size Mx1
 #define y_v_vector "sgd/y_val.txt" //size Mx1
+#define y_bin    "sgd/y_train.bin" //size Mx1, raw float64
+#define y_v_bin  "sgd/y_val.bin"   //size M_vx1, raw float64
 
 void fill_matrix(array_2d_T p, const char *s){
     std::cout << "Top of fill matrix" << std::endl;
@@ -252,23 +254,26 @@ int main(int argc, char const *argv[]) {
 
 #ifdef GEM5_FS
     map_m5_mem();
+    M5_ROI_BEGIN();
 #endif
 
 // Start  iterations
-for(int it = 0; it < iter; it++){ 
-// Re-fill our response variable vectors every iteration as they get modified in each one (Details below)
-// These run on KVM (before the HC10 switch to O3).
-  fill_vector(y,y_vector);
-  fill_vector(y_v,y_v_vector);
+for(int it = 0; it < iter; it++){
+// ROI covers the entire iteration: fill_vector_binary warms the cache for
+// fill_batch on the same O3 CPU. Stochastic prefetch hooks (__stoch_mem_sgd_y/x)
+// fire only inside fill_batch via their PC-address asm labels.
+#ifdef GEM5_FS
+  // Re-fill y and y_v from binary files (fast fread on O3, warms cache)
+  fill_vector_binary(y, y_bin);
+  fill_vector_binary(y_v, y_v_bin);
+#else
+  // Native build: use original text-based fill_vector
+  fill_vector(y, y_vector);
+  fill_vector(y_v, y_v_vector);
+#endif
 
   // Fill batch matrix. This step is what makes this algorithm stochastic as it randomly chooses a fixed number of records to train on every iteration
-#ifdef GEM5_FS
-  M5_ROI_BEGIN();
-#endif
   fill_batch(batch, X, y_b, y, *rng);
-#ifdef GEM5_FS
-  M5_ROI_END();
-#endif
 
 // Calculate prediction error: e = - X %*% b + y
 // Because of how dgemv function was programmed, vector y is overwrittten by result e (which is why we re-fill the y vector every iteration)
@@ -300,6 +305,9 @@ for(int it = 0; it < iter; it++){
 // Update coefficients: b = b - lr * g
   daxpy_(&N, &lr,values_vector(g), &incx, values_vector(b), &incx);
 }
+#ifdef GEM5_FS
+  M5_ROI_END();
+#endif
 
 printf("----- Final Coefficients -----\n");
 print_vector(b);

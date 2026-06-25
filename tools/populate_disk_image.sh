@@ -3,8 +3,8 @@
 #
 # Mount a gem5 x86 disk image's first partition, copy stochsuite workload
 # binaries into /home/gem5/stochsuite/ (renamed with a `_gem5` suffix so they
-# don't collide with the source `.o` filenames), copy SGD data files into
-# /home/gem5/stochsuite/sgd/, and clean up.
+# don't collide with the source `.o` filenames), copy SGD data files (*.txt and
+# *.bin) into /home/gem5/stochsuite/sgd/, and clean up.
 #
 # We use Linux's `losetup --partscan` (`-P`) directly instead of the
 # older `gem5/util/gem5img.py`, which detaches and reattaches the same
@@ -139,6 +139,18 @@ for txt in "$APPS_DIR/sgd"/*.txt; do
 done
 if (( sgd_data_count == 0 )); then
     echo "warning: no SGD data files found at $APPS_DIR/sgd/*.txt" >&2
+fi
+
+sgd_bin_count=0
+for bin in "$APPS_DIR/sgd"/*.bin; do
+    [[ -f "$bin" ]] || continue
+    cp "$bin" "$TARGET_DIR/sgd/"
+    echo "installed $TARGET_DIR/sgd/$(basename "$bin")"
+    (( sgd_bin_count++ )) || true
+done
+if (( sgd_bin_count == 0 )); then
+    echo "warning: no SGD binary data files found at $APPS_DIR/sgd/*.bin" >&2
+    echo "  run: python3 $APPS_DIR/sgd/convert_to_binary.py $APPS_DIR" >&2
 fi
 
 sync
