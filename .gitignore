@@ -3,6 +3,8 @@ apps/*.o
 apps/util/*.o
 apps/util/*.memh
 apps/util/*.s
+apps/util/sw_latencies.pdf
+apps/util/latency_stats.csv
 apps/verify/*.o
 apps/*.ppm
 apps/*.bin

@@ -18,3 +18,6 @@ RUN apt install -y testu01-bin libtestu01-dev
 RUN apt-get update
 # Install iverilog
 RUN apt install -y iverilog yosys gtkwave
+# Install pre-reqs for cudd and opensta
+RUN apt install -y bison flex tcl-dev swig libeigen3-dev
+RUN apt-get install -y libtool libtool-bin

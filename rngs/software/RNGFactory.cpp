@@ -6,9 +6,11 @@
 #include "KISS11.hpp"
 #include "LCG.hpp"
 #include "MersenneTwister.hpp"
+#include "Park1988.hpp"
 #include "PCGBasic.hpp"
 #include "Taus88.hpp"
 #include "Taus113.hpp"
+#include "UpCounter.hpp"
 #include "XorShift128.hpp"
 #include "XorShift32.hpp"
 #include "XorWow.hpp"
@@ -76,6 +78,14 @@ std::unique_ptr<RNGBase> RNGFactory::createRNG(const std::string type) {
     } else if (type == "XoShiRo128++") {
         // Implemented from https://prng.di.unimi.it/xoshiro128plusplus.c
         return std::unique_ptr<RNGBase>(new XoShiRo128PlusPlus());
+    } else if (type == "ParkAndMiller1988Int2") {
+        // Implemented from S. K. Park and K. W. Miller. 1988. 
+        // Random number generators: good ones are hard to find. Commun. 
+        // ACM 31, 10 (Oct. 1988), 1192–1201. 
+        // https://doi.org/10.1145/63039.63042
+        return std::unique_ptr<RNGBase>(new Park1988());
+    } else if (type == "UpCounter") {
+        return std::unique_ptr<RNGBase>(new UpCounter());
     } else {
         return nullptr;
     }

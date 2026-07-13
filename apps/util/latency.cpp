@@ -16,12 +16,45 @@
 #include <time.h>
 #endif
 
+#if defined(_WIN32) || defined(_WIN64)
+    #include <windows.h>
+#elif defined(__linux__)
+    #include <pthread.h>
+    #include <sched.h>
+#endif
+
 #include <vector>
 
+// Pins the calling thread to the first available CPU core
+bool pin_thread_to_core() {
+#if defined(_WIN32) || defined(_WIN64)
+    // Pin to the first core (Core 0)
+    DWORD_PTR mask = 1;
+    DWORD_PTR result = SetThreadAffinityMask(GetCurrentThread(), mask);
+    return result != 0;
+#elif defined(__linux__)
+    cpu_set_t cpuset;
+    CPU_ZERO(&cpuset);
+    CPU_SET(0, &cpuset); // Pin to Core 0
+
+    pthread_t current_thread = pthread_self();
+    return pthread_setaffinity_np(current_thread, sizeof(cpu_set_t), &cpuset) == 0;
+#else
+    return false; // Unsupported OS
+#endif
+}
+
 int main(int argc, char *argv[]) {
-    size_t warmup_iters = 100;
-    size_t niters = 100000000;
-    size_t batch = 100; // should be a small factor of niters
+    if (!pin_thread_to_core()) {
+        std::cerr << "Error: Failed to pin thread to a core.\n";
+        return 1;
+    }
+    unsigned int start_pid = 0;
+    unsigned int end_pid = 0;
+
+    size_t warmup_iters = 1000;
+    size_t niters = 1000000000;
+    size_t batch = 1000; // should be a small factor of niters
     uint32_t seed = 1634404289;
     std::string rngStr = "Taus88";
     bool printHeader = false;
@@ -79,35 +112,45 @@ int main(int argc, char *argv[]) {
      
     for (size_t i = 0; i < niters/batch; i++) {
 #if defined(__x86_64__) || defined(__amd64__)
-        start_ticks = __rdtsc(); 
+        _mm_lfence();
+        start_ticks = __rdtscp(&start_pid); 
+        //start_ticks = __rdtsc(); 
 #endif
 #if defined(__aarch64__)
-	// TODO save and restore errno
+        // TODO save and restore errno
         if (clock_gettime(CLOCK_MONOTONIC, &start_ts) ) {
             std::cout << "Failed to read clocktime at start of ROI!" << std::endl;
             return 1;
-	}
+        }
 #endif
         for (size_t j = 0; j < batch; j++) {
             rnd = rng->read_random();
         }
 #if defined(__x86_64__) || defined(__amd64__)
-        end_ticks = __rdtsc(); 
-	elapsed = end_ticks - start_ticks;
+        //end_ticks = __rdtsc(); 
+        end_ticks = __rdtscp(&end_pid);
+        _mm_lfence();
+        elapsed = end_ticks - start_ticks;
 #endif
 #if defined(__aarch64__)
-	// TODO save and restore errno
+        // TODO save and restore errno
         if (clock_gettime(CLOCK_MONOTONIC, &end_ts)) {
             std::cout << "Failed to read clocktime at end of ROI!" << std::endl;
             return 1;
-	}
-	// For ease of comparison, we should convert to 
-	// same time unit (e.g. seconds):
-	elapsed = (end_ts.tv_sec - start_ts.tv_sec) * 1000000000ULL +
+        }
+        // For ease of comparison, we should convert to 
+        // same time unit (e.g. seconds):
+        elapsed = (end_ts.tv_sec - start_ts.tv_sec) * 1000000000ULL +
 	                (end_ts.tv_nsec - start_ts.tv_nsec);
-	// TODO need to do this for x86_64 machines as well
+	    // TODO need to do this for x86_64 machines as well
 #endif
         delays.push_back(elapsed);
+    }
+    if (start_pid != end_pid) {
+        std::cerr << "Discarded: Core migration occurred during test. "
+                  << "Started on Core " << start_pid
+                  << ", Ended on Core " << end_pid << ".\n";
+        return 1;
     }
     uint64_t sum = 0;
     for (size_t i = 0; i < delays.size(); i++) {
