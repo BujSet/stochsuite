@@ -26,8 +26,14 @@ all:
 	fi
 	@$(CPP) -I$(RNG_LIB) -I$(RNG_LIB)/verify $(RNG_OBJS) $(LFLAGS) verify/mt19937_test.cpp -o verify/mt19937_test.o
 	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/state_to_memh.cpp -o util/state_to_memh.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/data_prefetcher.cpp -o util/data_prefetcher.o
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) $(LFLAGS) util/branch_predictor.cpp -o util/branch_predictor.o
+
+asm:
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) -S util/branch_predictor.cpp -o util/branch_predictor.s
+	@$(CPP) -I$(RNG_LIB) $(RNG_OBJS) -S util/data_prefetcher.cpp -o util/data_prefetcher.s
 
 clean:
 	@rm -f *.o *.ppm *.bin *.hex *.memh
-	@rm -f util/*.o util/*.memh
+	@rm -f util/*.o util/*.memh util/*.s
 	@rm -f verify/*.o
